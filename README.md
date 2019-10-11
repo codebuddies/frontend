@@ -23,12 +23,13 @@ After authenticating, the root page should be defined as the **Resources Index**
 
 The Resources page displays a search form. From this page, a user can search for a resource and add a new resource. After searching for a resource, it should populate with the search results. Clicking on `Add a Resource` should open a modal with a form to add a Resource. On success, it should give a message that a resource was added successfully, or if there are errors, display error messages in an [flash message](https://material-ui.com/components/snackbars/).
 
-<<<<<<< HEAD
 ## Things to Validate
 + Testing frameworks (Jest or Mocha)
 + UI Framework - is it easily extendable and manageable?
 + Any cons?
-=======
+
+# CRA Notes
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -97,4 +98,3 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
->>>>>>> Update README
