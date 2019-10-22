@@ -2,6 +2,9 @@ import React from "react";
 import logo from "../../logo.png";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { MenuList, MenuItem, Button, Popper, Grow, Paper, ClickAwayListener } from '@material-ui/core';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,6 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
   navItems: {
     display: "flex",
+    alignItems: "center",
     "& li": {
       margin: "0em .5em"
     }
@@ -25,6 +29,37 @@ const useStyles = makeStyles(theme => ({
 
 export default function Nav() {
   const classes = useStyles();
+  const [isMenuExpanded, setIsMenuExpanded] = React.useState(false);
+  const anchorRef = React.useRef(null);
+
+  const handleMenuOpen = () => {
+    setIsMenuExpanded(prevMenuState => !prevMenuState);
+  };
+
+  const handleMenuClose = event => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+    setIsMenuExpanded(false);
+  };
+
+  function handleListKeyDown(event) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      setIsMenuExpanded(false);
+    }
+  }
+
+  // return focus to the button when we transitioned from !open -> open
+  const prevMenuState = React.useRef(isMenuExpanded);
+  React.useEffect(() => {
+    if (prevMenuState.current === true && isMenuExpanded === false) {
+      anchorRef.current.focus();
+    }
+
+    prevMenuState.current = isMenuExpanded;
+  }, [isMenuExpanded]);
+
   return (
     <nav className={classes.root}>
       <ul className={classes.ul}>
@@ -41,6 +76,34 @@ export default function Nav() {
           </li>
           <li>
             <Link to="/resources">Resources</Link>
+          </li>
+          <li>
+            <Button 
+              ref={anchorRef}
+              aria-controls="menu-list-grow"
+              aria-haspopup="true"
+              onClick={handleMenuOpen}
+            >
+              <AccountCircleIcon />
+            </Button>
+            <Popper open={isMenuExpanded} anchorEl={anchorRef.current} transition disablePortal>
+              {({ TransitionProps, placement }) => (
+                <Grow
+                  {...TransitionProps}
+                  style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+                >
+                  <Paper id="menu-list-grow">
+                    <ClickAwayListener onClickAway={handleMenuClose}>
+                      <MenuList autoFocusItem={isMenuExpanded} onKeyDown={handleListKeyDown}>
+                        <MenuItem onClick={handleMenuClose}>
+                          <Link>Logout</Link>
+                        </MenuItem>
+                      </MenuList>
+                    </ClickAwayListener>
+                  </Paper>
+                </Grow>
+              )}
+            </Popper>
           </li>
         </div>
       </ul>
