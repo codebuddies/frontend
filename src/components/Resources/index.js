@@ -44,7 +44,19 @@ const useStyles = makeStyles(theme => ({
   },
   avatar: {
     backgroundColor: red[500]
-  }
+  },
+  textArea: {
+    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+    outline: 0,
+    boxShadow: "none",
+    border: 'none',
+    borderBottom: '1px solid #ced4da',
+    borderRadius: 0,
+    boxSizing: "content-box",
+    backgroundColor: "transparent",
+    overflowY: "hidden",
+    margin: "5px"
+  },
 }));
 
 function Resources() {
