@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import logo from "../../logo.png";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { MenuList, MenuItem, Button, Popper, Grow, Paper, ClickAwayListener } from '@material-ui/core';
+import MenuList from '@material-ui/core/MenuList';
+import MenuItem from '@material-ui/core/MenuItem';
+import IconButton from '@material-ui/core/IconButton';
+import Grow from '@material-ui/core/Grow';
+import Paper from '@material-ui/core/Paper';
+import Popper from '@material-ui/core/Popper';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 
 const useStyles = makeStyles(theme => ({
@@ -29,8 +35,8 @@ const useStyles = makeStyles(theme => ({
 
 export default function Nav() {
   const classes = useStyles();
-  const [isMenuExpanded, setIsMenuExpanded] = React.useState(false);
-  const anchorRef = React.useRef(null);
+  const [isMenuExpanded, setIsMenuExpanded] = useState(false);
+  const anchorRef = useRef(null);
 
   const handleMenuOpen = () => {
     setIsMenuExpanded(prevMenuState => !prevMenuState);
@@ -51,8 +57,8 @@ export default function Nav() {
   }
 
   // return focus to the button when we transitioned from !open -> open
-  const prevMenuState = React.useRef(isMenuExpanded);
-  React.useEffect(() => {
+  const prevMenuState = useRef(isMenuExpanded);
+  useEffect(() => {
     if (prevMenuState.current === true && isMenuExpanded === false) {
       anchorRef.current.focus();
     }
@@ -78,14 +84,14 @@ export default function Nav() {
             <Link to="/resources">Resources</Link>
           </li>
           <li>
-            <Button 
+            <IconButton 
               ref={anchorRef}
               aria-controls="menu-list-grow"
               aria-haspopup="true"
               onClick={handleMenuOpen}
             >
               <AccountCircleIcon />
-            </Button>
+            </IconButton>
             <Popper open={isMenuExpanded} anchorEl={anchorRef.current} transition disablePortal>
               {({ TransitionProps, placement }) => (
                 <Grow
