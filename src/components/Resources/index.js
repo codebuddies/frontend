@@ -59,7 +59,7 @@ function Resources() {
 
   useEffect(() => {
     axios
-      .get("/resources")
+      .get("/api/resources")
       .then(function(response) {
         // handle success
         setResources(response.data);

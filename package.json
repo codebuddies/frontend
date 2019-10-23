@@ -18,7 +18,7 @@
   "scripts": {
     "start": "run-p start:client start:server",
     "start:client": "react-scripts start",
-    "start:server": "json-server --watch db.json --port 3001",
+    "start:server": "json-server --watch db.json --port 3001 --routes routes.json",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
