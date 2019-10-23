@@ -59,7 +59,7 @@ function Resources() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/resources")
+      .get("/resources")
       .then(function(response) {
         // handle success
         setResources(response.data);
