@@ -12,6 +12,12 @@ View proof of concept designs over at [Figma](https://www.figma.com/file/wXMeX9x
 
 The PoC for the frontend will revolve around querying and posting the Resource model based on the defined [API spec](https://app.swaggerhub.com/apis-docs/billglover/CodeBuddies/0.0.1).
 
+### Using Material UI
+
+We're using Material-UI's [Hooks API](https://material-ui.com/styles/basics/#hook-api), which means you can (and should) use [Material UI's components](https://material-ui.com/getting-started/supported-components/) as a starting point, and extend them as needed using `makeStyles` and `useStyles`.
+
+See the [Nav component](https://github.com/codebuddies/react-concept/blob/master/src/components/Nav/index.js) for an example that uses several Material-UI components, and the `makeStyles` hook to customize the rest.
+
 ## Pages
 **Index**
 
