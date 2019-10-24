@@ -3,6 +3,8 @@ import axios from "axios";
 import PersonalMenu from "../PersonalMenu";
 import Search from "../Search";
 import Grid from "@material-ui/core/Grid";
+import { red } from "@material-ui/core/colors";
+import { makeStyles } from "@material-ui/core/styles";
 import { ResourceCard } from "./ResourceCard";
 
 const useStyles = makeStyles(theme => ({
