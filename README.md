@@ -7,6 +7,13 @@ For Backend proof of concepts, see:
 + [Node](https://github.com/codebuddies/node-concept)
 + [Go](https://github.com/codebuddies/go-concept)
 
+## Contribution instructions
+1. Fork this repo. 
+2. Find an issue and leave a comment if you're interested in it. 
+3. Run `npm install` and `npm start`
+
+We have a "fake" API set up in the db.json file, which our React components pull from. 
+
 ## Design
 View proof of concept designs over at [Figma](https://www.figma.com/file/wXMeX9xgYTcVKNJ1XT9ZQ5/cbv3poc?node-id=0%3A1). Note that the design are only meant to serve as a guide and the output does not need to be pixel perfect based on the designs linked here. Instead, use [Material-UI](https://material-ui.com/) components as a starting point and extend as needed.
 
