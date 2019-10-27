@@ -25,6 +25,10 @@ const defaultTags = [
   {label: 'js', value: 'js'},
   {label: 'devops', value: 'devops'},
 ];
+const mediaTypes = [
+  'PDF', 'Video', 'Podcast', 'Tutorial', 'Course', 'Book', 'Game', 'Blog', 'Post',
+  'Event', 'Website',
+];
 const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
@@ -112,7 +116,7 @@ const SubmitResource = () => {
           <div className={clsx(classes.root, classes.breadcrumb)}>
             <Paper elevation={0} className={classes.paper}>
               <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
-                <Link color="inherit" href="#">
+                <Link color="inherit" to="/resources">
                   Resources
                 </Link>
                 <Typography color="textPrimary">Submit</Typography>
@@ -191,8 +195,9 @@ const SubmitResource = () => {
               onChange={handleChange('mediaType')}
             >
               <option value="" />
-              <option value='pdf'>PDF</option>
-              <option value='video'>Video</option>
+              { mediaTypes.map(
+                type => <option key={type} value={type}>{type}</option>
+              )}
             </Select>
           </FormControl>
 
