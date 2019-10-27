@@ -1,13 +1,15 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
+
 import "./App.css";
 import About from "./components/About";
 import Resources from "./components/Resources";
 import Home from "./components/Home";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Nav from "./components/Nav";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
+import SubmitResource from "./components/Resources/submitResource";
 
 function App() {
   return (
@@ -23,6 +25,9 @@ function App() {
           </Route>
           <Route path="/resources">
             <Resources />
+          </Route>
+          <Route path="/submit-resource">
+            <SubmitResource />
           </Route>
           <Route path="/">
             <Home />
