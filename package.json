@@ -29,6 +29,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "lint": "prettier-check '**/*.{json,js,jsx,md}'",
     "format": "prettier --write '**/*.{json,js,jsx,md}"
   },
   "eslintConfig": {
