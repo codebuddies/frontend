@@ -15,13 +15,22 @@
     "react-scripts": "3.2.0",
     "react-select": "^3.0.8"
   },
+  "devDependencies": {
+    "husky": "^3.0.9",
+    "jest": "24.9.0",
+    "lint-staged": "^9.4.2",
+    "prettier": "^1.18.2",
+    "prettier-check": "^2.0.0"
+  },
   "scripts": {
     "start": "run-p start:client start:server",
     "start:client": "react-scripts start",
     "start:server": "json-server --watch db.json --port 3001",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "prettier-check '**/*.{json,js,jsx,md}'",
+    "format": "prettier --write '**/*.{json,js,jsx,md}"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,7 +47,15 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "jest": "24.9.0"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*{md,css,js,jsx,json}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
