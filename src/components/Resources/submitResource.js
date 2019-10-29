@@ -251,6 +251,7 @@ const SubmitResource = () => {
               }),
               placeholder: styles => ({ ...styles, color: '#757575', }),
             }}
+            value={tags}
           />
 
           <FormGroup aria-label="position" className={classes.submit}>
