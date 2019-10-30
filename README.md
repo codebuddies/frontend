@@ -15,7 +15,7 @@ For Backend proof of concepts, see:
 We have a "fake" API set up in the db.json file, which our React components pull from. 
 
 ## Design
-View proof of concept designs over at [Figma](https://www.figma.com/file/wXMeX9xgYTcVKNJ1XT9ZQ5/cbv3poc?node-id=0%3A1). Note that the design are only meant to serve as a guide and the output does not need to be pixel perfect based on the designs linked here. Instead, use [Material-UI](https://material-ui.com/) components as a starting point and extend as needed.
+View proof of concept designs over on the [official V3 repo](https://github.com/codebuddies/v3/issues?q=is%3Aissue+is%3Aopen+label%3Adesign) labeled "design". Note that the designs are only meant to serve as a guide and the output does not need to be pixel perfect. Instead, use [Material-UI](https://material-ui.com/) components as a starting point and extend as needed.
 
 The PoC for the frontend will revolve around querying and posting the Resource model based on the defined [API spec](https://app.swaggerhub.com/apis-docs/billglover/CodeBuddies/0.0.1).
 
