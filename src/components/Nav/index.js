@@ -2,15 +2,14 @@ import React, { useState, useRef, useEffect } from "react";
 import logo from "../../logo.png";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import MenuList from '@material-ui/core/MenuList';
-import MenuItem from '@material-ui/core/MenuItem';
-import IconButton from '@material-ui/core/IconButton';
-import Grow from '@material-ui/core/Grow';
-import Paper from '@material-ui/core/Paper';
-import Popper from '@material-ui/core/Popper';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import MenuList from "@material-ui/core/MenuList";
+import MenuItem from "@material-ui/core/MenuItem";
+import IconButton from "@material-ui/core/IconButton";
+import Grow from "@material-ui/core/Grow";
+import Paper from "@material-ui/core/Paper";
+import Popper from "@material-ui/core/Popper";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -50,7 +49,7 @@ export default function Nav() {
   };
 
   function handleListKeyDown(event) {
-    if (event.key === 'Tab') {
+    if (event.key === "Tab") {
       event.preventDefault();
       setIsMenuExpanded(false);
     }
@@ -81,10 +80,19 @@ export default function Nav() {
             <Link to="/about">About</Link>
           </li>
           <li>
+            <Link to="/newsfeed">Newsfeed</Link>
+          </li>
+          <li>
             <Link to="/resources">Resources</Link>
           </li>
           <li>
-            <IconButton 
+            <Link to="/groups">Groups</Link>
+          </li>
+          <li>
+            <Link to="/projects">Projects</Link>
+          </li>
+          <li>
+            <IconButton
               ref={anchorRef}
               aria-controls="menu-list-grow"
               aria-haspopup="true"
@@ -92,15 +100,26 @@ export default function Nav() {
             >
               <AccountCircleIcon />
             </IconButton>
-            <Popper open={isMenuExpanded} anchorEl={anchorRef.current} transition disablePortal>
+            <Popper
+              open={isMenuExpanded}
+              anchorEl={anchorRef.current}
+              transition
+              disablePortal
+            >
               {({ TransitionProps, placement }) => (
                 <Grow
                   {...TransitionProps}
-                  style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+                  style={{
+                    transformOrigin:
+                      placement === "bottom" ? "center top" : "center bottom"
+                  }}
                 >
                   <Paper id="menu-list-grow">
                     <ClickAwayListener onClickAway={handleMenuClose}>
-                      <MenuList autoFocusItem={isMenuExpanded} onKeyDown={handleListKeyDown}>
+                      <MenuList
+                        autoFocusItem={isMenuExpanded}
+                        onKeyDown={handleListKeyDown}
+                      >
                         <MenuItem onClick={handleMenuClose}>
                           <Link>Logout</Link>
                         </MenuItem>
