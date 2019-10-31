@@ -13,10 +13,4 @@
 
 ## Related Tickets & Documents
 
-## Mobile & Desktop Screenshots/Recordings (if there are UI changes)
-
-## Added to documentation?
-
-- [ ] docs.dev.to
-- [ ] readme
-- [ ] no documentation needed
+## Before & After
