@@ -51,17 +51,12 @@ export const ResourceCard = ({ title, created, description, url }) => {
     setExpanded(!expanded);
   };
   return (
-    <Card class={classes.card}>
+    <Card id={classes.card}>
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
             R
           </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
         }
         title={title}
         subheader={created}
@@ -83,6 +78,11 @@ export const ResourceCard = ({ title, created, description, url }) => {
             <LinkIcon />
           </a>
         </IconButton>
+
+        <IconButton aria-label="settings">
+          <MoreVertIcon />
+        </IconButton>
+
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded

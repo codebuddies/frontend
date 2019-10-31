@@ -27,17 +27,17 @@ function Resources() {
       {console.log(resources)}
 
       <Grid container spacing={1}>
-        <Grid item lg={3}>
+        <Grid item lg={2}>
           <PersonalMenu />
         </Grid>
-        <Grid item lg={9}>
+        <Grid item lg={10}>
           <h2>Resources</h2>
           <Search label="Search resources" />
           <br />
           <Grid container spacing={1}>
             {resources.map(resource => {
               return (
-                <Grid item lg={3} key={resource.id}>
+                <Grid item lg={4} key={resource.id}>
                   <ResourceCard {...resource} />
                 </Grid>
               );
