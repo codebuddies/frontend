@@ -7,6 +7,7 @@ import About from "./components/About";
 import Resources from "./components/Resources";
 import Home from "./components/Home";
 import Nav from "./components/Nav";
+import Coworking from "./components/Coworking";
 import SubmitResource from "./components/Resources/submitResource";
 
 function App() {
@@ -20,6 +21,9 @@ function App() {
         <Switch>
           <Route path="/about">
             <About />
+          </Route>
+          <Route path="/coworking">
+            <Coworking />
           </Route>
           <Route path="/resources">
             <Resources />
