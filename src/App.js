@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import Nav from "./components/Nav";
 import Coworking from "./components/Coworking";
 import SubmitResource from "./components/Resources/submitResource";
+import ResourcePage from "./components/Resources/ResourcePage";
 
 function App() {
   return (
@@ -25,6 +26,10 @@ function App() {
           <Route path="/coworking">
             <Coworking />
           </Route>
+          <Route
+            path="/resources/:id"
+            render={matchProps => <ResourcePage matchProps={matchProps} />}
+          />
           <Route path="/resources">
             <Resources />
           </Route>
