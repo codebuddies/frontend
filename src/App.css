@@ -22,5 +22,10 @@
 }
 
 a:link {
+  color: #00008b;
   text-decoration: none;
+}
+
+a:visited {
+  color: #6807f9;
 }
