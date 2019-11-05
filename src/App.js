@@ -9,7 +9,7 @@ import Home from "./components/Home";
 import Nav from "./components/Nav";
 import Coworking from "./components/Coworking";
 import SubmitResource from "./components/Resources/submitResource";
-import ResourcePage from "./components/Resources/ResourcePage";
+import ResourcePage from "./components/Resources/ResourcePage.js";
 
 function App() {
   return (
