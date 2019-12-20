@@ -1,12 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
-
 import './App.css';
 import About from './components/About';
 import Resources from './components/Resources';
 import Home from './components/Home';
 import Nav from './components/Nav';
+import Login from './components/Auth/Login.js';
+import Signup from './components/Auth/Signup.js';
 import Coworking from './components/Coworking';
 import SubmitResource from './components/Resources/submitResource';
 import ResourcePage from './components/Resources/ResourcePage.js';
@@ -16,12 +17,17 @@ function App() {
     <Router>
       <Container>
         <Nav />
-
         {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/about">
             <About />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/signup">
+            <Signup />
           </Route>
           <Route path="/coworking">
             <Coworking />
