@@ -1,4 +1,7 @@
 {
+  "auth-token": {
+    "token": "abcd"
+  },
   "resources": [
     {
       "id": "7e08e0b0-da77-11e9-95c3-d20089b01401",
