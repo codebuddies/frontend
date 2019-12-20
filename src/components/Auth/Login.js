@@ -44,7 +44,7 @@ function LoginForm() {
         onChange={e => setPassword(e.target.value)}
       />
       <Button type="submit" variant="contained" color="primary">
-        Primary
+        Login
       </Button>
     </form>
   );
