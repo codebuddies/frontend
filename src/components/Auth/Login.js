@@ -29,7 +29,6 @@ function LoginForm() {
   return (
     <form onSubmit={handleLogin}>
       <h4>Log In</h4>
-      <label htmlFor="username">Username</label>
       <TextField
         id="username"
         label="Username"
