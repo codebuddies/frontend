@@ -28,7 +28,6 @@ function SignupForm() {
   return (
     <form onSubmit={handleSignup}>
       <h4>Sign Up</h4>
-      <label htmlFor="username">Username</label>
       <TextField
         id="username"
         label="Username"
