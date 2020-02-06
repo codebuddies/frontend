@@ -17,6 +17,11 @@
     "unfurl.js": "5.0.1"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^5.3.9",
+    "@storybook/addon-links": "^5.3.9",
+    "@storybook/addons": "^5.3.9",
+    "@storybook/preset-create-react-app": "^1.5.2",
+    "@storybook/react": "^5.3.9",
     "husky": "3.0.9",
     "jest": "24.9.0",
     "lint-staged": "9.4.2",
@@ -31,7 +36,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "prettier-check '**/*.{json,js,jsx,md}'",
-    "format": "prettier --write '**/*.{json,js,jsx,md}"
+    "format": "prettier --write '**/*.{json,js,jsx,md}",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"

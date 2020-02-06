@@ -10,6 +10,17 @@ Frontend proof of concept of CodeBuddies v3 using React.
 
 We have a "fake" API set up in the db.json file, which our React components pull from.
 
+## Storybook
+
+We are utilizing Storybook for showing components in an isolated way.
+You can create your own storybook from components that you create. The files need to have the `.stories.js` ending to be picked up by storybook.
+
+To run the storybook application, use the following command
+
+```
+npm run storybook
+```
+
 ## Design
 
 View proof of concept designs over on the [official V3 repo](https://github.com/codebuddies/v3/issues?q=is%3Aissue+is%3Aopen+label%3Adesign) labeled "design". Note that the designs are only meant to serve as a guide and the output does not need to be pixel perfect. Instead, use [Material-UI](https://material-ui.com/) components as a starting point and extend as needed.
