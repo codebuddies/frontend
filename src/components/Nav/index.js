@@ -1,35 +1,35 @@
-import React, { useState, useRef, useEffect } from "react";
-import logo from "../../logo.png";
-import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import MenuList from "@material-ui/core/MenuList";
-import MenuItem from "@material-ui/core/MenuItem";
-import IconButton from "@material-ui/core/IconButton";
-import Grow from "@material-ui/core/Grow";
-import Paper from "@material-ui/core/Paper";
-import Popper from "@material-ui/core/Popper";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import React, { useState, useRef, useEffect } from 'react';
+import logo from '../../logo.png';
+import { Link } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import MenuList from '@material-ui/core/MenuList';
+import MenuItem from '@material-ui/core/MenuItem';
+import IconButton from '@material-ui/core/IconButton';
+import Grow from '@material-ui/core/Grow';
+import Paper from '@material-ui/core/Paper';
+import Popper from '@material-ui/core/Popper';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {
-    display: "flex",
-    margin: "1em 0em"
+    display: 'flex',
+    margin: '1em 0em',
   },
   ul: {
-    display: "flex",
-    listStyle: "none",
-    justifyContent: "space-between",
-    width: "100%",
-    padding: "0"
+    display: 'flex',
+    listStyle: 'none',
+    justifyContent: 'space-between',
+    width: '100%',
+    padding: '0',
   },
   navItems: {
-    display: "flex",
-    alignItems: "center",
-    "& li": {
-      margin: "0em .5em"
-    }
-  }
+    display: 'flex',
+    alignItems: 'center',
+    '& li': {
+      margin: '0em .5em',
+    },
+  },
 }));
 
 export default function Nav() {
@@ -49,7 +49,7 @@ export default function Nav() {
   };
 
   function handleListKeyDown(event) {
-    if (event.key === "Tab") {
+    if (event.key === 'Tab') {
       event.preventDefault();
       setIsMenuExpanded(false);
     }
@@ -111,7 +111,7 @@ export default function Nav() {
                   {...TransitionProps}
                   style={{
                     transformOrigin:
-                      placement === "bottom" ? "center top" : "center bottom"
+                      placement === 'bottom' ? 'center top' : 'center bottom',
                   }}
                 >
                   <Paper id="menu-list-grow">

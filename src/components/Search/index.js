@@ -1,6 +1,6 @@
-import React from "react";
-import { Input } from "@material-ui/core";
-import PropTypes from "prop-types";
+import React from 'react';
+import { Input } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 function Search({ label }) {
   return (
@@ -12,5 +12,5 @@ function Search({ label }) {
 export default Search;
 
 Search.propTypes = {
-  label: PropTypes.string
+  label: PropTypes.string,
 };

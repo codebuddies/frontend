@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import PersonalMenu from "../PersonalMenu";
-import { Grid, Breadcrumbs, Typography } from "@material-ui/core";
-import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import PersonalMenu from '../PersonalMenu';
+import { Grid, Breadcrumbs, Typography } from '@material-ui/core';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 function ResourcePage({ matchProps }) {
   const [resource, setResource] = useState({});
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/resources/" + matchProps.match.params.id)
+      .get('http://localhost:3001/resources/' + matchProps.match.params.id)
       .then(function(response) {
         // handle success
         setResource(response.data);

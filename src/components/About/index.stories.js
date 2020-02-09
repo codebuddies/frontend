@@ -1,5 +1,5 @@
-import React from "react";
-import About from "./index.js";
+import React from 'react';
+import About from './index.js';
 
-export default { title: "About" };
+export default { title: 'About' };
 export const withoutProps = () => <About />;

@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
-import CreatableSelect from "react-select/creatable";
-import clsx from "clsx";
-import { Link } from "react-router-dom";
+import React, { useState, useRef, useEffect } from 'react';
+import CreatableSelect from 'react-select/creatable';
+import clsx from 'clsx';
+import { Link } from 'react-router-dom';
 import {
   Grid,
   Paper,
@@ -14,70 +14,70 @@ import {
   Typography,
   Breadcrumbs,
   FormControl,
-  FormControlLabel
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import NavigateNextIcon from "@material-ui/icons/NavigateNext";
-import PersonalMenu from "../PersonalMenu";
+  FormControlLabel,
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import PersonalMenu from '../PersonalMenu';
 
 const defaultTags = [
-  { label: "design", value: "design" },
-  { label: "js", value: "js" },
-  { label: "devops", value: "devops" }
+  { label: 'design', value: 'design' },
+  { label: 'js', value: 'js' },
+  { label: 'devops', value: 'devops' },
 ];
 const mediaTypes = [
-  "PDF",
-  "Video",
-  "Podcast",
-  "Tutorial",
-  "Course",
-  "Book",
-  "Game",
-  "Blog",
-  "Post",
-  "Event",
-  "Website"
+  'PDF',
+  'Video',
+  'Podcast',
+  'Tutorial',
+  'Course',
+  'Book',
+  'Game',
+  'Blog',
+  'Post',
+  'Event',
+  'Website',
 ];
 const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
   },
   dense: {
-    marginTop: theme.spacing(2)
+    marginTop: theme.spacing(2),
   },
   freeSwitch: {
-    paddingTop: "15px",
-    paddingBottom: "10px"
+    paddingTop: '15px',
+    paddingBottom: '10px',
   },
   root: {
-    justifyContent: "center",
-    flexWrap: "wrap"
+    justifyContent: 'center',
+    flexWrap: 'wrap',
   },
   breadcrumb: {
-    paddingTop: "1.3rem"
+    paddingTop: '1.3rem',
   },
   formControl: {
     margin: theme.spacing(1),
-    width: "100%"
+    width: '100%',
   },
   label: {
-    top: "7px"
+    top: '7px',
   },
   submit: {
-    flexDirection: "row-reverse",
-    width: "calc(100% + 12px)",
-    paddingTop: 15
+    flexDirection: 'row-reverse',
+    width: 'calc(100% + 12px)',
+    paddingTop: 15,
   },
   button: {
-    margin: theme.spacing(1)
+    margin: theme.spacing(1),
   },
   select: {
-    paddingLeft: "8px",
-    paddingTop: "20px",
-    width: "100%",
-    boxSizing: "unset !important"
-  }
+    paddingLeft: '8px',
+    paddingTop: '20px',
+    width: '100%',
+    boxSizing: 'unset !important',
+  },
 }));
 
 const SubmitResource = () => {
@@ -89,14 +89,14 @@ const SubmitResource = () => {
   }, []);
 
   const [values, setValues] = useState({
-    url: "",
-    year: "",
-    level: "",
-    title: "",
-    review: "",
-    mediaType: "",
-    description: "",
-    freeResource: true
+    url: '',
+    year: '',
+    level: '',
+    title: '',
+    review: '',
+    mediaType: '',
+    description: '',
+    freeResource: true,
   });
   const [tags, setTags] = useState([]);
 
@@ -108,11 +108,11 @@ const SubmitResource = () => {
     setValues({ ...values, [name]: event.target.checked });
   };
 
-  const handleTagChange = (newValue, actionMeta) => {
+  const handleTagChange = newValue => {
     setTags(newValue);
   };
 
-  const handleSubmit = () => alert("Ready to handle tour submit request 🚀");
+  const handleSubmit = () => alert('Ready to handle tour submit request 🚀');
 
   return (
     <Grid container spacing={1}>
@@ -144,7 +144,7 @@ const SubmitResource = () => {
           variant="outlined"
           fullWidth
           value={values.url}
-          onChange={handleChange("url")}
+          onChange={handleChange('url')}
         />
 
         <TextField
@@ -155,7 +155,7 @@ const SubmitResource = () => {
           variant="outlined"
           fullWidth
           value={values.title}
-          onChange={handleChange("title")}
+          onChange={handleChange('title')}
         />
 
         <TextField
@@ -166,7 +166,7 @@ const SubmitResource = () => {
           variant="outlined"
           fullWidth
           value={values.description}
-          onChange={handleChange("description")}
+          onChange={handleChange('description')}
         />
 
         <TextField
@@ -176,7 +176,7 @@ const SubmitResource = () => {
           margin="dense"
           variant="outlined"
           value={values.year}
-          onChange={handleChange("year")}
+          onChange={handleChange('year')}
         />
         <FormGroup aria-label="position" row className={classes.freeSwitch}>
           <FormControlLabel
@@ -185,7 +185,7 @@ const SubmitResource = () => {
             control={<Switch color="primary" />}
             label="Free"
             labelPlacement="start"
-            onChange={handleSwitchChange("freeResource")}
+            onChange={handleSwitchChange('freeResource')}
           />
         </FormGroup>
 
@@ -201,13 +201,13 @@ const SubmitResource = () => {
             native
             value={values.mediaType}
             inputProps={{
-              name: "media-type",
-              id: "outlined-media-type-native-simple"
+              name: 'media-type',
+              id: 'outlined-media-type-native-simple',
             }}
             className={classes.dense}
             margin="dense"
             labelWidth={labelWidth}
-            onChange={handleChange("mediaType")}
+            onChange={handleChange('mediaType')}
           >
             <option value="" />
             {mediaTypes.map(type => (
@@ -230,13 +230,13 @@ const SubmitResource = () => {
             native
             value={values.level}
             inputProps={{
-              name: "level",
-              id: "outlined-level-native-simple"
+              name: 'level',
+              id: 'outlined-level-native-simple',
             }}
             className={classes.dense}
             margin="dense"
             labelWidth={labelWidth}
-            onChange={handleChange("level")}
+            onChange={handleChange('level')}
           >
             <option value="" />
             <option value="beginner">Beginner</option>
@@ -255,7 +255,7 @@ const SubmitResource = () => {
           fullWidth
           multiline
           rowsMax="4"
-          onChange={handleChange("review")}
+          onChange={handleChange('review')}
         />
 
         <CreatableSelect
@@ -265,13 +265,13 @@ const SubmitResource = () => {
           placeholder="Tags"
           options={defaultTags}
           styles={{
-            control: (styles, state) => ({
+            control: styles => ({
               ...styles,
-              borderColor: "hsl(0, 0%, 77%)",
-              ":hover": { borderColor: "rgba(0, 0, 0, 0.87)" },
-              ":focus": { border: "2px solid #3f51b5" }
+              borderColor: 'hsl(0, 0%, 77%)',
+              ':hover': { borderColor: 'rgba(0, 0, 0, 0.87)' },
+              ':focus': { border: '2px solid #3f51b5' },
             }),
-            placeholder: styles => ({ ...styles, color: "#757575" })
+            placeholder: styles => ({ ...styles, color: '#757575' }),
           }}
           value={tags}
         />
