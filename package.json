@@ -2,6 +2,20 @@
   "name": "react-concept",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "run-p start:client start:server",
+    "start:client": "react-scripts start",
+    "start:server": "json-server --watch db.json --port 3001",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint . --ext .js --ext .jsx",
+    "lint:fix": "eslint . --ext .js --ext .jsx --fix",
+    "prettier": "prettier -l \"./**/*.{js,jsx,md}\"",
+    "prettier:fix": "prettier --write \"./**/*.{js,jsx,md}\"",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
+  },
   "dependencies": {
     "@material-ui/core": "4.5.1",
     "@material-ui/icons": "4.5.1",
@@ -22,26 +36,20 @@
     "@storybook/addons": "^5.3.9",
     "@storybook/preset-create-react-app": "^1.5.2",
     "@storybook/react": "^5.3.9",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-config-semistandard": "^15.0.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-standard": "^4.0.1",
     "husky": "3.0.9",
     "jest": "24.9.0",
     "lint-staged": "9.4.2",
-    "prettier": "1.18.2",
-    "prettier-check": "2.0.0"
-  },
-  "scripts": {
-    "start": "run-p start:client start:server",
-    "start:client": "react-scripts start",
-    "start:server": "json-server --watch db.json --port 3001",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "prettier-check '**/*.{json,js,jsx,md}'",
-    "format": "prettier --write '**/*.{json,js,jsx,md}",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "prettier": "1.18.2"
   },
   "browserslist": {
     "production": [
