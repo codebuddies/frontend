@@ -14,7 +14,6 @@ import AccountTreeIcon from '@material-ui/icons/AccountTree';
 import BookmarksIcon from '@material-ui/icons/Bookmarks';
 import SettingsIcon from '@material-ui/icons/Settings';
 import SettingsInputAntennaIcon from '@material-ui/icons/SettingsInputAntenna';
-import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 
 export default function PersonalMenu() {
   return (
@@ -30,7 +29,7 @@ export default function PersonalMenu() {
           { text: 'My Resources', icon: <BookmarksIcon /> },
           { text: 'Email Settings', icon: <SettingsIcon /> },
           { text: 'Connect Matches', icon: <SettingsInputAntennaIcon /> },
-        ].map(({ text, icon }, index) => (
+        ].map(({ text, icon }) => (
           <ListItem button key={text}>
             <ListItemIcon>{icon}</ListItemIcon>
             <ListItemText primary={text} />

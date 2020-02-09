@@ -108,7 +108,7 @@ const SubmitResource = () => {
     setValues({ ...values, [name]: event.target.checked });
   };
 
-  const handleTagChange = (newValue, actionMeta) => {
+  const handleTagChange = newValue => {
     setTags(newValue);
   };
 
@@ -265,7 +265,7 @@ const SubmitResource = () => {
           placeholder="Tags"
           options={defaultTags}
           styles={{
-            control: (styles, state) => ({
+            control: styles => ({
               ...styles,
               borderColor: 'hsl(0, 0%, 77%)',
               ':hover': { borderColor: 'rgba(0, 0, 0, 0.87)' },
