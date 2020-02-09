@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import PersonalMenu from "../PersonalMenu";
-import Search from "../Search";
-import Grid from "@material-ui/core/Grid";
-import { ResourceCard } from "./ResourceCard";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import PersonalMenu from '../PersonalMenu';
+import Search from '../Search';
+import Grid from '@material-ui/core/Grid';
+import { ResourceCard } from './ResourceCard';
 
 function Resources() {
   const [resources, setResources] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/resources")
+      .get('http://localhost:3001/resources')
       .then(function(response) {
         // handle success
         setResources(response.data);
