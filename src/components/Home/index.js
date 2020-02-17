@@ -1,10 +1,11 @@
 import React from 'react';
-import { Grid, Box } from '@material-ui/core/';
+import { Box, Grid, Paper } from '@material-ui/core/';
+import SignUpForm from './SignUpForm';
 
 const Home = () => {
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={12} sm={7}>
         <Box
           component="h1"
           fontWeight="fontWeightBold"
@@ -19,7 +20,12 @@ const Home = () => {
           peer-to-peer organized study groups and virtual hangouts.
         </Box>
         <Box component="h3" fontSize={18} fontWeight={600}>
-          Join the conversations - Sign Up.
+          Join the conversations - Create an account today.
+        </Box>
+      </Grid>
+      <Grid item xs={12} sm={5}>
+        <Box component={Paper} elevetion={3} padding={3}>
+          <SignUpForm />
         </Box>
       </Grid>
     </Grid>
