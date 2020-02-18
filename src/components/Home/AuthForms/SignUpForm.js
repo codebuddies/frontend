@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Box, Button, TextField } from '@material-ui/core/';
 
-const SignUpForm = () => {
+const SignUpForm = ({ toggleActiveForm }) => {
   return (
     <Box
       component="form"
@@ -10,6 +11,9 @@ const SignUpForm = () => {
       noValidate
       autoComplete="off"
     >
+      <Box component="h1" fontSize={18}>
+        Create an account
+      </Box>
       <TextField
         id="first-name"
         label="First Name"
@@ -51,13 +55,36 @@ const SignUpForm = () => {
         type="password"
       />
 
-      <Button variant="contained" color="primary">
-        Sign Up
-      </Button>
+      <Box width="100%" marginTop={2}>
+        <Button variant="contained" color="primary">
+          Sign Up
+        </Button>
+      </Box>
 
-      <p>Already have an account? Log in.</p>
+      <p>
+        Already have an account?
+        <Box
+          component="button"
+          color="primary.main"
+          padding={0}
+          marginLeft={1}
+          border={0}
+          bgcolor="transparent"
+          fontSize={16}
+          onClick={toggleActiveForm}
+        >
+          Log in
+        </Box>
+        .
+      </p>
     </Box>
   );
+};
+
+const { func } = PropTypes;
+
+SignUpForm.propTypes = {
+  toggleActiveForm: func.isRequired,
 };
 
 export default SignUpForm;
