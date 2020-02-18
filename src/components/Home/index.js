@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Grid, Paper } from '@material-ui/core/';
-import SignUpForm from './SignUpForm';
+import { Box, Grid } from '@material-ui/core/';
+import AuthForm from './AuthForms/AuthForm';
 
 const Home = () => {
   return (
@@ -24,9 +24,7 @@ const Home = () => {
         </Box>
       </Grid>
       <Grid item xs={12} sm={5}>
-        <Box component={Paper} elevetion={3} padding={3}>
-          <SignUpForm />
-        </Box>
+        <AuthForm />
       </Grid>
     </Grid>
   );
