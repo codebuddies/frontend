@@ -12,9 +12,12 @@ const AuthForm = () => {
   };
 
   return (
-    <Box component={Paper} elevetion={3} padding={3}>
-      {activeSignUpForm && <SignUpForm toggleActiveForm={toggleActiveForm} />}
-      {!activeSignUpForm && <LoginForm toggleActiveForm={toggleActiveForm} />}
+    <Box component={Paper} elevation={3} padding={3}>
+      {activeSignUpForm ? (
+        <SignUpForm toggleActiveForm={toggleActiveForm} />
+      ) : (
+        <LoginForm toggleActiveForm={toggleActiveForm} />
+      )}
     </Box>
   );
 };
