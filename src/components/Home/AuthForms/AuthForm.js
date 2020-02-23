@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Paper } from '@material-ui/core/';
-import SignUpForm from './SignUpForm';
-import LoginForm from './LoginForm';
+import SignUpForm from './components/SignUpForm';
+import LoginForm from './components/LoginForm';
 
 const AuthForm = () => {
   const [activeSignUpForm, setActiveSignUpform] = useState(true);
