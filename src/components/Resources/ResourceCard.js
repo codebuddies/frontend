@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
 import { Link } from 'react-router-dom';
@@ -117,4 +118,12 @@ export const ResourceCard = ({ id, title, created, description, url }) => {
       </Collapse>
     </Card>
   );
+};
+
+ResourceCard.propTypes = {
+  id: PropTypes.number,
+  title: PropTypes.string,
+  created: PropTypes.string,
+  description: PropTypes.string,
+  url: PropTypes.string,
 };

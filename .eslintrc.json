@@ -24,7 +24,7 @@
   "plugins": ["react", "prettier"],
   "rules": {
     "prettier/prettier": "error",
-    "react/prop-types": "warn",
+    "react/prop-types": "error",
     "react/no-unescaped-entities": 0,
     "comma-dangle": ["error", "only-multiline"],
     "no-unused-vars": [2, { "vars": "all", "args": "after-used" }]
