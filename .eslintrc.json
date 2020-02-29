@@ -8,7 +8,8 @@
     "semistandard",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
-    "prettier/react"
+    "prettier/react",
+    "plugin:jest/recommended"
   ],
   "globals": {
     "Atomics": "readonly",
