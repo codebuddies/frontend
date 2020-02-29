@@ -10,6 +10,7 @@ const SignUpForm = ({ toggleActiveForm }) => {
       flexWrap="wrap"
       noValidate
       autoComplete="off"
+      data-testid="signup-form"
     >
       <Box component="h1" fontSize={18}>
         Create an account

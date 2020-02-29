@@ -10,6 +10,7 @@ const LoginForm = ({ toggleActiveForm }) => {
       flexWrap="wrap"
       noValidate
       autoComplete="off"
+      data-testid="login-form"
     >
       <Box component="h1" fontSize={18}>
         Log in
