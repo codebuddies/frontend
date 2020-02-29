@@ -7,7 +7,7 @@
     "start:client": "react-scripts start",
     "start:server": "json-server --watch db.json --port 3001",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint . --ext .js --ext .jsx",
     "lint:fix": "eslint . --ext .js --ext .jsx --fix",
@@ -54,7 +54,6 @@
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-standard": "^4.0.1",
     "husky": "3.0.9",
-    "jest": "^25.1.0",
     "lint-staged": "9.4.2",
     "npm": "^6.13.7",
     "prettier": "1.18.2"
