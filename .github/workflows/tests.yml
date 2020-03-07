@@ -1,0 +1,23 @@
+name: Jest and Linting
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Dependendencies
+        run: npm install
+
+      - name: Running Jest Tests
+        run: CI=true npm test
+
+      - name: Running ESLint
+        run: npm run lint
