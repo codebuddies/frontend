@@ -16,6 +16,7 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   },
+  "proxy": "http://localhost:8000",
   "dependencies": {
     "@material-ui/core": "4.5.1",
     "@material-ui/icons": "4.5.1",

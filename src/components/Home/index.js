@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Grid } from '@material-ui/core/';
-import AuthForm from './AuthForms/AuthForm';
+import AuthForm from '../Auth/AuthForm';
 
 const Home = () => {
   return (

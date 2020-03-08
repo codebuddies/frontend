@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
+import AuthContext from '../Auth/AuthContext';
 import logo from '../../logo.png';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
@@ -36,6 +37,7 @@ export default function Nav() {
   const classes = useStyles();
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
   const anchorRef = useRef(null);
+  const userData = useContext(AuthContext);
 
   const handleMenuOpen = () => {
     setIsMenuExpanded(prevMenuState => !prevMenuState);
@@ -98,6 +100,7 @@ export default function Nav() {
               aria-haspopup="true"
               onClick={handleMenuOpen}
             >
+              {userData.username}
               <AccountCircleIcon />
             </IconButton>
             <Popper
