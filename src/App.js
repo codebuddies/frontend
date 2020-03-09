@@ -14,7 +14,7 @@ import SubmitResource from './components/Resources/submitResource';
 import ResourcePage from './components/Resources/ResourcePage.js';
 
 function App() {
-  const userData = localStorage.getItem('userData') || { username: '' };
+  const userData = window.localStorage.getItem('userData') || { username: '' };
   return (
     <Router>
       <Container>
@@ -42,7 +42,7 @@ function App() {
             <Route path="/resources">
               <Resources />
             </Route>
-            <Route path="/submit-resource">
+            <Route path="/resources/submit">
               <SubmitResource />
             </Route>
             <Route exact path="/">

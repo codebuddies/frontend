@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Box, Grid } from '@material-ui/core/';
 import AuthForm from '../Auth/AuthForm';
+import AuthContext from '../Auth/AuthContext';
 
 const Home = () => {
+  const userData = useContext(AuthContext);
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={7}>
@@ -24,7 +26,7 @@ const Home = () => {
         </Box>
       </Grid>
       <Grid item xs={12} sm={5}>
-        <AuthForm />
+        {userData ? <p>You are logged in!</p> : <AuthForm />}
       </Grid>
     </Grid>
   );

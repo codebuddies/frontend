@@ -7,6 +7,7 @@ import axios from 'axios';
 const LoginForm = ({ toggleActiveForm }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleLogin = e => {
     e.preventDefault();
@@ -17,9 +18,11 @@ const LoginForm = ({ toggleActiveForm }) => {
     axios
       .post('https://localhost:8000/auth/obtain_token/', data)
       .then(res => {
-        localStorage.setItem('userData', res.data);
+        window.localStorage.setItem('userData', res.data);
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        setErrorMessage(Object.values(err.response.data).join(''));
+      });
   };
 
   return (
@@ -34,6 +37,13 @@ const LoginForm = ({ toggleActiveForm }) => {
       <Box component="h1" fontSize={18}>
         Log in
       </Box>
+      <TextField
+        error
+        id="standard-error-helper-text"
+        label="Error"
+        defaultValue="Error"
+        helperText={errorMessage}
+      />
       <TextField
         id="username"
         label="username"
