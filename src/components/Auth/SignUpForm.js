@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Box, Button, TextField } from '@material-ui/core/';
 import axios from 'axios';
 
@@ -10,22 +10,28 @@ const SignUpForm = ({ toggleActiveForm }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const history = useHistory();
 
   const handleSignup = e => {
     e.preventDefault();
     const data = {
       username: username,
-      email: email,
-      firstname: firstName,
-      lastname: lastName,
       password: password,
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
     };
     axios
       .post('http://localhost:8000/auth/users/', data)
       .then(res => {
-        localStorage.setItem('userData', res.data);
+        window.localStorage.setItem('userData', res.data);
+        setErrorMessage('');
+        history.push('/');
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        setErrorMessage(Object.values(err.response.data).join(''));
+      });
   };
   return (
     <Box
@@ -84,6 +90,8 @@ const SignUpForm = ({ toggleActiveForm }) => {
         type="password"
         onChange={e => setPassword(e.target.value)}
       />
+
+      <Box color="error.main">{errorMessage && errorMessage}</Box>
 
       <Box width="100%" marginTop={2}>
         <Button variant="contained" color="primary" type="submit">
