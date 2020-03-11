@@ -1,46 +1,57 @@
-# react-concept
+## **Overview of Codebuddies**
 
-Frontend proof of concept of CodeBuddies v3 using React.
+### **What is CodeBuddies?**
 
-## Contribution instructions
+[CodeBuddies](https://codebuddies.org/) is a remote-first community of independent code learners who enjoy sharing knowledge and helping each other learn faster via discussions and pairing. It is free and open-sourced, and supported by open source contributors and financial backers on our [Open Collective](https://opencollective.com/codebuddies).
 
-1. Fork this repo.
-2. Find an issue and leave a comment if you're interested in it.
-3. Run `npm install` and `npm start`
+### CodeBuddies website Version 3 (CBV3)
 
-We have a "fake" API set up in the db.json file, which our React components pull from.
+We are building out a new platform (CBV3) to replace an [older MeteorJS project](http://github.com/codebuddies/codebuddies) which currently runs the [codebuddies.org site](<(https://codebuddies.org/)>).
 
-## Storybook
+## Role of the front-end
 
-We are utilizing Storybook for showing components in an isolated way.
-You can create your own storybook from components that you create. The files need to have the `.stories.js` ending to be picked up by storybook.
+The front-end is a React app that aims to let users at a bare minimum:
 
-To run the storybook application, use the following command
+- submit resources
+- meet remotely on Zoom to pair, show off a project, hack on an open source project, or study together.
 
-```
-npm run storybook
-```
+## **Helpful links**
 
-## Design
+1/ CBV3's [backend](https://github.com/codebuddies/backend) API is built using Django and Django REST Framework.
 
-View proof of concept designs over on the [official V3 repo](https://github.com/codebuddies/v3/issues?q=is%3Aissue+is%3Aopen+label%3Adesign) labeled "design". Note that the designs are only meant to serve as a guide and the output does not need to be pixel perfect. Instead, use [Material-UI](https://material-ui.com/) components as a starting point and extend as needed.
+2/ Some [Google doc technical notes](https://docs.google.com/document/u/1/d/1YuVO-v0n73ogoFIwpwJgI1Bkso8sP2mg5zqbX9FB3lU/edit#heading=h.rw88rxuk12cp) from hangouts/pairing sessions
 
-The PoC for the frontend will revolve around querying and posting the Resource model based on the defined [API spec](https://app.swaggerhub.com/apis-docs/billglover/CodeBuddies/0.0.1).
+3/ We have a technical decision log [here](https://github.com/codebuddies/frontend/wiki/Technical-decision-log) and a group blog experiment [here](https://github.com/codebuddies/frontend/issues/98)
 
-### Using Material UI
+4/ Crowdsourced [brainstorm of problems we want to solve](https://pad.riseup.net/p/BecKdThFsevRmmG_tqFa-keep) for our community with this platform
 
-We're using Material-UI's [Hooks API](https://material-ui.com/styles/basics/#hook-api), which means you can (and should) use [Material UI's components](https://material-ui.com/getting-started/supported-components/) as a starting point, and extend them as needed using `makeStyles` and `useStyles`.
+## **Technologies we're using**
 
-See the [Nav component](https://github.com/codebuddies/react-concept/blob/master/src/components/Nav/index.js) for an example that uses several Material-UI components, and the `makeStyles` hook to customize the rest.
+- [React (hooks)](https://reactjs.org/docs/hooks-intro.html)
+- [Storybook](https://storybook.js.org/)
+- [React testing library](https://github.com/testing-library/react-testing-library)
+- [Django REST Framework](https://github.com/encode/django-rest-framework) (for the [backend](https://github.com/codebuddies/backend) API)
 
-## Pages
+**Application Deployment**
 
-**Index**
+Special thanks to Netlify for sponsoring our front-end hosting!
 
-The main landing page will have a small copy as well as a Sign Up and Sign in form (see You can find these pages at [Figma](https://www.figma.com/file/wXMeX9xgYTcVKNJ1XT9ZQ5/cbv3poc?node-id=0%3A1) for reference).
+## **How do I contribute to this codebase?**
 
-After authenticating, the root page should be defined as the **Resources Index** page.
+Follow the [CONTRIBUTING.md](CONTRIBUTING.md) instructions!
 
-**Resources**
+## **Have Questions about CBV3?**
 
-The Resources page displays a search form. From this page, a user can search for a resource and add a new resource. After searching for a resource, it should populate with the search results. Clicking on `Add a Resource` should open a modal with a form to add a Resource. On success, it should give a message that a resource was added successfully, or if there are errors, display error messages in an [flash message](https://material-ui.com/components/snackbars/).
+Check out [SUPPORT.md](SUPPORT.md) if you're stuck or have questions.
+
+## **Ways to Get Involved**
+
+Anyone is welcome to contribute and make this project better! You can:
+
+- Join our slack community [here](https://codebuddies.org/slack)
+- Share your feedback on [Github CBV3 frontend issues](https://github.com/codebuddies/frontend/issues)
+- Help review [CBV3 frontend pull requests](https://github.com/codebuddies/frontend/pulls) with comments!
+
+## **CODE OF CONDUCT.md**
+
+_Please_ read CodeBuddies' [Code of Conduct](CODE_OF_CONDUCT.md) to understand the responsibility and scope as a contributor at CodeBuddies.
