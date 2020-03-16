@@ -10,7 +10,7 @@ const LoginForm = ({ toggleActiveForm }) => {
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const { setAuthTokens, authTokens } = useAuth();
+  const auth = useAuth();
   const referer = '/profile';
 
   const handleLogin = e => {
@@ -22,7 +22,7 @@ const LoginForm = ({ toggleActiveForm }) => {
     axios
       .post('http://localhost:8000/auth/obtain_token/', data)
       .then(res => {
-        setAuthTokens(res.data);
+        auth.setAuthTokens(res.data);
         setIsLoggedIn(true);
       })
       .catch(error => {
@@ -39,7 +39,7 @@ const LoginForm = ({ toggleActiveForm }) => {
   }
   return (
     <Fragment>
-      {authTokens || isLoggedIn ? (
+      {(auth && auth.authTokens) || isLoggedIn ? (
         <p>Welcome!</p>
       ) : (
         <Box
@@ -49,6 +49,7 @@ const LoginForm = ({ toggleActiveForm }) => {
           noValidate
           autoComplete="off"
           onSubmit={handleLogin}
+          data-testid="loginForm"
         >
           <Box component="h1" fontSize={18}>
             Log in
