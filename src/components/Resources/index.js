@@ -14,7 +14,6 @@ function Resources() {
       .then(function(response) {
         // handle success
         setResources(response.data);
-        console.log(response);
       })
       .catch(function(error) {
         // handle error

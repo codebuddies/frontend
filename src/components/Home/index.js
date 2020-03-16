@@ -4,7 +4,8 @@ import AuthForm from '../Auth/AuthForm';
 import AuthContext from '../Auth/AuthContext';
 
 const Home = () => {
-  const userData = useContext(AuthContext);
+  const userToken = useContext(AuthContext);
+  console.log(userToken);
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={7}>
@@ -26,7 +27,7 @@ const Home = () => {
         </Box>
       </Grid>
       <Grid item xs={12} sm={5}>
-        {userData ? <p>You are logged in!</p> : <AuthForm />}
+        {userToken ? <p>You are logged in!</p> : <AuthForm />}
       </Grid>
     </Grid>
   );
