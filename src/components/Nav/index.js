@@ -10,7 +10,7 @@ import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import AuthContext from '../Auth/AuthContext';
+import { AuthContext } from '../Auth/AuthContext';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -37,11 +37,11 @@ export default function Nav() {
   const classes = useStyles();
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
   const anchorRef = useRef(null);
-  const { setAuthTokens } = useContext(AuthContext);
-  console.log(setAuthTokens);
+  const authContext = useContext(AuthContext);
 
   const logout = () => {
-    setAuthTokens();
+    authContext.setAuthTokens();
+    localStorage.clear('tokens');
   };
 
   const handleMenuOpen = () => {
@@ -105,7 +105,9 @@ export default function Nav() {
               aria-haspopup="true"
               onClick={handleMenuOpen}
             >
-              <AccountCircleIcon />
+              <Link to="/profile">
+                <AccountCircleIcon />
+              </Link>
             </IconButton>
             <Popper
               open={isMenuExpanded}
@@ -128,7 +130,7 @@ export default function Nav() {
                         onKeyDown={handleListKeyDown}
                       >
                         <MenuItem onClick={handleMenuClose}>
-                          <Link onClick={logout}>Logout</Link>
+                          <a onClick={logout}>Logout</a>
                         </MenuItem>
                       </MenuList>
                     </ClickAwayListener>

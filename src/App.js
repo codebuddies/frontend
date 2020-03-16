@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import './App.css';
-import AuthContext from './components/Auth/AuthContext';
+import { AuthContext } from './components/Auth/AuthContext';
 import About from './components/About';
 import Resources from './components/Resources';
 import Home from './components/Home';
@@ -10,21 +10,28 @@ import Nav from './components/Nav';
 import LoginForm from './components/Auth/LoginForm.js';
 import SignUpForm from './components/Auth/SignUpForm.js';
 import Coworking from './components/Coworking';
+import Profile from './components/Profile';
 import SubmitResource from './components/Resources/submitResource';
 import ResourcePage from './components/Resources/ResourcePage.js';
 import PrivateRoute from './PrivateRoute';
 
 function App() {
-  const [authTokens, setAuthTokens] = useState();
+  const [authTokens, setAuthTokens] = useState(
+    JSON.parse(localStorage.getItem('tokens')) || undefined
+  );
   const setTokens = data => {
     localStorage.setItem('tokens', JSON.stringify(data));
     setAuthTokens(data);
   };
 
+  console.log(authTokens);
+
   return (
     <Router>
       <Container>
-        <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
+        <AuthContext.Provider
+          value={{ authTokens: authTokens, setAuthTokens: setTokens }}
+        >
           <Nav />
           {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
@@ -41,6 +48,7 @@ function App() {
             <Route path="/coworking">
               <Coworking />
             </Route>
+            <PrivateRoute path="/profile" component={Profile} />
             <Route
               path="/resources/:id"
               render={matchProps => <ResourcePage matchProps={matchProps} />}
@@ -48,9 +56,7 @@ function App() {
             <Route path="/resources">
               <Resources />
             </Route>
-            <PrivateRoute path="/resources/submit">
-              <SubmitResource />
-            </PrivateRoute>
+            <PrivateRoute path="/resources/submit" component={SubmitResource} />
             <Route exact path="/">
               <Home />
             </Route>

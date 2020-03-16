@@ -1,11 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Box, Grid } from '@material-ui/core/';
 import AuthForm from '../Auth/AuthForm';
-import AuthContext from '../Auth/AuthContext';
 
 const Home = () => {
-  const userToken = useContext(AuthContext);
-  console.log(userToken);
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={7}>
@@ -17,7 +14,7 @@ const Home = () => {
         >
           CodeBuddies
         </Box>
-        <Box component="h2" lineHeight={1.5} mb={4}>
+        <Box component="h3" lineHeight={1.5} mb={4} fontWeight={400}>
           We're a global community of people who help each other become better
           at software development through conversations on Slack and
           peer-to-peer organized study groups and virtual hangouts.
@@ -27,7 +24,7 @@ const Home = () => {
         </Box>
       </Grid>
       <Grid item xs={12} sm={5}>
-        {userToken ? <p>You are logged in!</p> : <AuthForm />}
+        <AuthForm />
       </Grid>
     </Grid>
   );

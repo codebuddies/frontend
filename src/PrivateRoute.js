@@ -14,7 +14,7 @@ function PrivateRoute({ component: Component, ...rest }) {
           <Component {...props} />
         ) : (
           <Redirect
-            to={{ pathname: '/login', state: { referrer: props.location } }}
+            to={{ pathname: '/login', state: { referer: props.location } }}
           />
         )
       }
@@ -23,7 +23,7 @@ function PrivateRoute({ component: Component, ...rest }) {
 }
 
 PrivateRoute.propTypes = {
-  component: PropTypes.node,
+  component: PropTypes.func,
   location: PropTypes.node,
 };
 
