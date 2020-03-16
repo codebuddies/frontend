@@ -37,13 +37,7 @@ const LoginForm = ({ toggleActiveForm }) => {
       <Box component="h1" fontSize={18}>
         Log in
       </Box>
-      <TextField
-        error
-        id="standard-error-helper-text"
-        label="Error"
-        defaultValue="Error"
-        helperText={errorMessage}
-      />
+      <Box color="success.main">{errorMessage}</Box>
       <TextField
         id="username"
         label="username"

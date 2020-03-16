@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import './App.css';
@@ -12,13 +12,19 @@ import SignUpForm from './components/Auth/SignUpForm.js';
 import Coworking from './components/Coworking';
 import SubmitResource from './components/Resources/submitResource';
 import ResourcePage from './components/Resources/ResourcePage.js';
+import PrivateRoute from './PrivateRoute';
 
 function App() {
-  const userData = window.localStorage.getItem('userData') || { username: '' };
+  const [authTokens, setAuthTokens] = useState();
+  const setTokens = data => {
+    localStorage.setItem('tokens', JSON.stringify(data));
+    setAuthTokens(data);
+  };
+
   return (
     <Router>
       <Container>
-        <AuthContext.Provider value={userData}>
+        <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
           <Nav />
           {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
@@ -42,9 +48,9 @@ function App() {
             <Route path="/resources">
               <Resources />
             </Route>
-            <Route path="/resources/submit">
+            <PrivateRoute path="/resources/submit">
               <SubmitResource />
-            </Route>
+            </PrivateRoute>
             <Route exact path="/">
               <Home />
             </Route>

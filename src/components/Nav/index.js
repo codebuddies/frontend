@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
-import AuthContext from '../Auth/AuthContext';
 import logo from '../../logo.png';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
@@ -11,6 +10,7 @@ import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import AuthContext from '../Auth/AuthContext';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -37,7 +37,12 @@ export default function Nav() {
   const classes = useStyles();
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
   const anchorRef = useRef(null);
-  const userData = useContext(AuthContext);
+  const { setAuthTokens } = useContext(AuthContext);
+  console.log(setAuthTokens);
+
+  const logout = () => {
+    setAuthTokens();
+  };
 
   const handleMenuOpen = () => {
     setIsMenuExpanded(prevMenuState => !prevMenuState);
@@ -100,7 +105,6 @@ export default function Nav() {
               aria-haspopup="true"
               onClick={handleMenuOpen}
             >
-              {userData.username}
               <AccountCircleIcon />
             </IconButton>
             <Popper
@@ -124,7 +128,7 @@ export default function Nav() {
                         onKeyDown={handleListKeyDown}
                       >
                         <MenuItem onClick={handleMenuClose}>
-                          <Link>Logout</Link>
+                          <Link onClick={logout}>Logout</Link>
                         </MenuItem>
                       </MenuList>
                     </ClickAwayListener>
