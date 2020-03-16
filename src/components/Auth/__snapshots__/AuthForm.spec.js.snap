@@ -1,0 +1,250 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthForm should render accordingly 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiPaper-root MuiPaper-elevation3 MuiBox-root MuiBox-root-2 MuiPaper-rounded"
+  >
+    <form
+      autocomplete="off"
+      class="MuiBox-root MuiBox-root-30"
+      data-testid="signupForm"
+      novalidate=""
+    >
+      <h1
+        class="MuiBox-root MuiBox-root-31"
+      >
+        Create an account
+      </h1>
+      <div
+        class="MuiFormControl-root MuiTextField-root MuiFormControl-marginDense MuiFormControl-fullWidth"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined"
+          data-shrink="false"
+          for="first-name"
+        >
+          First Name
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
+            id="first-name"
+            type="text"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-91 MuiOutlinedInput-notchedOutline"
+            style="padding-left: 8px;"
+          >
+            <legend
+              class="PrivateNotchedOutline-legend-92"
+              style="width: 0.01px;"
+            >
+              <span>
+                ​
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+      <div
+        class="MuiFormControl-root MuiTextField-root MuiFormControl-marginDense MuiFormControl-fullWidth"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined"
+          data-shrink="false"
+          for="last-name"
+        >
+          Last Name
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
+            id="last-name"
+            type="text"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-91 MuiOutlinedInput-notchedOutline"
+            style="padding-left: 8px;"
+          >
+            <legend
+              class="PrivateNotchedOutline-legend-92"
+              style="width: 0.01px;"
+            >
+              <span>
+                ​
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+      <div
+        class="MuiFormControl-root MuiTextField-root MuiFormControl-marginDense MuiFormControl-fullWidth"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined Mui-required Mui-required"
+          data-shrink="false"
+          for="username"
+        >
+          Username
+          <span
+            class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+          >
+             *
+          </span>
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
+            id="username"
+            required=""
+            type="text"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-91 MuiOutlinedInput-notchedOutline"
+            style="padding-left: 8px;"
+          >
+            <legend
+              class="PrivateNotchedOutline-legend-92"
+              style="width: 0.01px;"
+            >
+              <span>
+                ​
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+      <div
+        class="MuiFormControl-root MuiTextField-root MuiFormControl-marginDense MuiFormControl-fullWidth"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined Mui-required Mui-required"
+          data-shrink="false"
+          for="email"
+        >
+          Email
+          <span
+            class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+          >
+             *
+          </span>
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
+            id="email"
+            required=""
+            type="email"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-91 MuiOutlinedInput-notchedOutline"
+            style="padding-left: 8px;"
+          >
+            <legend
+              class="PrivateNotchedOutline-legend-92"
+              style="width: 0.01px;"
+            >
+              <span>
+                ​
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+      <div
+        class="MuiFormControl-root MuiTextField-root MuiFormControl-marginDense MuiFormControl-fullWidth"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined Mui-required Mui-required"
+          data-shrink="false"
+          for="password"
+        >
+          Password
+          <span
+            class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+          >
+             *
+          </span>
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
+            id="password"
+            required=""
+            type="password"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-91 MuiOutlinedInput-notchedOutline"
+            style="padding-left: 8px;"
+          >
+            <legend
+              class="PrivateNotchedOutline-legend-92"
+              style="width: 0.01px;"
+            >
+              <span>
+                ​
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+      <div
+        class="MuiBox-root MuiBox-root-93"
+      />
+      <div
+        class="MuiBox-root MuiBox-root-94"
+      >
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          tabindex="0"
+          type="submit"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Sign Up
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+      <p>
+        Already have an account?
+        <button
+          class="MuiBox-root MuiBox-root-126"
+        >
+          Log in
+        </button>
+        .
+      </p>
+    </form>
+  </div>
+</DocumentFragment>
+`;
