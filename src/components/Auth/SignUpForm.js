@@ -14,7 +14,7 @@ const SignUpForm = ({ toggleActiveForm }) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const referer = '/profile';
-  const { setAuthTokens, authTokens } = useAuth();
+  const auth = useAuth();
 
   const handleSignup = e => {
     e.preventDefault();
@@ -28,7 +28,7 @@ const SignUpForm = ({ toggleActiveForm }) => {
     axios
       .post('http://localhost:8000/auth/users/', data)
       .then(res => {
-        setAuthTokens(res.data);
+        auth.setAuthTokens(res.data);
         setIsLoggedIn(true);
         setErrorMessage('');
       })
@@ -41,7 +41,7 @@ const SignUpForm = ({ toggleActiveForm }) => {
   }
   return (
     <Fragment>
-      {authTokens || isLoggedIn ? (
+      {(auth && auth.authTokens) || isLoggedIn ? (
         <Fragment>
           <p>Welcome!</p>
         </Fragment>
@@ -54,6 +54,7 @@ const SignUpForm = ({ toggleActiveForm }) => {
             noValidate
             autoComplete="off"
             onSubmit={handleSignup}
+            data-testid="signupForm"
           >
             <Box component="h1" fontSize={18}>
               Create an account
