@@ -20,6 +20,7 @@ function App() {
     JSON.parse(localStorage.getItem('tokens')) || undefined
   );
   const setTokens = data => {
+    // TODO: Consider using cookies instead of JSON tokens
     localStorage.setItem('tokens', JSON.stringify(data));
     setAuthTokens(data);
   };
