@@ -26,7 +26,7 @@ const SignUpForm = ({ toggleActiveForm }) => {
       email: email,
     };
     axios
-      .post('http://localhost:8000/auth/users/', data)
+      .post('/auth/users/', data)
       .then(res => {
         auth.setAuthTokens(res.data);
         setIsLoggedIn(true);
