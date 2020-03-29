@@ -40,48 +40,75 @@ describe('AuthForm', () => {
 });
 
 describe('Signup', () => {
-  it('Fill out the signup form', () => {
-    const { getByText, debug, getByRole } = render(
+  it('Register a new user on the signup form', async () => {
+    const { getByText, getByLabelText } = render(
       <BrowserRouter>
         <SignUpForm />
       </BrowserRouter>
     );
-    const mockRegisterCall = jest.fn();
-    mockRegisterCall.mockResolvedValueOnce({
+
+    const mockRegisterResponse = jest.fn().mockResolvedValue({
       data: {
         username: 'Carolyne.Carter',
         token:
           'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IkNhcm9seW5lLkNhcnRlciIsImlhdCI6MTU4NDMzODQ4NiwiZXhwIjoxNTg0MzQyMDg2LCJ1c2VyX2lkIjo4MCwib3JpZ19pYXQiOjE1ODQzMzg0ODZ9.saO6OCOKV1uwHjTbM-iDGmhbkMNCnzrGFj4TBYnTv2E',
-        first_name: 'Bud',
-        last_name: 'Paucek',
-        email: 'Josiah.McLaughlin8@yahoo.com',
+        first_name: 'Carolyne',
+        last_name: 'Carter',
+        email: 'Carolyne.Carter@yahoo.com',
       },
     });
-    debug();
-    const submit = getByRole('button');
+
+    fireEvent.change(getByLabelText(/username/i), {
+      target: { value: 'Carolyne.Carter' },
+    });
+
+    fireEvent.change(getByLabelText(/password/i), {
+      target: { value: 'password' },
+    });
+    fireEvent.change(getByLabelText(/email/i), {
+      target: { value: 'Carolyne.Carter@yahoo.com' },
+    });
+    fireEvent.change(getByLabelText(/first name/i), {
+      target: { value: 'Carolyne' },
+    });
+    fireEvent.change(getByLabelText(/last name/i), {
+      target: { value: 'Carter' },
+    });
+    const submit = getByText('Sign Up');
     fireEvent.click(submit);
-    expect(getByText('Create an account')).toBeInTheDocument();
+
+    await mockRegisterResponse();
+
+    expect(mockRegisterResponse).toHaveBeenCalledTimes(1);
   });
 });
 
 describe('Login', () => {
-  it('Fill out the login form', () => {
-    const { getAllByText, debug, getByRole } = render(
+  it('Fill out the login form', async () => {
+    const { getByLabelText, debug, getByRole } = render(
       <BrowserRouter>
         <LoginForm />
       </BrowserRouter>
     );
-    const mockLoginCall = jest.fn();
-    mockLoginCall.mockResolvedValueOnce({
+
+    const mockLoginResponse = jest.fn().mockResolvedValue({
       data: {
         token:
           'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IkNhcm9seW5lLkNhcnRlciIsImlhdCI6MTU4NDM0MDAyMiwiZXhwIjoxNTg0MzQzNjIyLCJ1c2VyX2lkIjo4MCwib3JpZ19pYXQiOjE1ODQzNDAwMjJ9.0zNlXPVAjkBjxUQjq4B0HXnvrez93H2pz6n2ROKWzzg',
         username: 'Carolyne.Carter',
       },
     });
-    debug();
+    fireEvent.change(getByLabelText(/username/i), {
+      target: { value: 'Carolyne.Carter' },
+    });
+
+    fireEvent.change(getByLabelText(/password/i), {
+      target: { value: 'password' },
+    });
     const submit = getByRole('button');
+    debug();
     fireEvent.click(submit);
-    expect(getAllByText('Log in')[1]).toBeInTheDocument();
+    await mockLoginResponse();
+    expect(mockLoginResponse).toHaveBeenCalledTimes(1);
   });
 });
