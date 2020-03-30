@@ -1,13 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { useAuth } from '../Auth/AuthContext';
 import PersonalMenu from '../PersonalMenu';
 
 function Profile() {
   const { authTokens } = useAuth();
-  useEffect(() => {
-    /* TODO: fetch logged-in user data */
-  }, []);
+
+  /* TODO: fetch logged-in user data in https://github.com/codebuddies/frontend/issues/100 */
 
   return (
     <Grid container spacing={1}>
