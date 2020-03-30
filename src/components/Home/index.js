@@ -14,12 +14,12 @@ const Home = () => {
         >
           CodeBuddies
         </Box>
-        <Box component="h3" lineHeight={1.5} mb={4} fontWeight={400}>
+        <Box component="h2" lineHeight={1.5} mb={4} fontWeight={400}>
           We're a global community of people who help each other become better
           at software development through conversations on Slack and
           peer-to-peer organized study groups and virtual hangouts.
         </Box>
-        <Box component="h3" fontSize={18} fontWeight={600}>
+        <Box component="h2" fontSize={18} fontWeight={600}>
           Join the conversations - Create an account today.
         </Box>
       </Grid>
