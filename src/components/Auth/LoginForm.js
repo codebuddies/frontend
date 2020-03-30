@@ -84,7 +84,7 @@ const LoginForm = ({ toggleActiveForm }) => {
           </Box>
 
           <p>
-            Need an account?{' '}
+            Need an account?
             {toggleActiveForm ? (
               <Box
                 component="button"
