@@ -6,10 +6,10 @@ import { useAuth } from './AuthContext';
 import axios from 'axios';
 
 const LoginForm = ({ toggleActiveForm }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState(null);
+  const [password, setPassword] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState(null);
   const auth = useAuth();
   const referer = '/profile';
 
@@ -27,7 +27,7 @@ const LoginForm = ({ toggleActiveForm }) => {
       })
       .catch(error => {
         if (error.response) {
-          setErrorMessage(error.response.data);
+          setErrorMessage(error.response.data.non_field_errors[0]);
         } else {
           setErrorMessage('There was an error!');
         }
@@ -75,7 +75,7 @@ const LoginForm = ({ toggleActiveForm }) => {
             onChange={e => setPassword(e.target.value)}
           />
 
-          <Box color="error.main">{errorMessage && errorMessage}</Box>
+          {errorMessage && <Box color="error.main"> {errorMessage}</Box>}
 
           <Box width="100%" marginTop={2}>
             <Button variant="contained" color="primary" type="submit">

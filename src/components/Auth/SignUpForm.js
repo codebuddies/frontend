@@ -6,12 +6,12 @@ import axios from 'axios';
 import { useAuth } from './AuthContext';
 
 const SignUpForm = ({ toggleActiveForm }) => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [firstName, setFirstName] = useState(null);
+  const [lastName, setLastName] = useState(null);
+  const [username, setUsername] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const referer = '/profile';
   const auth = useAuth();
@@ -102,15 +102,12 @@ const SignUpForm = ({ toggleActiveForm }) => {
               type="password"
               onChange={e => setPassword(e.target.value)}
             />
-
-            <Box color="error.main">{errorMessage && errorMessage}</Box>
-
+            {errorMessage && <Box color="error.main"> {errorMessage}</Box>}
             <Box width="100%" marginTop={2}>
               <Button variant="contained" color="primary" type="submit">
                 Sign Up
               </Button>
             </Box>
-
             <p>
               Already have an account?
               {toggleActiveForm ? (
