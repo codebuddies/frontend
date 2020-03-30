@@ -17,15 +17,13 @@ import PrivateRoute from './PrivateRoute';
 
 function App() {
   const [authTokens, setAuthTokens] = useState(
-    JSON.parse(localStorage.getItem('tokens')) || undefined
+    JSON.parse(localStorage.getItem('tokens')) || null
   );
   const setTokens = data => {
     // TODO: Consider using cookies instead of JSON tokens
     localStorage.setItem('tokens', JSON.stringify(data));
     setAuthTokens(data);
   };
-
-  console.log(authTokens);
 
   return (
     <Router>
