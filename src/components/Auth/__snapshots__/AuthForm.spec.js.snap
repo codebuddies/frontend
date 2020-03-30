@@ -216,9 +216,6 @@ exports[`AuthForm should render accordingly 1`] = `
       </div>
       <div
         class="MuiBox-root MuiBox-root-93"
-      />
-      <div
-        class="MuiBox-root MuiBox-root-94"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
@@ -238,7 +235,7 @@ exports[`AuthForm should render accordingly 1`] = `
       <p>
         Already have an account?
         <button
-          class="MuiBox-root MuiBox-root-126"
+          class="MuiBox-root MuiBox-root-125"
         >
           Log in
         </button>
