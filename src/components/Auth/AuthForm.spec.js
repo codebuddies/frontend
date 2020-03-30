@@ -85,7 +85,7 @@ describe('Signup', () => {
 
 describe('Login', () => {
   it('Fill out the login form', async () => {
-    const { getByLabelText, debug, getByRole } = render(
+    const { getByLabelText, getByRole } = render(
       <BrowserRouter>
         <LoginForm />
       </BrowserRouter>
@@ -106,7 +106,6 @@ describe('Login', () => {
       target: { value: 'password' },
     });
     const submit = getByRole('button');
-    debug();
     fireEvent.click(submit);
     await mockLoginResponse();
     expect(mockLoginResponse).toHaveBeenCalledTimes(1);
