@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Box, Button, TextField } from '@material-ui/core/';
@@ -40,13 +40,11 @@ const SignUpForm = ({ toggleActiveForm }) => {
     return <Redirect to={referer} />;
   }
   return (
-    <Fragment>
+    <>
       {(auth && auth.authTokens) || isLoggedIn ? (
-        <Fragment>
-          <p>Welcome!</p>
-        </Fragment>
+        <p>Welcome!</p>
       ) : (
-        <Fragment>
+        <>
           <Box
             component="form"
             display="flex"
@@ -134,9 +132,9 @@ const SignUpForm = ({ toggleActiveForm }) => {
               .
             </p>
           </Box>
-        </Fragment>
+        </>
       )}
-    </Fragment>
+    </>
   );
 };
 
