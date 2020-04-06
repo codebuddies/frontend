@@ -1,19 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import PersonalMenu from '../PersonalMenu';
 import Search from '../Search';
 import Grid from '@material-ui/core/Grid';
 import { ResourceCard } from './ResourceCard';
+import { AuthContext } from '../Auth/AuthContext';
 
 function Resources() {
   const [resources, setResources] = useState([]);
+  const authContext = useContext(AuthContext);
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/resources')
+      .get('/api/v1/resources', {
+        headers: {
+          Authorization: `Bearer ${authContext.authTokens.token}`,
+        },
+      })
       .then(function(response) {
         // handle success
-        setResources(response.data);
+        setResources(response.data.results);
       })
       .catch(function(error) {
         // handle error
@@ -23,8 +29,6 @@ function Resources() {
 
   return (
     <>
-      {console.log(resources)}
-
       <Grid container spacing={1}>
         <Grid item lg={3}>
           <PersonalMenu />
@@ -36,7 +40,7 @@ function Resources() {
           <Grid container spacing={1}>
             {resources.map(resource => {
               return (
-                <Grid item lg={3} key={resource.id}>
+                <Grid item lg={3} key={resource.guid}>
                   <ResourceCard {...resource} />
                 </Grid>
               );

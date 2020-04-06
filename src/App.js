@@ -49,7 +49,7 @@ function App() {
             </Route>
             <PrivateRoute path="/profile" component={Profile} />
             <Route
-              path="/resources/:id"
+              path="/resources/:guid"
               render={matchProps => <ResourcePage matchProps={matchProps} />}
             />
             <Route path="/resources">

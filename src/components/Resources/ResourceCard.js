@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export const ResourceCard = ({ id, title, created, description, url }) => {
+export const ResourceCard = ({ guid, title, created, description, url }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -54,7 +54,7 @@ export const ResourceCard = ({ id, title, created, description, url }) => {
   };
   return (
     <Card class={classes.card}>
-      <Link to={`/resources/${id}`}>
+      <Link to={`/resources/${guid}`}>
         <CardHeader
           avatar={
             <Avatar aria-label="recipe" className={classes.avatar}>
@@ -121,7 +121,7 @@ export const ResourceCard = ({ id, title, created, description, url }) => {
 };
 
 ResourceCard.propTypes = {
-  id: PropTypes.number,
+  guid: PropTypes.string,
   title: PropTypes.string,
   created: PropTypes.string,
   description: PropTypes.string,
