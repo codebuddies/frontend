@@ -1,22 +1,16 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PersonalMenu from '../PersonalMenu';
 import Search from '../Search';
 import Grid from '@material-ui/core/Grid';
 import { ResourceCard } from './ResourceCard';
-import { AuthContext } from '../Auth/AuthContext';
 
 function Resources() {
   const [resources, setResources] = useState([]);
-  const authContext = useContext(AuthContext);
 
   useEffect(() => {
     axios
-      .get('/api/v1/resources', {
-        headers: {
-          Authorization: `Bearer ${authContext.authTokens.token}`,
-        },
-      })
+      .get('/api/v1/resources')
       .then(function(response) {
         // handle success
         setResources(response.data.results);
