@@ -1,23 +1,17 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import PersonalMenu from '../PersonalMenu';
 import { Grid, Breadcrumbs, Typography } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import { AuthContext } from '../Auth/AuthContext';
 
 function ResourcePage({ matchProps }) {
   const [resource, setResource] = useState({});
-  const authContext = useContext(AuthContext);
 
   useEffect(() => {
     axios
-      .get('/api/v1/resources/' + matchProps.match.params.guid, {
-        headers: {
-          Authorization: `Bearer ${authContext.authTokens.token}`,
-        },
-      })
+      .get('/api/v1/resources/' + matchProps.match.params.guid)
       .then(function(response) {
         // handle success
         setResource(response.data);
