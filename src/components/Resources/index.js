@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import PersonalMenu from '../PersonalMenu';
 import Search from '../Search';
 import Grid from '@material-ui/core/Grid';
 import { ResourceCard } from './ResourceCard';
 
-function Resources() {
+function Resources({ getResourcesUrl }) {
   const [resources, setResources] = useState([]);
 
   useEffect(() => {
     axios
-      .get('/api/v1/resources')
+      .get(getResourcesUrl)
       .then(function(response) {
         // handle success
         setResources(response.data.results);
@@ -45,5 +46,9 @@ function Resources() {
     </>
   );
 }
+
+Resources.propTypes = {
+  getResourcesUrl: PropTypes.string,
+};
 
 export default Resources;
