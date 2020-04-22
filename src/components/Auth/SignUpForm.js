@@ -33,7 +33,8 @@ const SignUpForm = ({ toggleActiveForm }) => {
         setErrorMessage('');
       })
       .catch(err => {
-        setErrorMessage(Object.values(err.response.data).join(''));
+        console.log(err);
+        setErrorMessage('There was an error!');
       });
   };
   if (isLoggedIn) {
