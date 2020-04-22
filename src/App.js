@@ -53,7 +53,7 @@ function App() {
               render={matchProps => <ResourcePage matchProps={matchProps} />}
             />
             <Route path="/resources">
-              <Resources />
+              <Resources getResourcesUrl="/api/v1/resources" />
             </Route>
             <PrivateRoute path="/resources/submit" component={SubmitResource} />
             <Route exact path="/">

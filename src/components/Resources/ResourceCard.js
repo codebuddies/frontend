@@ -53,7 +53,7 @@ export const ResourceCard = ({ guid, title, created, description, url }) => {
     setExpanded(!expanded);
   };
   return (
-    <Card class={classes.card}>
+    <Card className={classes.card}>
       <Link to={`/resources/${guid}`}>
         <CardHeader
           avatar={
