@@ -2,8 +2,12 @@ import Joi from '@hapi/joi';
 import { createValidationResolver } from '../form';
 
 const schema = Joi.object({
-  firstName: Joi.string().trim(),
-  lastName: Joi.string().trim(),
+  firstName: Joi.string()
+    .allow('')
+    .trim(),
+  lastName: Joi.string()
+    .allow('')
+    .trim(),
   username: Joi.string()
     .alphanum()
     .min(3)
@@ -17,5 +21,13 @@ const schema = Joi.object({
   password: Joi.string().required(),
 });
 
+const defaultValue = {
+  firstName: '',
+  lastName: '',
+  username: '',
+  email: '',
+  password: '',
+};
+
 const validationResolver = createValidationResolver(schema);
-export { validationResolver, schema };
+export { validationResolver, schema, defaultValue };
