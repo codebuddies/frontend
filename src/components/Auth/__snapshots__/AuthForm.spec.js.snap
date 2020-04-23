@@ -172,7 +172,7 @@ exports[`AuthForm should render accordingly 1`] = `
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
             name="password"
-            type="text"
+            type="password"
             value=""
           />
           <fieldset
