@@ -58,20 +58,20 @@ describe('Signup', () => {
       },
     });
 
-    fireEvent.change(getByLabelText('Username*'), {
+    fireEvent.change(getByLabelText(/username/i), {
       target: { value: 'Carolyne.Carter' },
     });
 
-    fireEvent.change(getByLabelText('Password*'), {
+    fireEvent.change(getByLabelText(/password/i), {
       target: { value: 'password' },
     });
-    fireEvent.change(getByLabelText('Email*'), {
+    fireEvent.change(getByLabelText(/email/i), {
       target: { value: 'Carolyne.Carter@yahoo.com' },
     });
-    fireEvent.change(getByLabelText('First Name'), {
+    fireEvent.change(getByLabelText(/first name/i), {
       target: { value: 'Carolyne' },
     });
-    fireEvent.change(getByLabelText('Last Name'), {
+    fireEvent.change(getByLabelText(/last name/i), {
       target: { value: 'Carter' },
     });
     const submit = getByText('Sign Up');
