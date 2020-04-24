@@ -5,7 +5,7 @@ import { Box, Button, TextField } from '@material-ui/core/';
 import axios from 'axios';
 import { useAuth } from './AuthContext';
 import { validationResolver, defaultValue } from './SignUpForm.schema';
-import Form, { Field } from '../form';
+import { Form, Field } from '../form';
 
 const SignUpForm = ({ toggleActiveForm }) => {
   const [errorMessage, setErrorMessage] = useState(null);
