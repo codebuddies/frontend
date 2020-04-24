@@ -41,18 +41,11 @@ describe('AuthForm', () => {
 
 describe('Signup', () => {
   it('Register a new user on the signup form', async () => {
-    const { getByText, getByTestId } = render(
+    const { getByText, getByLabelText } = render(
       <BrowserRouter>
         <SignUpForm />
       </BrowserRouter>
     );
-
-    const form = getByTestId(/signupForm/i);
-    const usernameEle = form.querySelectorAll('input[name="username"]')[0];
-    const emailEle = form.querySelectorAll('input[name="email"]')[0];
-    const firstNameEle = form.querySelectorAll('input[name="firstName"]')[0];
-    const lastNameEle = form.querySelectorAll('input[name="lastName"]')[0];
-    const passwordEle = form.querySelectorAll('input[name="password"]')[0];
 
     const mockRegisterResponse = jest.fn().mockResolvedValue({
       data: {
@@ -65,20 +58,20 @@ describe('Signup', () => {
       },
     });
 
-    fireEvent.change(usernameEle, {
+    fireEvent.change(getByLabelText('Username*'), {
       target: { value: 'Carolyne.Carter' },
     });
 
-    fireEvent.change(passwordEle, {
+    fireEvent.change(getByLabelText('Password*'), {
       target: { value: 'password' },
     });
-    fireEvent.change(emailEle, {
+    fireEvent.change(getByLabelText('Email*'), {
       target: { value: 'Carolyne.Carter@yahoo.com' },
     });
-    fireEvent.change(firstNameEle, {
+    fireEvent.change(getByLabelText('First Name'), {
       target: { value: 'Carolyne' },
     });
-    fireEvent.change(lastNameEle, {
+    fireEvent.change(getByLabelText('Last Name'), {
       target: { value: 'Carter' },
     });
     const submit = getByText('Sign Up');

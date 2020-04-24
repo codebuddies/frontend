@@ -64,6 +64,7 @@ const SignUpForm = ({ toggleActiveForm }) => {
         margin="dense"
         name="firstName"
         label="First Name"
+        id="first-name"
       />
       <Field
         as={TextField}
@@ -72,6 +73,7 @@ const SignUpForm = ({ toggleActiveForm }) => {
         margin="dense"
         name="lastName"
         label="Last Name"
+        id="last-name"
       />
       <Field
         as={TextField}
@@ -80,6 +82,7 @@ const SignUpForm = ({ toggleActiveForm }) => {
         margin="dense"
         name="username"
         label="Username*"
+        id="username"
       />
       <Field
         as={TextField}
@@ -88,6 +91,7 @@ const SignUpForm = ({ toggleActiveForm }) => {
         margin="dense"
         name="email"
         label="Email*"
+        id="email"
       />
       <Field
         as={TextField}
@@ -97,6 +101,7 @@ const SignUpForm = ({ toggleActiveForm }) => {
         name="password"
         label="Password*"
         type="password"
+        id="password"
       />
 
       {errorMessage && <Box color="error.main"> {errorMessage}</Box>}
