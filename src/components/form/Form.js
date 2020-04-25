@@ -14,22 +14,17 @@ const Form = props => {
   const methods = useForm({ defaultValues, validationResolver });
   const { handleSubmit } = methods;
 
+  const getChildElement = child => {
+    if (!child || !child.props.name) return child;
+    const { control, errors } = methods;
+    const key = child.props.name;
+    const options = { ...{ ...child.props, control, errors, key } };
+    return React.createElement(child.type, options);
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} {...rest}>
-      {Array.isArray(children)
-        ? children.map(child => {
-            return child && child.props.name
-              ? React.createElement(child.type, {
-                  ...{
-                    ...child.props,
-                    control: methods.control,
-                    errors: methods.errors,
-                    key: child.props.name,
-                  },
-                })
-              : child;
-          })
-        : children}
+      {Array.isArray(children) ? children.map(getChildElement) : children}
     </form>
   );
 };
