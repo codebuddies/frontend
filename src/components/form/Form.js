@@ -2,15 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 
-const Form = props => {
-  const {
-    defaultValues,
-    children,
-    onSubmit,
-    validationResolver,
-    ...rest
-  } = props;
-
+const Form = ({
+  defaultValues,
+  children,
+  onSubmit,
+  validationResolver,
+  ...rest
+}) => {
   const methods = useForm({ defaultValues, validationResolver });
   const { handleSubmit } = methods;
 
