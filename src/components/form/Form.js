@@ -32,8 +32,8 @@ const Form = props => {
 Form.propTypes = {
   defaultValues: PropTypes.object,
   children: PropTypes.any,
-  onSubmit: PropTypes.func,
-  validationResolver: PropTypes.func,
+  onSubmit: PropTypes.func.isRequired,
+  validationResolver: PropTypes.func.isRequired,
 };
 
 export default Form;
