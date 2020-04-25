@@ -13,13 +13,13 @@ const SignUpForm = ({ toggleActiveForm }) => {
   const referer = '/profile';
   const auth = useAuth();
 
-  const onSubmit = formData => {
+  const onSubmit = ({ username, password, firstName, lastName, email }) => {
     const data = {
-      username: formData.username,
-      password: formData.password,
-      first_name: formData.firstName,
-      last_name: formData.lastName,
-      email: formData.email,
+      username,
+      password,
+      email,
+      first_name: firstName,
+      last_name: lastName,
     };
     axios
       .post('/auth/users/', data)
