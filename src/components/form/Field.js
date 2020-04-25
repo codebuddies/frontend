@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Controller } from 'react-hook-form';
 
-const Field = props => {
-  const { as, control, name, errors, ...rest } = props;
-
+const Field = ({ as, control, name, errors, ...rest }) => {
   return (
     <Controller
       as={as}
