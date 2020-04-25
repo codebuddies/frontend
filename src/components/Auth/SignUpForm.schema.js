@@ -21,7 +21,7 @@ const schema = Joi.object({
   password: Joi.string().required(),
 });
 
-const defaultValue = {
+const defaultValues = {
   firstName: '',
   lastName: '',
   username: '',
@@ -30,4 +30,4 @@ const defaultValue = {
 };
 
 const validationResolver = createValidationResolver(schema);
-export { validationResolver, schema, defaultValue };
+export { validationResolver, schema, defaultValues };

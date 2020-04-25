@@ -4,7 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { Box, Button, TextField } from '@material-ui/core/';
 import axios from 'axios';
 import { useAuth } from './AuthContext';
-import { validationResolver, defaultValue } from './SignUpForm.schema';
+import { validationResolver, defaultValues } from './SignUpForm.schema';
 import { Form, Field } from '../form';
 
 const SignUpForm = ({ toggleActiveForm }) => {
@@ -51,7 +51,7 @@ const SignUpForm = ({ toggleActiveForm }) => {
       onSubmit={onSubmit}
       data-testid="signupForm"
       validationResolver={validationResolver}
-      defaultValues={defaultValue}
+      defaultValues={defaultValues}
     >
       <Box component="h1" fontSize={18}>
         Create an account
