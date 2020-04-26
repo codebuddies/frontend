@@ -3,7 +3,7 @@ import { createValidationResolver } from '../form';
 
 const schema = Joi.object({
   firstName: Joi.string()
-    .allow('')
+    .required()
     .trim(),
   lastName: Joi.string()
     .allow('')

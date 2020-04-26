@@ -63,7 +63,7 @@ const SignUpForm = ({ toggleActiveForm }) => {
         variant="outlined"
         margin="dense"
         name="firstName"
-        label="First Name"
+        label="First Name*"
         id="first-name"
       />
       <Field
