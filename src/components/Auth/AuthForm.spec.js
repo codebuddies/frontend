@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, act } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { BrowserRouter } from 'react-router-dom';
 import AuthForm from './AuthForm';
@@ -98,16 +98,22 @@ describe('Login', () => {
         username: 'Carolyne.Carter',
       },
     });
-    fireEvent.change(getByLabelText(/username/i), {
-      target: { value: 'Carolyne.Carter' },
-    });
 
-    fireEvent.change(getByLabelText(/password/i), {
-      target: { value: 'password' },
-    });
+    await act(async () =>
+      fireEvent.change(getByLabelText(/username/i), {
+        target: { value: 'Carolyne.Carter' },
+      })
+    );
+
+    await act(async () =>
+      fireEvent.change(getByLabelText(/password/i), {
+        target: { value: 'password' },
+      })
+    );
+
     const submit = getByRole('button');
-    fireEvent.click(submit);
-    await mockLoginResponse();
+    await act(async () => fireEvent.click(submit));
+    await act(async () => mockLoginResponse());
     expect(mockLoginResponse).toHaveBeenCalledTimes(1);
   });
 });
