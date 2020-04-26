@@ -1,0 +1,6 @@
+build:
+  base: ""
+  publish: "build/"
+  command: "npm run build"
+  environment:
+    SKIP_PREFLIGHT_CHECK: true
