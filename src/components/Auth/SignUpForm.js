@@ -29,7 +29,7 @@ const SignUpForm = ({ toggleActiveForm }) => {
         setErrorMessage('');
       })
       .catch(err => {
-        console.log(err);
+        console.error(err);
         setErrorMessage('There was an error!');
       });
   };
