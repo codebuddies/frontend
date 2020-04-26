@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import { Controller } from 'react-hook-form';
 
 const Field = ({ as, control, name, errors, ...rest }) => {
+  const hasError = Boolean(errors && errors[name]);
+  const errorMessage = hasError && errors[name].message;
   return (
     <Controller
       as={as}
-      error={Boolean(errors && errors[name])}
+      error={hasError}
       control={control}
       name={name}
+      helperText={errorMessage}
       {...rest}
     />
   );
