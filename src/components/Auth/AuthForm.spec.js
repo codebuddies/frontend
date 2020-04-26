@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, act } from '@testing-library/react';
+import { fireEvent, render, act, wait } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { BrowserRouter } from 'react-router-dom';
 import AuthForm from './AuthForm';
@@ -80,6 +80,22 @@ describe('Signup', () => {
     await mockRegisterResponse();
 
     expect(mockRegisterResponse).toHaveBeenCalledTimes(1);
+  });
+
+  it('Show required field validation error', async () => {
+    const { getByText, debug } = render(
+      <BrowserRouter>
+        <SignUpForm />
+      </BrowserRouter>
+    );
+
+    const submit = getByText('Sign Up');
+    debug(getByText(/username/i));
+    await act(async () => fireEvent.click(submit));
+    debug(getByText(/username/i));
+    await wait(() => {
+      expect(getByText(/username/i).className).toContain('Mui-error');
+    });
   });
 });
 
