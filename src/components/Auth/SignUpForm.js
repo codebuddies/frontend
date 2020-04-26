@@ -4,26 +4,22 @@ import { Link, Redirect } from 'react-router-dom';
 import { Box, Button, TextField } from '@material-ui/core/';
 import axios from 'axios';
 import { useAuth } from './AuthContext';
+import { validationResolver, defaultValues } from './SignUpForm.schema';
+import { Form, Field } from '../form';
 
 const SignUpForm = ({ toggleActiveForm }) => {
-  const [firstName, setFirstName] = useState(null);
-  const [lastName, setLastName] = useState(null);
-  const [username, setUsername] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const referer = '/profile';
   const auth = useAuth();
 
-  const handleSignup = e => {
-    e.preventDefault();
+  const onSubmit = ({ username, password, firstName, lastName, email }) => {
     const data = {
-      username: username,
-      password: password,
+      username,
+      password,
+      email,
       first_name: firstName,
       last_name: lastName,
-      email: email,
     };
     axios
       .post('/auth/users/', data)
@@ -36,102 +32,111 @@ const SignUpForm = ({ toggleActiveForm }) => {
         setErrorMessage(Object.values(err.response.data).join(''));
       });
   };
+
   if (isLoggedIn) {
     return <Redirect to={referer} />;
   }
+
+  if (auth && auth.authTokens) {
+    return <p>Welcome!</p>;
+  }
+
   return (
-    <>
-      {(auth && auth.authTokens) || isLoggedIn ? (
-        <p>Welcome!</p>
-      ) : (
-        <>
+    <Box
+      component={Form}
+      display="flex"
+      flexWrap="wrap"
+      noValidate
+      autoComplete="off"
+      onSubmit={onSubmit}
+      data-testid="signupForm"
+      validationResolver={validationResolver}
+      defaultValues={defaultValues}
+    >
+      <Box component="h1" fontSize={18}>
+        Create an account
+      </Box>
+
+      <Field
+        as={TextField}
+        fullWidth
+        variant="outlined"
+        margin="dense"
+        name="firstName"
+        label="First Name*"
+        id="first-name"
+      />
+      <Field
+        as={TextField}
+        fullWidth
+        variant="outlined"
+        margin="dense"
+        name="lastName"
+        label="Last Name"
+        id="last-name"
+      />
+      <Field
+        as={TextField}
+        fullWidth
+        variant="outlined"
+        margin="dense"
+        name="username"
+        label="Username*"
+        id="username"
+      />
+      <Field
+        as={TextField}
+        fullWidth
+        variant="outlined"
+        margin="dense"
+        name="email"
+        label="Email*"
+        id="email"
+      />
+      <Field
+        as={TextField}
+        fullWidth
+        variant="outlined"
+        margin="dense"
+        name="password"
+        label="Password*"
+        type="password"
+        id="password"
+      />
+
+      {errorMessage && <Box color="error.main"> {errorMessage}</Box>}
+
+      <Box width="100%" marginTop={2}>
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          data-testid="submitButton"
+        >
+          Sign Up
+        </Button>
+      </Box>
+      <p>
+        Already have an account?
+        {toggleActiveForm ? (
           <Box
-            component="form"
-            display="flex"
-            flexWrap="wrap"
-            noValidate
-            autoComplete="off"
-            onSubmit={handleSignup}
-            data-testid="signupForm"
+            component="button"
+            color="primary.main"
+            padding={0}
+            marginLeft={1}
+            border={0}
+            bgcolor="transparent"
+            fontSize={16}
+            onClick={toggleActiveForm}
           >
-            <Box component="h1" fontSize={18}>
-              Create an account
-            </Box>
-            <TextField
-              id="first-name"
-              label="First Name"
-              fullWidth
-              variant="outlined"
-              margin="dense"
-              onChange={e => setFirstName(e.target.value)}
-            />
-            <TextField
-              id="last-name"
-              label="Last Name"
-              fullWidth
-              variant="outlined"
-              margin="dense"
-              onChange={e => setLastName(e.target.value)}
-            />
-            <TextField
-              id="username"
-              label="Username"
-              fullWidth
-              required
-              variant="outlined"
-              margin="dense"
-              onChange={e => setUsername(e.target.value)}
-            />
-            <TextField
-              id="email"
-              label="Email"
-              fullWidth
-              required
-              variant="outlined"
-              margin="dense"
-              type="email"
-              onChange={e => setEmail(e.target.value)}
-            />
-            <TextField
-              id="password"
-              label="Password"
-              fullWidth
-              required
-              variant="outlined"
-              margin="dense"
-              type="password"
-              onChange={e => setPassword(e.target.value)}
-            />
-            {errorMessage && <Box color="error.main"> {errorMessage}</Box>}
-            <Box width="100%" marginTop={2}>
-              <Button variant="contained" color="primary" type="submit">
-                Sign Up
-              </Button>
-            </Box>
-            <p>
-              Already have an account?
-              {toggleActiveForm ? (
-                <Box
-                  component="button"
-                  color="primary.main"
-                  padding={0}
-                  marginLeft={1}
-                  border={0}
-                  bgcolor="transparent"
-                  fontSize={16}
-                  onClick={toggleActiveForm}
-                >
-                  Log in
-                </Box>
-              ) : (
-                <Link to="/login"> Log in</Link>
-              )}
-              .
-            </p>
+            Log in
           </Box>
-        </>
-      )}
-    </>
+        ) : (
+          <Link to="/login"> Log in</Link>
+        )}
+        .
+      </p>
+    </Box>
   );
 };
 

@@ -18,6 +18,7 @@
   },
   "proxy": "http://localhost:8000",
   "dependencies": {
+    "@hapi/joi": "17.1.1",
     "@material-ui/core": "4.5.1",
     "@material-ui/icons": "4.5.1",
     "@material-ui/lab": "^4.0.0-alpha.29",
@@ -27,6 +28,7 @@
     "prop-types": "^15.7.2",
     "react": "16.11.0",
     "react-dom": "16.11.0",
+    "react-hook-form": "5.5.1",
     "react-router-dom": "5.1.2",
     "react-scripts": "^3.4.0",
     "react-select": "3.0.8",

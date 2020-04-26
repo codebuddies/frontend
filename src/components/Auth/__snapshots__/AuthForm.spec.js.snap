@@ -24,7 +24,7 @@ exports[`AuthForm should render accordingly 1`] = `
           data-shrink="false"
           for="first-name"
         >
-          First Name
+          First Name*
         </label>
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
@@ -33,6 +33,7 @@ exports[`AuthForm should render accordingly 1`] = `
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
             id="first-name"
+            name="firstName"
             type="text"
             value=""
           />
@@ -69,6 +70,7 @@ exports[`AuthForm should render accordingly 1`] = `
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
             id="last-name"
+            name="lastName"
             type="text"
             value=""
           />
@@ -92,16 +94,11 @@ exports[`AuthForm should render accordingly 1`] = `
         class="MuiFormControl-root MuiTextField-root MuiFormControl-marginDense MuiFormControl-fullWidth"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined Mui-required Mui-required"
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined"
           data-shrink="false"
           for="username"
         >
-          Username
-          <span
-            class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-          >
-             *
-          </span>
+          Username*
         </label>
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
@@ -110,7 +107,7 @@ exports[`AuthForm should render accordingly 1`] = `
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
             id="username"
-            required=""
+            name="username"
             type="text"
             value=""
           />
@@ -134,16 +131,11 @@ exports[`AuthForm should render accordingly 1`] = `
         class="MuiFormControl-root MuiTextField-root MuiFormControl-marginDense MuiFormControl-fullWidth"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined Mui-required Mui-required"
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined"
           data-shrink="false"
           for="email"
         >
-          Email
-          <span
-            class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-          >
-             *
-          </span>
+          Email*
         </label>
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
@@ -152,8 +144,8 @@ exports[`AuthForm should render accordingly 1`] = `
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
             id="email"
-            required=""
-            type="email"
+            name="email"
+            type="text"
             value=""
           />
           <fieldset
@@ -176,16 +168,11 @@ exports[`AuthForm should render accordingly 1`] = `
         class="MuiFormControl-root MuiTextField-root MuiFormControl-marginDense MuiFormControl-fullWidth"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined Mui-required Mui-required"
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined"
           data-shrink="false"
           for="password"
         >
-          Password
-          <span
-            class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-          >
-             *
-          </span>
+          Password*
         </label>
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
@@ -194,7 +181,7 @@ exports[`AuthForm should render accordingly 1`] = `
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
             id="password"
-            required=""
+            name="password"
             type="password"
             value=""
           />
@@ -219,6 +206,7 @@ exports[`AuthForm should render accordingly 1`] = `
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          data-testid="submitButton"
           tabindex="0"
           type="submit"
         >

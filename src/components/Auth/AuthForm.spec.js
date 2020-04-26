@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, act } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { BrowserRouter } from 'react-router-dom';
 import AuthForm from './AuthForm';
@@ -81,6 +81,38 @@ describe('Signup', () => {
 
     expect(mockRegisterResponse).toHaveBeenCalledTimes(1);
   });
+
+  it('Show required field validation error', async () => {
+    const { getByText, getByTestId } = render(
+      <BrowserRouter>
+        <SignUpForm />
+      </BrowserRouter>
+    );
+
+    await act(async () => fireEvent.click(getByTestId('submitButton')));
+    expect(getByText('Username*').className).toContain('Mui-error');
+    expect(getByText('Email*').className).toContain('Mui-error');
+    expect(getByText('Password*').className).toContain('Mui-error');
+    expect(getByText('First Name*').className).toContain('Mui-error');
+  });
+
+  it('Show username length validation error', async () => {
+    const { getByText, getByTestId, getByLabelText } = render(
+      <BrowserRouter>
+        <SignUpForm />
+      </BrowserRouter>
+    );
+
+    fireEvent.change(getByLabelText(/username/i), {
+      target: { value: 'ga' },
+    });
+
+    await act(async () => fireEvent.click(getByTestId('submitButton')));
+
+    expect(
+      getByText(/"Username" length must be at least 3 characters long/i)
+    ).toBeInTheDocument();
+  });
 });
 
 describe('Login', () => {
@@ -98,16 +130,22 @@ describe('Login', () => {
         username: 'Carolyne.Carter',
       },
     });
-    fireEvent.change(getByLabelText(/username/i), {
-      target: { value: 'Carolyne.Carter' },
-    });
 
-    fireEvent.change(getByLabelText(/password/i), {
-      target: { value: 'password' },
-    });
+    await act(async () =>
+      fireEvent.change(getByLabelText(/username/i), {
+        target: { value: 'Carolyne.Carter' },
+      })
+    );
+
+    await act(async () =>
+      fireEvent.change(getByLabelText(/password/i), {
+        target: { value: 'password' },
+      })
+    );
+
     const submit = getByRole('button');
-    fireEvent.click(submit);
-    await mockLoginResponse();
+    await act(async () => fireEvent.click(submit));
+    await act(async () => mockLoginResponse());
     expect(mockLoginResponse).toHaveBeenCalledTimes(1);
   });
 });
