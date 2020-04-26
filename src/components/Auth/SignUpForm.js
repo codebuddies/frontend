@@ -107,7 +107,12 @@ const SignUpForm = ({ toggleActiveForm }) => {
       {errorMessage && <Box color="error.main"> {errorMessage}</Box>}
 
       <Box width="100%" marginTop={2}>
-        <Button variant="contained" color="primary" type="submit">
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          data-testid="submitButton"
+        >
           Sign Up
         </Button>
       </Box>

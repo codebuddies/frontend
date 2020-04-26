@@ -83,19 +83,35 @@ describe('Signup', () => {
   });
 
   it('Show required field validation error', async () => {
-    const { getByText, debug } = render(
+    const { getByText, getByTestId } = render(
       <BrowserRouter>
         <SignUpForm />
       </BrowserRouter>
     );
 
-    const submit = getByText('Sign Up');
-    debug(getByText(/username/i));
-    await act(async () => fireEvent.click(submit));
-    debug(getByText(/username/i));
-    await wait(() => {
-      expect(getByText(/username/i).className).toContain('Mui-error');
+    await act(async () => fireEvent.click(getByTestId('submitButton')));
+    expect(getByText('Username*').className).toContain('Mui-error');
+    expect(getByText('Email*').className).toContain('Mui-error');
+    expect(getByText('Password*').className).toContain('Mui-error');
+    expect(getByText('First Name*').className).toContain('Mui-error');
+  });
+
+  it('Show username length validation error', async () => {
+    const { getByText, getByTestId, getByLabelText } = render(
+      <BrowserRouter>
+        <SignUpForm />
+      </BrowserRouter>
+    );
+
+    fireEvent.change(getByLabelText(/username/i), {
+      target: { value: 'ga' },
     });
+
+    await act(async () => fireEvent.click(getByTestId('submitButton')));
+
+    expect(
+      getByText(/"Username" length must be at least 3 characters long/i)
+    ).toBeInTheDocument();
   });
 });
 

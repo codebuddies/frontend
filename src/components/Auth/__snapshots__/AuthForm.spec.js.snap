@@ -24,7 +24,7 @@ exports[`AuthForm should render accordingly 1`] = `
           data-shrink="false"
           for="first-name"
         >
-          First Name
+          First Name*
         </label>
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
@@ -206,6 +206,7 @@ exports[`AuthForm should render accordingly 1`] = `
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          data-testid="submitButton"
           tabindex="0"
           type="submit"
         >
