@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, act } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { BrowserRouter } from 'react-router-dom';
 import AuthForm from './AuthForm';
@@ -58,26 +58,40 @@ describe('Signup', () => {
       },
     });
 
-    fireEvent.change(getByLabelText(/username/i), {
-      target: { value: 'Carolyne.Carter' },
-    });
+    await act(async () =>
+      fireEvent.change(getByLabelText(/username/i), {
+        target: { value: 'Carolyne.Carter' },
+      })
+    );
 
-    fireEvent.change(getByLabelText(/password/i), {
-      target: { value: 'password' },
-    });
-    fireEvent.change(getByLabelText(/email/i), {
-      target: { value: 'Carolyne.Carter@yahoo.com' },
-    });
-    fireEvent.change(getByLabelText(/first name/i), {
-      target: { value: 'Carolyne' },
-    });
-    fireEvent.change(getByLabelText(/last name/i), {
-      target: { value: 'Carter' },
-    });
+    await act(async () =>
+      fireEvent.change(getByLabelText(/password/i), {
+        target: { value: 'password' },
+      })
+    );
+
+    await act(async () =>
+      fireEvent.change(getByLabelText(/email/i), {
+        target: { value: 'Carolyne.Carter@yahoo.com' },
+      })
+    );
+
+    await act(async () =>
+      fireEvent.change(getByLabelText(/first name/i), {
+        target: { value: 'Carolyne' },
+      })
+    );
+
+    await act(async () =>
+      fireEvent.change(getByLabelText(/last name/i), {
+        target: { value: 'Carter' },
+      })
+    );
+
     const submit = getByText('Sign Up');
-    fireEvent.click(submit);
+    await act(async () => fireEvent.click(submit));
 
-    await mockRegisterResponse();
+    await act(async () => mockRegisterResponse());
 
     expect(mockRegisterResponse).toHaveBeenCalledTimes(1);
   });
@@ -98,16 +112,21 @@ describe('Login', () => {
         username: 'Carolyne.Carter',
       },
     });
-    fireEvent.change(getByLabelText(/username/i), {
-      target: { value: 'Carolyne.Carter' },
-    });
+    await act(async () =>
+      fireEvent.change(getByLabelText(/username/i), {
+        target: { value: 'Carolyne.Carter' },
+      })
+    );
 
-    fireEvent.change(getByLabelText(/password/i), {
-      target: { value: 'password' },
-    });
+    await act(async () =>
+      fireEvent.change(getByLabelText(/password/i), {
+        target: { value: 'password' },
+      })
+    );
+
     const submit = getByRole('button');
-    fireEvent.click(submit);
-    await mockLoginResponse();
+    await act(async () => fireEvent.click(submit));
+    await act(async () => mockLoginResponse());
     expect(mockLoginResponse).toHaveBeenCalledTimes(1);
   });
 });
