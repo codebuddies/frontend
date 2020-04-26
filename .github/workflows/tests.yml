@@ -17,7 +17,7 @@ jobs:
         run: npm install
 
       - name: Running Jest Tests
-        run: CI=true npm test
+        run: npm test --ci
 
       - name: Running ESLint
         run: npm run lint
