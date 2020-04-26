@@ -63,7 +63,6 @@ describe('Signup', () => {
           target: { value: 'Carolyne.Carter' },
         })
       );
-
       await act(async () =>
         fireEvent.change(getByLabelText(/password/i), {
           target: { value: 'password' },
