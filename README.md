@@ -1,3 +1,25 @@
+## Setup
+
+Install dependencies:
+
+```bash
+npm i
+```
+
+Create a `.env` file and copy the keys and values from `.env.example`.
+
+Running the client server locally:
+
+```bash
+npm run start:client
+```
+
+Running tests:
+
+```bash
+npm run test
+```
+
 ## **Overview of Codebuddies**
 
 ### **What is CodeBuddies?**
