@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, act } from '@testing-library/react';
+import { fireEvent, render, act, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { BrowserRouter } from 'react-router-dom';
 import AuthForm from './AuthForm';
@@ -13,35 +13,36 @@ describe('AuthForm', () => {
   });
 
   it('should only show the Sign Up form by default', () => {
-    const { getByText, queryByTestId } = render(<AuthForm />);
+    render(<AuthForm />);
+    screen.debug();
 
-    expect(getByText('Create an account')).toBeInTheDocument();
-    expect(queryByTestId('loginForm')).toBeNull();
+    expect(screen.getByText('Create an account')).toBeInTheDocument();
+    expect(screen.queryByTestId('loginForm')).toBeNull();
   });
 
   describe('when clicking on the Log in button in the Sign Up Form', () => {
-    it('should show the Login Form', () => {
-      const { getByText, queryByTestId, getByTestId } = render(<AuthForm />);
-      fireEvent.click(getByText('Log in'));
-      expect(getByTestId('loginForm')).toBeInTheDocument();
-      expect(queryByTestId('signupForm')).toBeNull();
+    it('should show the Login Form', async () => {
+      render(<AuthForm />);
+      fireEvent.click(screen.getByText('Log in'));
+      expect(await screen.findByTestId('loginForm')).toBeInTheDocument();
+      expect(await screen.queryByTestId('signupForm')).toBeNull();
     });
   });
 
   describe('when clicking on the Sign up button in the Log In Form', () => {
-    it('should show the Sign Up form', () => {
-      const { getByText, queryByTestId } = render(<AuthForm />);
-      fireEvent.click(getByText('Log in'));
-      fireEvent.click(getByText('Sign up'));
-      expect(queryByTestId('loginForm')).toBeNull();
-      expect(getByText('Create an account')).toBeInTheDocument();
+    it('should show the Sign Up form', async () => {
+      render(<AuthForm />);
+      fireEvent.click(screen.getByText('Log in'));
+      fireEvent.click(screen.getByText('Sign up'));
+      expect(await screen.queryByTestId('loginForm')).toBeNull();
+      expect(await screen.findByText('Create an account')).toBeInTheDocument();
     });
   });
 });
 
 describe('Signup', () => {
   it('Register a new user on the signup form', async () => {
-    const { getByText, getByLabelText } = render(
+    render(
       <BrowserRouter>
         <SignUpForm />
       </BrowserRouter>
@@ -58,38 +59,27 @@ describe('Signup', () => {
       },
     });
 
-    await act(async () =>
-      fireEvent.change(getByLabelText(/username/i), {
-        target: { value: 'Carolyne.Carter' },
-      })
-    );
+    fireEvent.change(screen.getByLabelText(/username/i), {
+      target: { value: 'Carolyne.Carter' },
+    });
 
-    await act(async () =>
-      fireEvent.change(getByLabelText(/password/i), {
-        target: { value: 'password' },
-      })
-    );
+    fireEvent.change(screen.getByLabelText(/password/i), {
+      target: { value: 'password' },
+    });
 
-    await act(async () =>
-      fireEvent.change(getByLabelText(/email/i), {
-        target: { value: 'Carolyne.Carter@yahoo.com' },
-      })
-    );
+    fireEvent.change(screen.getByLabelText(/email/i), {
+      target: { value: 'Carolyne.Carter@yahoo.com' },
+    });
 
-    await act(async () =>
-      fireEvent.change(getByLabelText(/first name/i), {
-        target: { value: 'Carolyne' },
-      })
-    );
+    fireEvent.change(screen.getByLabelText(/first name/i), {
+      target: { value: 'Carolyne' },
+    });
 
-    await act(async () =>
-      fireEvent.change(getByLabelText(/last name/i), {
-        target: { value: 'Carter' },
-      })
-    );
+    fireEvent.change(screen.getByLabelText(/last name/i), {
+      target: { value: 'Carter' },
+    });
 
-    const submit = getByText('Sign Up');
-    await act(async () => fireEvent.click(submit));
+    fireEvent.click(screen.getByText('Sign Up'));
 
     await act(async () => mockRegisterResponse());
 
