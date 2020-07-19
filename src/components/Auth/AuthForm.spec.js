@@ -86,34 +86,40 @@ describe('Signup', () => {
   });
 
   it('Show required field validation error', async () => {
-    const { getByText, getByTestId } = render(
+    render(
       <BrowserRouter>
         <SignUpForm />
       </BrowserRouter>
     );
 
-    await act(async () => fireEvent.click(getByTestId('submitButton')));
-    expect(getByText('Username*').className).toContain('Mui-error');
-    expect(getByText('Email*').className).toContain('Mui-error');
-    expect(getByText('Password*').className).toContain('Mui-error');
-    expect(getByText('First Name*').className).toContain('Mui-error');
+    await act(async () => fireEvent.click(screen.getByTestId('submitButton')));
+    expect(
+      screen.getByText('"Username" is not allowed to be empty')
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('"Email" is not allowed to be empty')
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('"Password" is not allowed to be empty')
+    ).toBeInTheDocument();
   });
 
   it('Show username length validation error', async () => {
-    const { getByText, getByTestId, getByLabelText } = render(
+    render(
       <BrowserRouter>
         <SignUpForm />
       </BrowserRouter>
     );
+    console.log(screen.getByLabelText('Username*'));
 
-    fireEvent.change(getByLabelText(/username/i), {
+    fireEvent.change(screen.getByLabelText('Username*'), {
       target: { value: 'ga' },
     });
 
-    await act(async () => fireEvent.click(getByTestId('submitButton')));
-
+    await act(async () => fireEvent.click(screen.getByTestId('submitButton')));
+    screen.debug();
     expect(
-      getByText(/"Username" length must be at least 3 characters long/i)
+      screen.getByText('"Username" length must be at least 3 characters long')
     ).toBeInTheDocument();
   });
 });
