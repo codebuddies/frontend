@@ -3,7 +3,7 @@
 exports[`AuthForm should render accordingly 1`] = `
 <DocumentFragment>
   <div
-    class="MuiPaper-root MuiPaper-elevation3 MuiBox-root MuiBox-root-1 MuiPaper-rounded"
+    class="MuiPaper-root MuiBox-root MuiBox-root-1 MuiPaper-elevation3 MuiPaper-rounded"
   >
     <form
       autocomplete="off"
@@ -23,6 +23,7 @@ exports[`AuthForm should render accordingly 1`] = `
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined"
           data-shrink="false"
           for="first-name"
+          id="first-name-label"
         >
           First Name*
         </label>
@@ -40,14 +41,12 @@ exports[`AuthForm should render accordingly 1`] = `
           <fieldset
             aria-hidden="true"
             class="PrivateNotchedOutline-root-4 MuiOutlinedInput-notchedOutline"
-            style="padding-left: 8px;"
           >
             <legend
-              class="PrivateNotchedOutline-legend-5"
-              style="width: 0.01px;"
+              class="PrivateNotchedOutline-legendLabelled-6"
             >
               <span>
-                ​
+                First Name*
               </span>
             </legend>
           </fieldset>
@@ -60,6 +59,7 @@ exports[`AuthForm should render accordingly 1`] = `
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined"
           data-shrink="false"
           for="last-name"
+          id="last-name-label"
         >
           Last Name
         </label>
@@ -77,14 +77,12 @@ exports[`AuthForm should render accordingly 1`] = `
           <fieldset
             aria-hidden="true"
             class="PrivateNotchedOutline-root-4 MuiOutlinedInput-notchedOutline"
-            style="padding-left: 8px;"
           >
             <legend
-              class="PrivateNotchedOutline-legend-5"
-              style="width: 0.01px;"
+              class="PrivateNotchedOutline-legendLabelled-6"
             >
               <span>
-                ​
+                Last Name
               </span>
             </legend>
           </fieldset>
@@ -97,6 +95,7 @@ exports[`AuthForm should render accordingly 1`] = `
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined"
           data-shrink="false"
           for="username"
+          id="username-label"
         >
           Username*
         </label>
@@ -114,14 +113,12 @@ exports[`AuthForm should render accordingly 1`] = `
           <fieldset
             aria-hidden="true"
             class="PrivateNotchedOutline-root-4 MuiOutlinedInput-notchedOutline"
-            style="padding-left: 8px;"
           >
             <legend
-              class="PrivateNotchedOutline-legend-5"
-              style="width: 0.01px;"
+              class="PrivateNotchedOutline-legendLabelled-6"
             >
               <span>
-                ​
+                Username*
               </span>
             </legend>
           </fieldset>
@@ -134,6 +131,7 @@ exports[`AuthForm should render accordingly 1`] = `
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined"
           data-shrink="false"
           for="email"
+          id="email-label"
         >
           Email*
         </label>
@@ -151,14 +149,12 @@ exports[`AuthForm should render accordingly 1`] = `
           <fieldset
             aria-hidden="true"
             class="PrivateNotchedOutline-root-4 MuiOutlinedInput-notchedOutline"
-            style="padding-left: 8px;"
           >
             <legend
-              class="PrivateNotchedOutline-legend-5"
-              style="width: 0.01px;"
+              class="PrivateNotchedOutline-legendLabelled-6"
             >
               <span>
-                ​
+                Email*
               </span>
             </legend>
           </fieldset>
@@ -171,6 +167,7 @@ exports[`AuthForm should render accordingly 1`] = `
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined"
           data-shrink="false"
           for="password"
+          id="password-label"
         >
           Password*
         </label>
@@ -188,21 +185,19 @@ exports[`AuthForm should render accordingly 1`] = `
           <fieldset
             aria-hidden="true"
             class="PrivateNotchedOutline-root-4 MuiOutlinedInput-notchedOutline"
-            style="padding-left: 8px;"
           >
             <legend
-              class="PrivateNotchedOutline-legend-5"
-              style="width: 0.01px;"
+              class="PrivateNotchedOutline-legendLabelled-6"
             >
               <span>
-                ​
+                Password*
               </span>
             </legend>
           </fieldset>
         </div>
       </div>
       <div
-        class="MuiBox-root MuiBox-root-6"
+        class="MuiBox-root MuiBox-root-8"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
@@ -223,7 +218,7 @@ exports[`AuthForm should render accordingly 1`] = `
       <p>
         Already have an account?
         <button
-          class="MuiBox-root MuiBox-root-7"
+          class="MuiBox-root MuiBox-root-9"
         >
           Log in
         </button>
