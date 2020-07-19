@@ -14,7 +14,6 @@ describe('AuthForm', () => {
 
   it('should only show the Sign Up form by default', () => {
     render(<AuthForm />);
-    screen.debug();
 
     expect(screen.getByText('Create an account')).toBeInTheDocument();
     expect(screen.queryByTestId('loginForm')).toBeNull();
