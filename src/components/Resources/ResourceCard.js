@@ -19,7 +19,6 @@ import BookmarkIcon from '@material-ui/icons/Bookmark';
 import ShareIcon from '@material-ui/icons/Share';
 import LinkIcon from '@material-ui/icons/Link';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
 
 const useStyles = makeStyles(theme => ({
   card: {
