@@ -89,9 +89,17 @@ describe('Signup', () => {
     );
 
     await act(async () => userEvent.click(screen.getByTestId('submitButton')));
-    expect(screen.getByText('Username*').className).toContain('Mui-error');
-    expect(screen.getByText('Email*').className).toContain('Mui-error');
-    expect(screen.getByText('Password*').className).toContain('Mui-error');
+    // expect(screen.getByText('Username').className).toContain('Mui-error');
+    screen.debug();
+    expect(
+      screen.getByText('"Email" is not allowed to be empty')
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('"Username" is not allowed to be empty')
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('"Password" is not allowed to be empty')
+    ).toBeInTheDocument();
   });
 
   it('Show username length validation error', async () => {
