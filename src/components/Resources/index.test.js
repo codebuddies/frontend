@@ -4,6 +4,8 @@ import { BrowserRouter as Route } from 'react-router-dom';
 import '@testing-library/jest-dom/extend-expect';
 import Resources from './index';
 import axiosMock from 'axios';
+import MutationObserver from '@sheerun/mutationobserver-shim';
+window.MutationObserver = MutationObserver;
 
 jest.mock('axios');
 

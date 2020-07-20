@@ -12,7 +12,6 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Collapse from '@material-ui/core/Collapse';
-import Rating from '@material-ui/lab/Rating';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Button from '@material-ui/core/Button';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -100,12 +99,6 @@ export const ResourceCard = ({ guid, title, created, description, url }) => {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Rating
-            name="customized-empty"
-            value={2}
-            precision={0.5}
-            emptyIcon={<StarBorderIcon fontSize="inherit" />}
-          />
           <TextareaAutosize
             aria-label="Review"
             rows={3}
