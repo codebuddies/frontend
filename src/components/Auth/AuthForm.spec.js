@@ -1,10 +1,13 @@
 import React from 'react';
-import { fireEvent, render, act, screen } from '@testing-library/react';
+import { render, act, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 import { BrowserRouter } from 'react-router-dom';
 import AuthForm from './AuthForm';
 import SignUpForm from './SignUpForm';
 import LoginForm from './LoginForm';
+import MutationObserver from '@sheerun/mutationobserver-shim';
+window.MutationObserver = MutationObserver;
 
 describe('AuthForm', () => {
   it('should render accordingly', () => {
@@ -22,7 +25,7 @@ describe('AuthForm', () => {
   describe('when clicking on the Log in button in the Sign Up Form', () => {
     it('should show the Login Form', async () => {
       render(<AuthForm />);
-      fireEvent.click(screen.getByText('Log in'));
+      userEvent.click(screen.getByText('Log in'));
       expect(await screen.findByTestId('loginForm')).toBeInTheDocument();
       expect(await screen.queryByTestId('signupForm')).toBeNull();
     });
@@ -31,8 +34,8 @@ describe('AuthForm', () => {
   describe('when clicking on the Sign up button in the Log In Form', () => {
     it('should show the Sign Up form', async () => {
       render(<AuthForm />);
-      fireEvent.click(screen.getByText('Log in'));
-      fireEvent.click(screen.getByText('Sign up'));
+      userEvent.click(screen.getByText('Log in'));
+      userEvent.click(screen.getByText('Sign up'));
       expect(await screen.queryByTestId('loginForm')).toBeNull();
       expect(await screen.findByText('Create an account')).toBeInTheDocument();
     });
@@ -58,27 +61,20 @@ describe('Signup', () => {
       },
     });
 
-    fireEvent.change(screen.getByLabelText(/username/i), {
-      target: { value: 'Carolyne.Carter' },
-    });
+    userEvent.type(screen.getByLabelText(/username/i), 'Carolyne.Carter');
 
-    fireEvent.change(screen.getByLabelText(/password/i), {
-      target: { value: 'password' },
-    });
+    userEvent.type(screen.getByLabelText(/password/i), 'password');
 
-    fireEvent.change(screen.getByLabelText(/email/i), {
-      target: { value: 'Carolyne.Carter@yahoo.com' },
-    });
+    userEvent.type(
+      screen.getByLabelText(/email/i),
+      'Carolyne.Carter@yahoo.com'
+    );
 
-    fireEvent.change(screen.getByLabelText(/first name/i), {
-      target: { value: 'Carolyne' },
-    });
+    userEvent.type(screen.getByLabelText(/first name/i), 'Carolyne');
 
-    fireEvent.change(screen.getByLabelText(/last name/i), {
-      target: { value: 'Carter' },
-    });
+    userEvent.type(screen.getByLabelText(/last name/i), 'Carter');
 
-    fireEvent.click(screen.getByText('Sign Up'));
+    userEvent.click(screen.getByText('Sign Up'));
 
     await act(async () => mockRegisterResponse());
 
@@ -92,16 +88,10 @@ describe('Signup', () => {
       </BrowserRouter>
     );
 
-    await act(async () => fireEvent.click(screen.getByTestId('submitButton')));
-    expect(
-      screen.getByText('"Username" is not allowed to be empty')
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText('"Email" is not allowed to be empty')
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText('"Password" is not allowed to be empty')
-    ).toBeInTheDocument();
+    await act(async () => userEvent.click(screen.getByTestId('submitButton')));
+    expect(screen.getByText('Username*').className).toContain('Mui-error');
+    expect(screen.getByText('Email*').className).toContain('Mui-error');
+    expect(screen.getByText('Password*').className).toContain('Mui-error');
   });
 
   it('Show username length validation error', async () => {
@@ -110,13 +100,10 @@ describe('Signup', () => {
         <SignUpForm />
       </BrowserRouter>
     );
-    console.log(screen.getByLabelText('Username*'));
 
-    fireEvent.change(screen.getByLabelText('Username*'), {
-      target: { value: 'ga' },
-    });
+    userEvent.type(screen.getByLabelText('Username*'), 'ga');
 
-    await act(async () => fireEvent.click(screen.getByTestId('submitButton')));
+    await act(async () => userEvent.click(screen.getByTestId('submitButton')));
     screen.debug();
     expect(
       screen.getByText('"Username" length must be at least 3 characters long')
@@ -141,24 +128,18 @@ describe('Login', () => {
     });
 
     await act(async () =>
-      fireEvent.change(getByLabelText(/username/i), {
-        target: { value: 'Carolyne.Carter' },
-      })
+      userEvent.type(getByLabelText(/username/i), 'Carolyne.Carter')
     );
     await act(async () =>
-      fireEvent.change(getByLabelText(/username/i), {
-        target: { value: 'Carolyne.Carter' },
-      })
+      userEvent.type(getByLabelText(/username/i), 'Carolyne.Carter')
     );
 
     await act(async () =>
-      fireEvent.change(getByLabelText(/password/i), {
-        target: { value: 'password' },
-      })
+      userEvent.type(getByLabelText(/password/i), 'password')
     );
 
     const submit = getByRole('button');
-    await act(async () => fireEvent.click(submit));
+    await act(async () => userEvent.click(submit));
     await act(async () => mockLoginResponse());
     expect(mockLoginResponse).toHaveBeenCalledTimes(1);
   });
