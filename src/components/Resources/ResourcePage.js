@@ -34,7 +34,17 @@ function ResourcePage({ matchProps }) {
 
   const classes = useStyles();
 
-  const { title, url, author, tags, media_type, description } = resource;
+  const {
+    title,
+    url,
+    author,
+    tags,
+    media_type,
+    description,
+    user,
+    date_published,
+    paid,
+  } = resource;
 
   return (
     <Grid container spacing={1}>
@@ -68,9 +78,21 @@ function ResourcePage({ matchProps }) {
                 <strong>Author:</strong> {author}
               </Typography>
             </div>
-            <Typography variant="subtitle1" gutterBottom>
-              {media_type}
+            <div>
+              <Typography variant="subtitle1" gutterBottom>
+                Paid: {paid ? 'yes' : 'no'}
+              </Typography>
+              <Typography variant="subtitle1" gutterBottom>
+                Media Type: {media_type}
+              </Typography>
+              <Typography variant="subtitle2" gutterBottom>
+                Added by <strong>{user.username}</strong> on {date_published}
+              </Typography>
+            </div>
+            <Typography variant="subtitle2" gutterBottom>
+              Modified on by <strong>"someone"</strong> {date_published}
             </Typography>
+            <br></br>
             <Typography variant="body1" gutterBottom>
               {description}
             </Typography>
@@ -78,6 +100,8 @@ function ResourcePage({ matchProps }) {
               tags.map(tag => {
                 return <Chip key={tag.slug} label={tag.name} />;
               })}
+
+            <pre>{JSON.stringify(resource, 0, 2)}</pre>
           </>
         )}
       </Grid>
