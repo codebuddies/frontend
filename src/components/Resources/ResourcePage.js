@@ -32,6 +32,16 @@ function ResourcePage({ matchProps }) {
 
   const classes = useStyles();
 
+  const {
+    title,
+    subtitle,
+    url,
+    author,
+    tags,
+    media_type,
+    description,
+  } = resource;
+
   return (
     <Grid container spacing={1}>
       <Grid item lg={3}>
@@ -45,29 +55,29 @@ function ResourcePage({ matchProps }) {
           <Link color="inherit" to="/resources">
             Resources
           </Link>
-          <Typography color="textPrimary">{resource.title}</Typography>
+          <Typography color="textPrimary">{title}</Typography>
         </Breadcrumbs>
         <Typography variant="h2" gutterBottom>
-          {resource.title}
+          {title}
         </Typography>
         <div className={classes.subtitle}>
           <Typography variant="subtitle1" gutterBottom>
-            <a href={resource.url} target="_blank" rel="noopener noreferrer">
-              {resource.url}
+            <a href={url} target="_blank" rel="noopener noreferrer">
+              {url}
             </a>
           </Typography>
           <Typography variant=" this subtitle1" gutterBottom>
-            <strong>author:</strong> {resource.author}
+            <strong>Author:</strong> {author}
           </Typography>
         </div>
         <Typography variant="subtitle1" gutterBottom>
-          {resource.media_type}
+          {media_type}
         </Typography>
         <Typography variant="body1" gutterBottom>
-          {resource.description}
+          {description}
         </Typography>
-        {resource.tags &&
-          resource.tags.map(tag => {
+        {tags &&
+          tags.map(tag => {
             return <Chip key={tag.name}>{tag.name}</Chip>;
           })}
 
