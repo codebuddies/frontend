@@ -16,6 +16,7 @@ const useStyles = makeStyles({
 
 function ResourcePage({ matchProps }) {
   const [resource, setResource] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
@@ -23,24 +24,17 @@ function ResourcePage({ matchProps }) {
       .then(function(response) {
         // handle success
         setResource(response.data);
+        setLoading(false);
       })
       .catch(function(error) {
         // handle error
         console.log(error);
       });
-  }, [matchProps.match.params.id]);
+  }, [matchProps.match.params.guid]);
 
   const classes = useStyles();
 
-  const {
-    title,
-    subtitle,
-    url,
-    author,
-    tags,
-    media_type,
-    description,
-  } = resource;
+  const { title, url, author, tags, media_type, description } = resource;
 
   return (
     <Grid container spacing={1}>
@@ -57,31 +51,35 @@ function ResourcePage({ matchProps }) {
           </Link>
           <Typography color="textPrimary">{title}</Typography>
         </Breadcrumbs>
-        <Typography variant="h2" gutterBottom>
-          {title}
-        </Typography>
-        <div className={classes.subtitle}>
-          <Typography variant="subtitle1" gutterBottom>
-            <a href={url} target="_blank" rel="noopener noreferrer">
-              {url}
-            </a>
-          </Typography>
-          <Typography variant=" this subtitle1" gutterBottom>
-            <strong>Author:</strong> {author}
-          </Typography>
-        </div>
-        <Typography variant="subtitle1" gutterBottom>
-          {media_type}
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          {description}
-        </Typography>
-        {tags &&
-          tags.map(tag => {
-            return <Chip key={tag.name}>{tag.name}</Chip>;
-          })}
-
-        <pre>{JSON.stringify(resource, 0, 2)}</pre>
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <>
+            <Typography variant="h2" gutterBottom>
+              {title}
+            </Typography>
+            <div className={classes.subtitle}>
+              <Typography variant="subtitle1" gutterBottom>
+                <a href={url} target="_blank" rel="noopener noreferrer">
+                  {url}
+                </a>
+              </Typography>
+              <Typography variant=" this subtitle1" gutterBottom>
+                <strong>Author:</strong> {author}
+              </Typography>
+            </div>
+            <Typography variant="subtitle1" gutterBottom>
+              {media_type}
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              {description}
+            </Typography>
+            {tags &&
+              tags.map(tag => {
+                return <Chip key={tag.slug} label={tag.name} />;
+              })}
+          </>
+        )}
       </Grid>
     </Grid>
   );
