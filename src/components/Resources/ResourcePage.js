@@ -39,10 +39,11 @@ function ResourcePage({ matchProps }) {
     url,
     author,
     tags,
-    media_type,
+    media_type: mediaType,
     description,
     user,
-    date_published,
+    date_published: datePublished,
+    modified,
     paid,
   } = resource;
 
@@ -83,14 +84,14 @@ function ResourcePage({ matchProps }) {
                 Paid: {paid ? 'yes' : 'no'}
               </Typography>
               <Typography variant="subtitle1" gutterBottom>
-                Media Type: {media_type}
+                Media Type: {mediaType}
               </Typography>
               <Typography variant="subtitle2" gutterBottom>
-                Added by <strong>{user.username}</strong> on {date_published}
+                Added by <strong>{user.username}</strong> on {datePublished}
               </Typography>
             </div>
             <Typography variant="subtitle2" gutterBottom>
-              Modified on by <strong>"someone"</strong> {date_published}
+              Modified on by <strong>"someone"</strong> {modified}
             </Typography>
             <br></br>
             <Typography variant="body1" gutterBottom>
