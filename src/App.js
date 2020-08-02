@@ -48,9 +48,7 @@ function App() {
               <Coworking />
             </Route>
             <PrivateRoute path="/profile" component={Profile} />
-            <Route path="/resources/submit">
-              <SubmitResource />
-            </Route>
+            <PrivateRoute path="/resources/submit" component={SubmitResource} />
             <Route
               path="/resources/:guid"
               render={matchProps => <ResourcePage matchProps={matchProps} />}

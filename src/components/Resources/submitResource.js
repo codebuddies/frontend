@@ -1,5 +1,8 @@
 // TODO :
-// when type, store values on change
+// DONE: after typing, store values on change
+// DONE: successful submit with bearer token passed in
+// fix tags
+// fix "paid" checkbox
 // decide what happens on successful submit (redirect to created resource, alert like "congrats you submitted resource..")
 // validation (follow auth implementation) (as type, post-submit)
 // display failed submissions to the user (if not already)
@@ -26,6 +29,7 @@ import {
   FormControlLabel,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { useAuth } from '../Auth/AuthContext';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import PersonalMenu from '../PersonalMenu';
 
@@ -35,18 +39,17 @@ const defaultTags = [
   { label: 'devops', value: 'devops' },
 ];
 const mediaTypes = [
-  'PDF',
-  'Video',
-  'Podcast',
-  'Tutorial',
-  'Course',
-  'Book',
-  'Game',
-  'Blog',
-  'Post',
-  'Event',
-  'Website',
+  { VID: 'Video' },
+  { POD: 'Podcast' },
+  { TUTOR: 'Tutorial' },
+  { COURSE: 'Course' },
+  { BOOK: 'Book' },
+  { GAME: 'Game' },
+  { BLOG: 'Blog' },
+  { EVENT: 'Event' },
+  { WEB: 'Website' },
 ];
+
 const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
@@ -95,9 +98,9 @@ const initialState = {
   level: '',
   title: '',
   review: '',
-  mediaType: '',
+  media_type: '',
   description: '',
-  freeResource: true,
+  paid: true,
 };
 
 function reducer(state, { field, value }) {
@@ -111,11 +114,19 @@ const SubmitResource = () => {
   const classes = useStyles();
   const inputLabel = useRef(null);
   const [labelWidth, setLabelWidth] = useState(0);
+  const auth = useAuth();
+  console.log(auth);
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const onChange = e => {
-    dispatch({ field: e.target.name, value: e.target.value });
+    console.log(e.target.name);
+    console.log(e.target.value);
+    if (e.target.name === 'paid') {
+      console.log(e.target.name);
+    } else {
+      dispatch({ field: e.target.name, value: e.target.value });
+    }
   };
 
   const {
@@ -124,9 +135,9 @@ const SubmitResource = () => {
     level,
     title,
     review,
-    mediaType,
+    media_type: mediaType,
     description,
-    freeResource,
+    paid,
   } = state;
 
   const data = {
@@ -135,14 +146,19 @@ const SubmitResource = () => {
     level,
     title,
     review,
-    mediaType,
+    media_type: mediaType,
     description,
-    freeResource,
+    paid,
   };
+  console.log(data);
 
   const handleSubmit = data => {
+    console.log(data);
+    console.log(auth.authTokens.token);
     axios
-      .post('/api/v1/resources/', data)
+      .post('/api/v1/resources/', data, {
+        headers: { Authorization: `Bearer ${auth.authTokens.token}` },
+      })
       .then(function(response) {
         // handle success
         console.log(response);
@@ -165,7 +181,8 @@ const SubmitResource = () => {
   //   mediaType: '',
   //   description: '',
   //   freeResource: true,
-  //});
+  // });
+
   const [tags, setTags] = useState([]);
 
   // const onChange = name => event => {
@@ -205,11 +222,12 @@ const SubmitResource = () => {
           required
           id="outlined-dense"
           label="URL"
+          name="url"
           className={clsx(classes.textField, classes.dense)}
           margin="dense"
           variant="outlined"
           fullWidth
-          value={url}
+          defaultValue={url}
           onChange={onChange}
         />
 
@@ -220,18 +238,20 @@ const SubmitResource = () => {
           margin="dense"
           variant="outlined"
           fullWidth
-          value={title}
+          defaultValue={title}
           onChange={onChange}
+          name="title"
         />
 
         <TextField
           id="outlined-dense"
           label="Description"
+          name={description}
           className={clsx(classes.textField, classes.dense)}
           margin="dense"
           variant="outlined"
           fullWidth
-          value={description}
+          defaultValue={description}
           onChange={onChange}
         />
 
@@ -241,17 +261,19 @@ const SubmitResource = () => {
           className={clsx(classes.textField, classes.dense)}
           margin="dense"
           variant="outlined"
-          value={year}
+          defaultValue={year}
           onChange={onChange}
+          name="year"
         />
         <FormGroup aria-label="position" row className={classes.freeSwitch}>
           <FormControlLabel
-            checked={freeResource}
-            value="start"
+            checked={paid}
+            defaultValue="start"
             control={<Switch color="primary" />}
             label="Free"
             labelPlacement="start"
             onChange={onChange}
+            name="paid"
           />
         </FormGroup>
 
@@ -265,20 +287,21 @@ const SubmitResource = () => {
           </InputLabel>
           <Select
             native
-            value={mediaType}
+            defaultValue={mediaType}
             inputProps={{
-              name: 'media-type',
+              name: 'media_type',
               id: 'outlined-media-type-native-simple',
             }}
             className={classes.dense}
             margin="dense"
             labelWidth={labelWidth}
             onChange={onChange}
+            name="media_type"
           >
             <option value="" />
             {mediaTypes.map(type => (
-              <option key={type} value={type}>
-                {type}
+              <option key={Object.keys(type)[0]} value={Object.keys(type)[0]}>
+                {Object.values(type)[0]}
               </option>
             ))}
           </Select>
@@ -294,11 +317,12 @@ const SubmitResource = () => {
           </InputLabel>
           <Select
             native
-            value={level}
+            defaultValue={level}
             inputProps={{
               name: 'level',
               id: 'outlined-level-native-simple',
             }}
+            name="level"
             className={classes.dense}
             margin="dense"
             labelWidth={labelWidth}
@@ -314,9 +338,10 @@ const SubmitResource = () => {
         <TextField
           id="outlined-dense"
           label="Your Review"
-          value={review}
+          defaultValue={review}
           className={clsx(classes.textField, classes.dense)}
           margin="dense"
+          name="review"
           variant="outlined"
           fullWidth
           multiline
@@ -329,6 +354,7 @@ const SubmitResource = () => {
           isMulti
           onChange={handleTagChange}
           placeholder="Tags"
+          name="tags"
           options={defaultTags}
           styles={{
             control: styles => ({
@@ -346,7 +372,7 @@ const SubmitResource = () => {
           <Button
             variant="contained"
             className={classes.button}
-            onClick={handleSubmit}
+            onClick={() => handleSubmit(data)}
           >
             Submit
           </Button>
