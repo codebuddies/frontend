@@ -9,6 +9,7 @@ import * as helper from '../helper';
 
 function Resources({ getResourcesUrl }) {
   const [resources, setResources] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
   // const [movies, setMovies] = useState([]);
@@ -18,7 +19,7 @@ function Resources({ getResourcesUrl }) {
       .get(getResourcesUrl)
       .then(function(response) {
         // handle success
-        setResources(response.data.results);
+        setResources(response.data);
         setLoading(false);
       })
       .catch(function(error) {
@@ -28,12 +29,14 @@ function Resources({ getResourcesUrl }) {
   }, [getResourcesUrl]);
 
   const search = searchValue => {
+    setSearchValue(searchValue);
     setLoading(true);
     setErrorMessage(null);
     axios
       .get(helper.appendQueryString(getResourcesUrl, searchValue))
       .then(function(response) {
-        setResources(response.data.results);
+        console.log(response.data);
+        setResources(response.data);
         setLoading(false);
       })
       .catch(function(error) {
@@ -50,6 +53,12 @@ function Resources({ getResourcesUrl }) {
         <Grid item lg={9}>
           <h2>Resources</h2>
           <Search label="Search resources" search={search} />
+          {searchValue && (
+            <p>
+              You have searched for "<strong>{searchValue}</strong>" and gotten{' '}
+              <strong>{resources.count}</strong> results.
+            </p>
+          )}
           <br />
           {loading && !errorMessage ? (
             <span>loading...</span>
@@ -60,7 +69,7 @@ function Resources({ getResourcesUrl }) {
               {resources.length === 0 ? (
                 <p>No resources found</p>
               ) : (
-                resources.map(resource => {
+                resources.results.map(resource => {
                   return (
                     <Grid item lg={3} key={resource.guid}>
                       <ResourceCard {...resource} />
