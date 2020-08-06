@@ -35,7 +35,6 @@ function Resources({ getResourcesUrl }) {
     axios
       .get(buildQueryString(getResourcesUrl, searchValue))
       .then(function(response) {
-        console.log(response.data);
         setResources(response.data);
         setLoading(false);
       })
