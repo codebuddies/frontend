@@ -1,16 +1,40 @@
-import React from 'react';
-import { Input } from '@material-ui/core';
+import React, { useState } from 'react';
+// import { Input } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
-function Search({ label }) {
+const Search = ({ label, search }) => {
+  const [searchValue, setSearchValue] = useState('');
+
+  const handleSearchInputChanges = e => {
+    setSearchValue(e.target.value);
+  };
+
+  const resetInputField = () => {
+    setSearchValue('');
+  };
+
+  const callSearchFunction = e => {
+    e.preventDefault();
+    search(searchValue);
+    resetInputField();
+  };
+
   return (
-    <div>
-      <Input type="search" placeholder={label} />
-    </div>
+    <form className="search">
+      <input
+        type="search"
+        placeholder={label}
+        value={searchValue}
+        onChange={handleSearchInputChanges}
+      />
+      <input onClick={callSearchFunction} type="submit" value="SEARCH" />
+    </form>
   );
-}
+};
+
 export default Search;
 
 Search.propTypes = {
   label: PropTypes.string,
+  search: PropTypes.func,
 };
