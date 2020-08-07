@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import PersonalMenu from '../PersonalMenu';
-import { Grid, Breadcrumbs, Typography, Chip } from '@material-ui/core';
+import { Grid, Breadcrumbs, Typography, Chip, Box } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -71,9 +71,9 @@ function ResourcePage({ matchProps }) {
             </Typography>
             <div className={classes.subtitle}>
               <Typography variant="subtitle1" gutterBottom>
-                <a href={url} target="_blank" rel="noopener noreferrer">
+                <Link target="_blank" rel="noopener noreferrer" to={url}>
                   {url}
-                </a>
+                </Link>
               </Typography>
               <Typography variant=" this subtitle1" gutterBottom>
                 <strong>Author:</strong> {author}
@@ -83,12 +83,12 @@ function ResourcePage({ matchProps }) {
               tags.map(tag => {
                 return <Chip key={tag.slug} label={tag.name} />;
               })}
-
             <div>
-              <br></br>
-              <Typography variant="subtitle1" gutterBottom>
-                Paid: {paid ? 'yes' : 'no'}
-              </Typography>
+              <Box pt={3}>
+                <Typography variant="subtitle1" gutterBottom>
+                  Paid: {paid ? 'yes' : 'no'}
+                </Typography>
+              </Box>
               <Typography variant="subtitle1" gutterBottom>
                 Media Type: {mediaType}
               </Typography>
