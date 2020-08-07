@@ -79,7 +79,13 @@ function ResourcePage({ matchProps }) {
                 <strong>Author:</strong> {author}
               </Typography>
             </div>
+            {tags &&
+              tags.map(tag => {
+                return <Chip key={tag.slug} label={tag.name} />;
+              })}
+
             <div>
+              <br></br>
               <Typography variant="subtitle1" gutterBottom>
                 Paid: {paid ? 'yes' : 'no'}
               </Typography>
@@ -91,16 +97,12 @@ function ResourcePage({ matchProps }) {
               </Typography>
             </div>
             <Typography variant="subtitle2" gutterBottom>
-              Modified on by <strong>"someone"</strong> {modified}
+              Modified by <strong>"someone"</strong> {modified}
             </Typography>
             <br></br>
             <Typography variant="body1" gutterBottom>
               {description}
             </Typography>
-            {tags &&
-              tags.map(tag => {
-                return <Chip key={tag.slug} label={tag.name} />;
-              })}
           </>
         )}
       </Grid>
