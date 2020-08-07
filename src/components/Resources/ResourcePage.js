@@ -101,8 +101,6 @@ function ResourcePage({ matchProps }) {
               tags.map(tag => {
                 return <Chip key={tag.slug} label={tag.name} />;
               })}
-
-            <pre>{JSON.stringify(resource, 0, 2)}</pre>
           </>
         )}
       </Grid>
