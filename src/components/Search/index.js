@@ -77,13 +77,6 @@ const Search = ({ label, search }) => {
         onChange={handleSearchInputChanges}
         type="search"
       />
-      {/* <input
-        type="search"
-        placeholder={label}
-        value={searchValue}
-        onChange={handleSearchInputChanges}
-      />
-      <input onClick={callSearchFunction} type="submit" value="SEARCH" /> */}
     </form>
   );
 };
