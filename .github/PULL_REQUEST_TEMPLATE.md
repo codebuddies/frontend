@@ -28,7 +28,9 @@ Placeholder example: This PR closes issue #12
 
 ## Screenshots/Recordings (if there are UI changes)
 
-Placeholder example: ![screenshot of new resource page](https://user-images.githubusercontent.com/4512699/89255710-3a3d4400-d5d7-11ea-9d56-8be1271d77a2.png)
+Placeholder example: `![screenshot of new resource page](https://user-images.githubusercontent.com/43/23.png)`
+
+Note: you can upload a screenshot onto your PR and put it here.
 
 ## Implementation Details - what was your thought process as you changed the code?
 
@@ -49,8 +51,9 @@ Filed issue #43 as a next step to do after this PR is merged.
 - [ ] 🙅 no, because they aren't needed
 - [ ] 🙋 no, because I need help
 
-## Added to documentation?
+## Added to documentation (readme.md or contributing.md)?
 
-- [ ] 📜 readme
+- [ ] 📜 readme.md
+- [ ] 📜 contributing.md
 - [ ] 🙅 no documentation needed
 - [ ] 🙋 I'd like someone to help write documentation, and will file a new issue for it
