@@ -5,7 +5,7 @@ describe('forming proper query string to call search api', () => {
     const url = '/api/v1/resources';
     const searchValue = 'benefit';
 
-    expect(helper.appendQueryString(url, searchValue)).toBe(
+    expect(helper.buildQueryString(url, searchValue)).toBe(
       '/api/v1/resources/?search=benefit'
     );
   });
