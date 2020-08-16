@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
+import { getResource } from '../../utils/queries';
 import PersonalMenu from '../PersonalMenu';
 import { Grid, Breadcrumbs, Typography, Chip, Box } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
@@ -15,13 +16,9 @@ const useStyles = makeStyles({
 });
 
 function ResourcePage({ matchProps }) {
+  const resourceId = matchProps.match.params.guid;
   // TODO: Handle Error cases
-  const { isLoading, data } = useQuery('resourceData', () =>
-    fetch(`/api/v1/resources/${matchProps.match.params.guid}`).then(res =>
-      res.json()
-    )
-  );
-
+  const { isLoading, data } = useQuery(['resource', resourceId], getResource);
   const classes = useStyles();
 
   if (isLoading) {
