@@ -31,7 +31,7 @@
     "react-dom": "16.11.0",
     "react-hook-form": "5.5.1",
     "react-router-dom": "5.2.0",
-    "react-scripts": "^3.4.0",
+    "react-scripts": "^3.4.3",
     "react-select": "3.0.8",
     "unfurl.js": "5.0.1"
   },
