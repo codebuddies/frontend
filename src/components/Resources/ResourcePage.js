@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import PersonalMenu from '../PersonalMenu';
 import { Grid, Breadcrumbs, Typography, Chip, Box } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
@@ -15,37 +15,31 @@ const useStyles = makeStyles({
 });
 
 function ResourcePage({ matchProps }) {
-  const [resource, setResource] = useState({});
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    axios
-      .get('/api/v1/resources/' + matchProps.match.params.guid)
-      .then(function(response) {
-        // handle success
-        setResource(response.data);
-        setLoading(false);
-      })
-      .catch(function(error) {
-        // handle error
-        console.log(error);
-      });
-  }, [matchProps.match.params.guid]);
+  // TODO: Handle Error cases
+  const { isLoading, data } = useQuery('resourceData', () =>
+    fetch(`/api/v1/resources/${matchProps.match.params.guid}`).then(res =>
+      res.json()
+    )
+  );
 
   const classes = useStyles();
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
   const {
     title,
     url,
     author,
     tags,
-    media_type: mediaType,
+    media_type,
     description,
     user,
-    date_published: datePublished,
+    date_published,
     modified,
     paid,
-  } = resource;
+  } = data;
 
   return (
     <Grid container spacing={1}>
@@ -62,49 +56,50 @@ function ResourcePage({ matchProps }) {
           </Link>
           <Typography color="textPrimary">{title}</Typography>
         </Breadcrumbs>
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <>
-            <Typography variant="h2" gutterBottom>
-              {title}
+
+        <Typography variant="h2" gutterBottom>
+          {title}
+        </Typography>
+
+        <div className={classes.subtitle}>
+          <Typography variant="subtitle1" gutterBottom>
+            <Link target="_blank" rel="noopener noreferrer" to={url}>
+              {url}
+            </Link>
+          </Typography>
+          <Typography variant="subtitle1" gutterBottom>
+            <strong>Author:</strong> {author}
+          </Typography>
+        </div>
+
+        {tags &&
+          tags.map(tag => {
+            return <Chip key={tag.slug} label={tag.name} />;
+          })}
+
+        <div>
+          <Box pt={3}>
+            <Typography variant="subtitle1" gutterBottom>
+              Paid: {paid ? 'yes' : 'no'}
             </Typography>
-            <div className={classes.subtitle}>
-              <Typography variant="subtitle1" gutterBottom>
-                <Link target="_blank" rel="noopener noreferrer" to={url}>
-                  {url}
-                </Link>
-              </Typography>
-              <Typography variant=" this subtitle1" gutterBottom>
-                <strong>Author:</strong> {author}
-              </Typography>
-            </div>
-            {tags &&
-              tags.map(tag => {
-                return <Chip key={tag.slug} label={tag.name} />;
-              })}
-            <div>
-              <Box pt={3}>
-                <Typography variant="subtitle1" gutterBottom>
-                  Paid: {paid ? 'yes' : 'no'}
-                </Typography>
-              </Box>
-              <Typography variant="subtitle1" gutterBottom>
-                Media Type: {mediaType}
-              </Typography>
-              <Typography variant="subtitle2" gutterBottom>
-                Added by <strong>{user.username}</strong> on {datePublished}
-              </Typography>
-            </div>
-            <Typography variant="subtitle2" gutterBottom>
-              Modified by <strong>"someone"</strong> {modified}
-            </Typography>
-            <br></br>
-            <Typography variant="body1" gutterBottom>
-              {description}
-            </Typography>
-          </>
-        )}
+          </Box>
+          <Typography variant="subtitle1" gutterBottom>
+            Media Type: {media_type}
+          </Typography>
+          <Typography variant="subtitle2" gutterBottom>
+            Added by <strong>{user.username}</strong> on {date_published}
+          </Typography>
+        </div>
+
+        <Typography variant="subtitle2" gutterBottom>
+          Modified by <strong>"someone"</strong> {modified}
+        </Typography>
+
+        <br></br>
+
+        <Typography variant="body1" gutterBottom>
+          {description}
+        </Typography>
       </Grid>
     </Grid>
   );
