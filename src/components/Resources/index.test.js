@@ -1,10 +1,12 @@
 import React from 'react';
+import userEvent from '@testing-library/user-event';
 import { render, waitFor, screen } from '@testing-library/react';
 import { BrowserRouter as Route } from 'react-router-dom';
 import '@testing-library/jest-dom/extend-expect';
 import Resources from './index';
 import axiosMock from 'axios';
 import MutationObserver from '@sheerun/mutationobserver-shim';
+import Search from './index';
 window.MutationObserver = MutationObserver;
 
 jest.mock('axios');
@@ -64,9 +66,21 @@ describe('Resources', () => {
     );
 
     await waitFor(() => screen.getByText('Resources'));
+
+    screen.debug();
+
     expect(axiosMock.get).toHaveBeenCalledTimes(1);
     expect(axiosMock.get).toHaveBeenCalledWith(url);
     expect(screen.getByText('Resources')).toBeInTheDocument();
     expect(screen.getByText('Here garden school full.')).toBeInTheDocument();
+
+    await userEvent.type(
+      screen.getByRole('textbox', { name: 'Search resources' }),
+      'garden'
+    );
+
+    expect(
+      screen.getByRole('textbox', { name: 'Search resources' })
+    ).toHaveAttribute('value', 'garden');
   });
 });
