@@ -113,56 +113,5 @@ describe('Resources', () => {
 
     fireEvent.keyDown(searchElement, { key: 'Enter', code: 'Enter' });
     expect(axiosMock.get).toHaveBeenCalledTimes(1);
-
-    axiosMock.get.mockResolvedValueOnce({
-      data: {
-        count: 1,
-        next: 'http://localhost:8000/api/v1/resources/?page=2',
-        previous: null,
-        results: [
-          {
-            guid: '69153c04-dff2-11ea-8d50-0242ac120007',
-            author: 'Betty White',
-            title: 'Off surface turn.',
-            description:
-              'Father exist fast of. Film since usually feeling early over. Both expert dog store particularly tonight property list.\nDecade special teach though team. Tree member opportunity nothing spend.',
-            url: 'http://hansen.info/category/',
-            referring_url: 'https://www.galvan-roach.com/register/',
-            other_referring_source: 'http://schroeder-ware.biz/posts/home/',
-            user: {
-              id: 11,
-              username: 'yudarryl',
-              first_name: '',
-              last_name: '',
-              is_superuser: false,
-            },
-            date_published: '2020-08-16T11:58:02.633422-07:00',
-            created: '2020-08-16T11:58:02.633764-07:00',
-            modified: '2020-08-16T11:58:02.633441-07:00',
-            media_type: 'Game',
-            paid: true,
-            tags: [
-              {
-                guid: '690b4776-dff2-11ea-8d50-0242ac120007',
-                slug: 'difficult',
-                name: 'difficult',
-              },
-              {
-                guid: '6910e212-dff2-11ea-8d50-0242ac120007',
-                slug: 'also',
-                name: 'also',
-              },
-            ],
-          },
-        ],
-      },
-    });
-
-    // some thign bldkajflas;djfj
-    screen.debug();
-
-    expect(
-      screen.getByText('North staff rock democratic add nation')
-    ).toBeInTheDocument();
   });
 });
