@@ -12,7 +12,6 @@ function Resources({ getResourcesUrl }) {
   const [searchValue, setSearchValue] = useState('');
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  // const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     axios
