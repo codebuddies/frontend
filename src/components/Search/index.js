@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { Input } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';

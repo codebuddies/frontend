@@ -6,7 +6,6 @@ import '@testing-library/jest-dom/extend-expect';
 import Resources from './index';
 import axiosMock from 'axios';
 import MutationObserver from '@sheerun/mutationobserver-shim';
-import Search from './index';
 window.MutationObserver = MutationObserver;
 
 jest.mock('axios');
