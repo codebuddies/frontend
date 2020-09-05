@@ -13,7 +13,7 @@ import React, { useState, useRef, useEffect, useReducer } from 'react';
 import CreatableSelect from 'react-select/creatable';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { postResource } from '../../utils/queries';
 import {
   Grid,
   Paper,
@@ -110,7 +110,7 @@ function reducer(state, { field, value }) {
   };
 }
 
-const SubmitResource = () => {
+function SubmitResource() {
   const classes = useStyles();
   const inputLabel = useRef(null);
   const [labelWidth, setLabelWidth] = useState(0);
@@ -155,18 +155,7 @@ const SubmitResource = () => {
   const handleSubmit = data => {
     console.log(data);
     console.log(auth.authTokens.token);
-    axios
-      .post('/api/v1/resources/', data, {
-        headers: { Authorization: `Bearer ${auth.authTokens.token}` },
-      })
-      .then(function(response) {
-        // handle success
-        console.log(response);
-      })
-      .catch(function(error) {
-        // handle error
-        console.log(error);
-      });
+    postResource(data, auth);
   };
   useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
@@ -380,6 +369,6 @@ const SubmitResource = () => {
       </Grid>
     </Grid>
   );
-};
+}
 
 export default SubmitResource;
