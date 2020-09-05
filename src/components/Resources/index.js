@@ -1,26 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
+import { useQuery } from 'react-query';
 import PersonalMenu from '../PersonalMenu';
 import Search from '../Search';
 import Grid from '@material-ui/core/Grid';
 import { ResourceCard } from './ResourceCard';
+import { getResources } from '../../utils/queries';
 
-function Resources({ getResourcesUrl }) {
-  const [resources, setResources] = useState([]);
+function Resources() {
+  const { isLoading, data } = useQuery('resources', getResources);
 
-  useEffect(() => {
-    axios
-      .get(getResourcesUrl)
-      .then(function(response) {
-        // handle success
-        setResources(response.data.results);
-      })
-      .catch(function(error) {
-        // handle error
-        console.log(error);
-      });
-  }, []);
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <>
@@ -33,7 +25,7 @@ function Resources({ getResourcesUrl }) {
           <Search label="Search resources" />
           <br />
           <Grid container spacing={1}>
-            {resources.map(resource => {
+            {data.results.map(resource => {
               return (
                 <Grid item lg={3} key={resource.guid}>
                   <ResourceCard {...resource} />

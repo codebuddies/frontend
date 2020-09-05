@@ -7,4 +7,11 @@ const getResource = async (_key, id) => {
   return data;
 };
 
-export { getResource };
+const getResources = async () => {
+  const { data } = await axios.get(`${API_URL}/resources`);
+  console.log('get resources!!!!!');
+  console.log(data);
+  return data;
+};
+
+export { getResource, getResources };
