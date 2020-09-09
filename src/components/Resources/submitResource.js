@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import axios from 'axios';
 import CreatableSelect from 'react-select/creatable';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
@@ -80,7 +81,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const SubmitResource = () => {
+const SubmitResource = matchProps => {
   const classes = useStyles();
   const inputLabel = useRef(null);
   const [labelWidth, setLabelWidth] = useState(0);
@@ -90,6 +91,7 @@ const SubmitResource = () => {
 
   const [values, setValues] = useState({
     url: '',
+    created: Date.now(),
     year: '',
     level: '',
     title: '',
@@ -112,7 +114,20 @@ const SubmitResource = () => {
     setTags(newValue);
   };
 
-  const handleSubmit = () => alert('Ready to handle tour submit request 🚀');
+  const handleSubmit = () => {
+    axios
+      .post('http://localhost:3001/resources', values)
+      .then(function(response) {
+        // handle success
+        console.log(matchProps);
+        matchProps.history.push('/resources');
+        console.log(response);
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      });
+  };
 
   return (
     <Grid container spacing={1}>
@@ -130,7 +145,7 @@ const SubmitResource = () => {
               <Link color="inherit" to="/resources">
                 Resources
               </Link>
-              <Typography color="textPrimary">Submit</Typography>
+              <Typography color="textPrimary">Add new resource</Typography>
             </Breadcrumbs>
           </Paper>
         </div>
@@ -148,6 +163,7 @@ const SubmitResource = () => {
         />
 
         <TextField
+          required
           id="outlined-dense"
           label="Title"
           className={clsx(classes.textField, classes.dense)}
@@ -159,6 +175,7 @@ const SubmitResource = () => {
         />
 
         <TextField
+          required
           id="outlined-dense"
           label="Description"
           className={clsx(classes.textField, classes.dense)}
