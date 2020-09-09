@@ -50,6 +50,7 @@ export const ResourceCard = ({ guid, title, created, description, url }) => {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
   return (
     <Card className={classes.card}>
       <Link to={`/resources/${guid}`}>
@@ -115,7 +116,7 @@ export const ResourceCard = ({ guid, title, created, description, url }) => {
 ResourceCard.propTypes = {
   guid: PropTypes.string,
   title: PropTypes.string,
-  created: PropTypes.string,
+  created: PropTypes.string, // is actually a PropTypes.instanceOf(Date),
   description: PropTypes.string,
   url: PropTypes.string,
 };

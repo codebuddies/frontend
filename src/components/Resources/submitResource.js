@@ -1,3 +1,4 @@
+// Component to submit a resource at `/submit-resource`
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import CreatableSelect from 'react-select/creatable';
@@ -82,27 +83,31 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const initialState = {
+  created: Date.now(),
+  description: '',
+  freeResource: true,
+  level: '',
+  mediaType: '',
+  review: '',
+  title: '',
+  url: '',
+  year: '',
+};
+
 const SubmitResource = matchProps => {
   const classes = useStyles();
   const inputLabel = useRef(null);
   const [labelWidth, setLabelWidth] = useState(0);
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors } = useForm({
+    defaultValues: initialState,
+  });
 
   useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
 
-  const [values, setValues] = useState({
-    url: '',
-    created: Date.now(),
-    year: '',
-    level: '',
-    title: '',
-    review: '',
-    mediaType: '',
-    description: '',
-    freeResource: true,
-  });
+  const [values, setValues] = useState(initialState);
   const [tags, setTags] = useState([]);
 
   const handleChange = name => event => {
@@ -164,8 +169,9 @@ const SubmitResource = matchProps => {
             value={values.url}
             onChange={handleChange('url')}
             name="url"
-            ref={register({ required: true, maxLength: 400 })}
+            ref={register({ name: 'url', required: true, maxLength: 400 })}
           />
+          {/* TODO: error for maxLength */}
           {errors.url && 'URL is required'}
 
           <TextField
@@ -196,6 +202,8 @@ const SubmitResource = matchProps => {
             onChange={handleChange('description')}
           />
 
+          {/* TODO: date validation */}
+          {/* TODO: date selector */}
           <TextField
             id="outlined-dense"
             label="Year Updated"
@@ -207,6 +215,7 @@ const SubmitResource = matchProps => {
             value={values.year}
             onChange={handleChange('year')}
           />
+
           <FormGroup aria-label="position" row className={classes.freeSwitch}>
             <FormControlLabel
               checked={values.freeResource}
@@ -315,7 +324,11 @@ const SubmitResource = matchProps => {
           />
 
           <FormGroup aria-label="position" className={classes.submit}>
-            <Button variant="contained" className={classes.button}>
+            <Button
+              variant="contained"
+              className={classes.button}
+              type="submit"
+            >
               Submit
             </Button>
           </FormGroup>

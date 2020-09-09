@@ -63,13 +63,11 @@ function Resources() {
 
           <br />
           <Grid container spacing={1}>
-            {resources.map(resource => {
-              return (
-                <Grid item lg={3} key={resource.guid}>
-                  <ResourceCard {...resource} />
-                </Grid>
-              );
-            })}
+            {resources.map(resource => (
+              <Grid item lg={3} key={resource.guid}>
+                <ResourceCard {...resource} />
+              </Grid>
+            ))}
           </Grid>
         </Grid>
       </Grid>
