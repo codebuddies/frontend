@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
-import logo from '../../logo.png';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { makeStyles } from '@material-ui/core/styles';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import MenuList from '@material-ui/core/MenuList';
@@ -77,26 +76,31 @@ export default function Nav() {
       <ul className={classes.ul}>
         <div className={classes.logoArea}>
           <li>
-            <Link to="/">
-              <img src={logo} alt="logo" width="200" className={classes.logo} />
+            <Link href="/">
+              <img
+                src="/assets/logo.png"
+                alt="Codebuddies Logo"
+                width="200"
+                className={classes.logo}
+              />
             </Link>
           </li>
         </div>
         <div className={classes.navItems}>
           <li>
-            <Link to="/about">About</Link>
+            <Link href="/about">About</Link>
           </li>
           <li>
-            <Link to="/newsfeed">Newsfeed</Link>
+            <Link href="/newsfeed">Newsfeed</Link>
           </li>
           <li>
-            <Link to="/resources">Resources</Link>
+            <Link href="/resources">Resources</Link>
           </li>
           <li>
-            <Link to="/groups">Groups</Link>
+            <Link href="/groups">Groups</Link>
           </li>
           <li>
-            <Link to="/projects">Projects</Link>
+            <Link href="/projects">Projects</Link>
           </li>
           <li>
             <IconButton
@@ -105,7 +109,7 @@ export default function Nav() {
               aria-haspopup="true"
               onClick={handleMenuOpen}
             >
-              <Link to="/profile">
+              <Link href="/profile">
                 <AccountCircleIcon />
               </Link>
             </IconButton>

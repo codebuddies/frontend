@@ -1,0 +1,35 @@
+{
+  "ast": null,
+  "code": "import _extends from \"@babel/runtime/helpers/esm/extends\";\nimport _objectWithoutProperties from \"@babel/runtime/helpers/esm/objectWithoutProperties\";\nvar _jsxFileName = \"/Users/angelo.cordon/workspace/codebuddies/frontend/src/components/form/Field.js\";\nvar __jsx = React.createElement;\nimport React from 'react';\nimport PropTypes from 'prop-types';\nimport { Controller } from 'react-hook-form';\n\nconst Field = (_ref) => {\n  let {\n    as,\n    control,\n    name,\n    errors\n  } = _ref,\n      rest = _objectWithoutProperties(_ref, [\"as\", \"control\", \"name\", \"errors\"]);\n\n  const hasError = Boolean(errors && errors[name]);\n  const errorMessage = hasError && errors[name].message;\n  return __jsx(Controller, _extends({\n    as: as,\n    error: hasError,\n    control: control,\n    name: name,\n    helperText: errorMessage\n  }, rest, {\n    __self: this,\n    __source: {\n      fileName: _jsxFileName,\n      lineNumber: 9,\n      columnNumber: 5\n    }\n  }));\n};\n\n_c = Field;\nField.propTypes = {\n  as: PropTypes.any,\n  name: PropTypes.string,\n  control: PropTypes.object,\n  errors: PropTypes.object\n};\nexport default Field;\n\nvar _c;\n\n$RefreshReg$(_c, \"Field\");",
+  "map": {
+    "version": 3,
+    "sources": [
+      "/Users/angelo.cordon/workspace/codebuddies/frontend/src/components/form/Field.js"
+    ],
+    "names": [
+      "React",
+      "PropTypes",
+      "Controller",
+      "Field",
+      "as",
+      "control",
+      "name",
+      "errors",
+      "rest",
+      "hasError",
+      "Boolean",
+      "errorMessage",
+      "message",
+      "propTypes",
+      "any",
+      "string",
+      "object"
+    ],
+    "mappings": ";;;;AAAA,OAAOA,KAAP,MAAkB,OAAlB;AACA,OAAOC,SAAP,MAAsB,YAAtB;AACA,SAASC,UAAT,QAA2B,iBAA3B;;AAEA,MAAMC,KAAK,GAAG,UAA4C;AAAA,MAA3C;AAAEC,IAAAA,EAAF;AAAMC,IAAAA,OAAN;AAAeC,IAAAA,IAAf;AAAqBC,IAAAA;AAArB,GAA2C;AAAA,MAAXC,IAAW;;AACxD,QAAMC,QAAQ,GAAGC,OAAO,CAACH,MAAM,IAAIA,MAAM,CAACD,IAAD,CAAjB,CAAxB;AACA,QAAMK,YAAY,GAAGF,QAAQ,IAAIF,MAAM,CAACD,IAAD,CAAN,CAAaM,OAA9C;AACA,SACE,MAAC,UAAD;AACE,IAAA,EAAE,EAAER,EADN;AAEE,IAAA,KAAK,EAAEK,QAFT;AAGE,IAAA,OAAO,EAAEJ,OAHX;AAIE,IAAA,IAAI,EAAEC,IAJR;AAKE,IAAA,UAAU,EAAEK;AALd,KAMMH,IANN;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,KADF;AAUD,CAbD;;KAAML,K;AAeNA,KAAK,CAACU,SAAN,GAAkB;AAChBT,EAAAA,EAAE,EAAEH,SAAS,CAACa,GADE;AAEhBR,EAAAA,IAAI,EAAEL,SAAS,CAACc,MAFA;AAGhBV,EAAAA,OAAO,EAAEJ,SAAS,CAACe,MAHH;AAIhBT,EAAAA,MAAM,EAAEN,SAAS,CAACe;AAJF,CAAlB;AAOA,eAAeb,KAAf",
+    "sourcesContent": [
+      "import React from 'react';\nimport PropTypes from 'prop-types';\nimport { Controller } from 'react-hook-form';\n\nconst Field = ({ as, control, name, errors, ...rest }) => {\n  const hasError = Boolean(errors && errors[name]);\n  const errorMessage = hasError && errors[name].message;\n  return (\n    <Controller\n      as={as}\n      error={hasError}\n      control={control}\n      name={name}\n      helperText={errorMessage}\n      {...rest}\n    />\n  );\n};\n\nField.propTypes = {\n  as: PropTypes.any,\n  name: PropTypes.string,\n  control: PropTypes.object,\n  errors: PropTypes.object,\n};\n\nexport default Field;\n"
+    ]
+  },
+  "metadata": {},
+  "sourceType": "module"
+}

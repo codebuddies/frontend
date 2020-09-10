@@ -1,0 +1,38 @@
+{
+  "ast": null,
+  "code": "import Joi from '@hapi/joi';\nimport { createValidationResolver } from '../form';\nconst schema = Joi.object({\n  firstName: Joi.string().required().trim().label('First Name'),\n  lastName: Joi.string().allow('').trim().label('Last Name'),\n  username: Joi.string().alphanum().min(3).max(30).required().trim().label('Username'),\n  email: Joi.string().email({\n    tlds: {\n      allow: false\n    }\n  }).required().trim().label('Email'),\n  password: Joi.string().required().label('Password')\n});\nconst defaultValues = {\n  firstName: '',\n  lastName: '',\n  username: '',\n  email: '',\n  password: ''\n};\nconst validationResolver = createValidationResolver(schema);\nexport { validationResolver, schema, defaultValues };",
+  "map": {
+    "version": 3,
+    "sources": [
+      "/Users/angelo.cordon/workspace/codebuddies/frontend/src/components/Auth/SignUpForm.schema.js"
+    ],
+    "names": [
+      "Joi",
+      "createValidationResolver",
+      "schema",
+      "object",
+      "firstName",
+      "string",
+      "required",
+      "trim",
+      "label",
+      "lastName",
+      "allow",
+      "username",
+      "alphanum",
+      "min",
+      "max",
+      "email",
+      "tlds",
+      "password",
+      "defaultValues",
+      "validationResolver"
+    ],
+    "mappings": "AAAA,OAAOA,GAAP,MAAgB,WAAhB;AACA,SAASC,wBAAT,QAAyC,SAAzC;AAEA,MAAMC,MAAM,GAAGF,GAAG,CAACG,MAAJ,CAAW;AACxBC,EAAAA,SAAS,EAAEJ,GAAG,CAACK,MAAJ,GACRC,QADQ,GAERC,IAFQ,GAGRC,KAHQ,CAGF,YAHE,CADa;AAKxBC,EAAAA,QAAQ,EAAET,GAAG,CAACK,MAAJ,GACPK,KADO,CACD,EADC,EAEPH,IAFO,GAGPC,KAHO,CAGD,WAHC,CALc;AASxBG,EAAAA,QAAQ,EAAEX,GAAG,CAACK,MAAJ,GACPO,QADO,GAEPC,GAFO,CAEH,CAFG,EAGPC,GAHO,CAGH,EAHG,EAIPR,QAJO,GAKPC,IALO,GAMPC,KANO,CAMD,UANC,CATc;AAgBxBO,EAAAA,KAAK,EAAEf,GAAG,CAACK,MAAJ,GACJU,KADI,CACE;AAAEC,IAAAA,IAAI,EAAE;AAAEN,MAAAA,KAAK,EAAE;AAAT;AAAR,GADF,EAEJJ,QAFI,GAGJC,IAHI,GAIJC,KAJI,CAIE,OAJF,CAhBiB;AAqBxBS,EAAAA,QAAQ,EAAEjB,GAAG,CAACK,MAAJ,GACPC,QADO,GAEPE,KAFO,CAED,UAFC;AArBc,CAAX,CAAf;AA0BA,MAAMU,aAAa,GAAG;AACpBd,EAAAA,SAAS,EAAE,EADS;AAEpBK,EAAAA,QAAQ,EAAE,EAFU;AAGpBE,EAAAA,QAAQ,EAAE,EAHU;AAIpBI,EAAAA,KAAK,EAAE,EAJa;AAKpBE,EAAAA,QAAQ,EAAE;AALU,CAAtB;AAQA,MAAME,kBAAkB,GAAGlB,wBAAwB,CAACC,MAAD,CAAnD;AACA,SAASiB,kBAAT,EAA6BjB,MAA7B,EAAqCgB,aAArC",
+    "sourcesContent": [
+      "import Joi from '@hapi/joi';\nimport { createValidationResolver } from '../form';\n\nconst schema = Joi.object({\n  firstName: Joi.string()\n    .required()\n    .trim()\n    .label('First Name'),\n  lastName: Joi.string()\n    .allow('')\n    .trim()\n    .label('Last Name'),\n  username: Joi.string()\n    .alphanum()\n    .min(3)\n    .max(30)\n    .required()\n    .trim()\n    .label('Username'),\n  email: Joi.string()\n    .email({ tlds: { allow: false } })\n    .required()\n    .trim()\n    .label('Email'),\n  password: Joi.string()\n    .required()\n    .label('Password'),\n});\n\nconst defaultValues = {\n  firstName: '',\n  lastName: '',\n  username: '',\n  email: '',\n  password: '',\n};\n\nconst validationResolver = createValidationResolver(schema);\nexport { validationResolver, schema, defaultValues };\n"
+    ]
+  },
+  "metadata": {},
+  "sourceType": "module"
+}

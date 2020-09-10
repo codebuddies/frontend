@@ -1,0 +1,17 @@
+{
+  "ast": null,
+  "code": "var _jsxFileName = \"/Users/angelo.cordon/workspace/codebuddies/frontend/src/pages/index.js\";\nvar __jsx = React.createElement;\nimport React from 'react';\nexport default function LandingPage() {\n  return __jsx(\"h1\", {\n    __self: this,\n    __source: {\n      fileName: _jsxFileName,\n      lineNumber: 4,\n      columnNumber: 10\n    }\n  }, \"Hello World!\");\n}",
+  "map": {
+    "version": 3,
+    "sources": [
+      "/Users/angelo.cordon/workspace/codebuddies/frontend/src/pages/index.js"
+    ],
+    "names": ["React", "LandingPage"],
+    "mappings": ";;AAAA,OAAOA,KAAP,MAAkB,OAAlB;AAEA,eAAe,SAASC,WAAT,GAAuB;AACpC,SAAO;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,oBAAP;AACD",
+    "sourcesContent": [
+      "import React from 'react';\n\nexport default function LandingPage() {\n  return <h1>Hello World!</h1>;\n}\n"
+    ]
+  },
+  "metadata": {},
+  "sourceType": "module"
+}
