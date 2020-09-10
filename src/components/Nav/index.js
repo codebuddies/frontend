@@ -2,13 +2,16 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import Link from 'next/link';
 import { makeStyles } from '@material-ui/core/styles';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import MenuList from '@material-ui/core/MenuList';
-import MenuItem from '@material-ui/core/MenuItem';
-import IconButton from '@material-ui/core/IconButton';
-import Grow from '@material-ui/core/Grow';
-import Paper from '@material-ui/core/Paper';
-import Popper from '@material-ui/core/Popper';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import {
+  Button,
+  ClickAwayListener,
+  IconButton,
+  Grow,
+  MenuList,
+  MenuItem,
+  Paper,
+  Popper,
+} from '@material-ui/core';
 import { AuthContext } from '../Auth/AuthContext';
 
 const useStyles = makeStyles(() => ({
@@ -88,19 +91,14 @@ export default function Nav() {
         </div>
         <div className={classes.navItems}>
           <li>
-            <Link href="/about">About</Link>
+            <Link href="/about">
+              <Button component="a">About</Button>
+            </Link>
           </li>
           <li>
-            <Link href="/newsfeed">Newsfeed</Link>
-          </li>
-          <li>
-            <Link href="/resources">Resources</Link>
-          </li>
-          <li>
-            <Link href="/groups">Groups</Link>
-          </li>
-          <li>
-            <Link href="/projects">Projects</Link>
+            <Link href="/resources">
+              <Button component="a">Resources</Button>
+            </Link>
           </li>
           <li>
             <IconButton
