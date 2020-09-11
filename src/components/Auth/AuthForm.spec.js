@@ -78,7 +78,7 @@ describe('Signup', () => {
 
     await act(async () => mockRegisterResponse());
 
-    expect(mockRegisterResponse).toHaveBeenCalledTimes(1);
+    expect(await mockRegisterResponse).toHaveBeenCalledTimes(1);
   });
 
   it('Show required field validation error', async () => {
