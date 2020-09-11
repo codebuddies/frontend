@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import PersonalMenu from '../PersonalMenu';
-import Search from '../Search';
+import PersonalMenu from '../../components/PersonalMenu';
+import Search from '../../components/Search';
 import Grid from '@material-ui/core/Grid';
 import { ResourceCard } from './ResourceCard';
 

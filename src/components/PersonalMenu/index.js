@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Typography } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
@@ -39,7 +40,7 @@ export default function PersonalMenu() {
       <Divider />
       <List>
         <ListItem>
-          <Link to="/coworking">24/7 Coworking Space</Link>
+          <Link href="/coworking">24/7 Coworking Space</Link>
         </ListItem>
         <ListItem>
           <Typography>25 people online right now</Typography>
