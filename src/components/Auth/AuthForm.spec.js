@@ -78,7 +78,7 @@ describe('Signup', () => {
 
     await act(async () => mockRegisterResponse());
 
-    expect(mockRegisterResponse).toHaveBeenCalledTimes(1);
+    expect(await mockRegisterResponse).toHaveBeenCalledTimes(1);
   });
 
   it('Show required field validation error', async () => {
@@ -90,7 +90,6 @@ describe('Signup', () => {
 
     await act(async () => userEvent.click(screen.getByTestId('submitButton')));
     // expect(screen.getByText('Username').className).toContain('Mui-error');
-    screen.debug();
     expect(
       screen.getByText('"Email" is not allowed to be empty')
     ).toBeInTheDocument();
@@ -112,7 +111,6 @@ describe('Signup', () => {
     userEvent.type(screen.getByLabelText('Username*'), 'ga');
 
     await act(async () => userEvent.click(screen.getByTestId('submitButton')));
-    screen.debug();
     expect(
       screen.getByText('"Username" length must be at least 3 characters long')
     ).toBeInTheDocument();
