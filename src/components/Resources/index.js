@@ -67,13 +67,11 @@ function Resources({ getResourcesUrl }) {
             {resources.length === 0 ? (
               <p>No resources found</p>
             ) : (
-              resources.results.map(resource => {
-                return (
-                  <Grid item lg={3} key={resource.guid}>
-                    <ResourceCard {...resource} />
-                  </Grid>
-                );
-              })
+              resources.results.map(resource => (
+                <Grid item lg={3} key={resource.guid}>
+                  <ResourceCard {...resource} />
+                </Grid>
+              ))
             )}
           </Grid>
         )}
