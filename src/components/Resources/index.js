@@ -44,43 +44,41 @@ function Resources({ getResourcesUrl }) {
   };
 
   return (
-    <>
-      <Grid container spacing={1}>
-        <Grid item lg={3}>
-          <PersonalMenu />
-        </Grid>
-        <Grid item lg={9}>
-          <h2>Resources</h2>
-          <Search label="Search resources" search={search} />
-          {searchValue && (
-            <p>
-              You have searched for "<strong>{searchValue}</strong>" and gotten{' '}
-              <strong>{resources.count}</strong> results.
-            </p>
-          )}
-          <br />
-          {loading && !errorMessage ? (
-            <span>loading...</span>
-          ) : errorMessage ? (
-            <div className="errorMessage">{errorMessage}</div>
-          ) : (
-            <Grid container spacing={1}>
-              {resources.length === 0 ? (
-                <p>No resources found</p>
-              ) : (
-                resources.results.map(resource => {
-                  return (
-                    <Grid item lg={3} key={resource.guid}>
-                      <ResourceCard {...resource} />
-                    </Grid>
-                  );
-                })
-              )}
-            </Grid>
-          )}
-        </Grid>
+    <Grid container spacing={1}>
+      <Grid item lg={3}>
+        <PersonalMenu />
       </Grid>
-    </>
+      <Grid item lg={9}>
+        <h2>Resources</h2>
+        <Search label="Search resources" search={search} />
+        {searchValue && (
+          <p>
+            You have searched for "<strong>{searchValue}</strong>" and gotten{' '}
+            <strong>{resources.count}</strong> results.
+          </p>
+        )}
+        <br />
+        {loading && !errorMessage ? (
+          <span>loading...</span>
+        ) : errorMessage ? (
+          <div className="errorMessage">{errorMessage}</div>
+        ) : (
+          <Grid container spacing={1}>
+            {resources.length === 0 ? (
+              <p>No resources found</p>
+            ) : (
+              resources.results.map(resource => {
+                return (
+                  <Grid item lg={3} key={resource.guid}>
+                    <ResourceCard {...resource} />
+                  </Grid>
+                );
+              })
+            )}
+          </Grid>
+        )}
+      </Grid>
+    </Grid>
   );
 }
 
