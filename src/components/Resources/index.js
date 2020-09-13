@@ -53,8 +53,8 @@ function Resources({ getResourcesUrl }) {
         <Search label="Search resources" search={search} />
         {searchValue && (
           <p>
-            You have searched for "<strong>{searchValue}</strong>" and gotten{' '}
-            <strong>{resources.count}</strong> results.
+            You have searched for "<strong>{searchValue}</strong>" and gotten
+            <strong> {resources.count}</strong> results.
           </p>
         )}
         <br />
