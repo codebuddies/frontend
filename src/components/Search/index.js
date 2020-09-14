@@ -93,6 +93,6 @@ const Search = ({ label, search }) => {
 export default Search;
 
 Search.propTypes = {
-  label: PropTypes.string,
-  search: PropTypes.func,
+  label: PropTypes.string.isRequired,
+  search: PropTypes.func.isRequired,
 };
