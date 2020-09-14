@@ -6,12 +6,10 @@ Install dependencies:
 npm i
 ```
 
-IMPORTANT: Create a `.env` file and copy the keys and values from `.env.example`.
-
 Running the client server locally:
 
 ```bash
-npm run start:client
+npm run start
 ```
 
 Running tests:
@@ -20,7 +18,7 @@ Running tests:
 npm run test
 ```
 
-Note: Even if you aren't developing the backend, you should set up the the [backend](https://github.com/codebuddies/backend) and run it locally so that the frontend has a local API to talk to. 
+Note: Even if you aren't developing the backend, you should set up the the [backend](https://github.com/codebuddies/backend) and run it locally so that the frontend has a local API to talk to.
 
 ## **Overview of Codebuddies**
 
