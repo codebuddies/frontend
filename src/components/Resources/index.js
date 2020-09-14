@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import PersonalMenu from '../PersonalMenu';
 import Search from '../Search';
-import Grid from '@material-ui/core/Grid';
+import { Grid, Typography } from '@material-ui/core';
 import { ResourceCard } from './ResourceCard';
 import { buildQueryString } from '../../helpers';
 
@@ -27,6 +27,7 @@ function Resources({ getResourcesUrl }) {
       });
   }, [getResourcesUrl]);
 
+  // TODO: Refactor search function into its own file
   const search = searchValue => {
     setSearchValue(searchValue);
     setLoading(true);
@@ -43,6 +44,8 @@ function Resources({ getResourcesUrl }) {
       });
   };
 
+  const { count = 0, results } = resources;
+
   return (
     <Grid container spacing={1}>
       <Grid item lg={3}>
@@ -52,10 +55,10 @@ function Resources({ getResourcesUrl }) {
         <h2>Resources</h2>
         <Search label="Search resources" search={search} />
         {searchValue && (
-          <p>
+          <Typography>
             You have searched for "<strong>{searchValue}</strong>" and gotten
-            <strong> {resources.count}</strong> results.
-          </p>
+            <strong> {count}</strong> results.
+          </Typography>
         )}
         <br />
         {loading && !errorMessage ? (
@@ -65,9 +68,9 @@ function Resources({ getResourcesUrl }) {
         ) : (
           <Grid container spacing={1}>
             {resources.length === 0 ? (
-              <p>No resources found</p>
+              <Typography>No resources found</Typography>
             ) : (
-              resources.results.map(resource => (
+              results.map(resource => (
                 <Grid item lg={3} key={resource.guid}>
                   <ResourceCard {...resource} />
                 </Grid>
