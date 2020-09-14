@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
+import Button from '@material-ui/core/Button';
+
 import InputBase from '@material-ui/core/InputBase';
 
 const useStyles = makeStyles(theme => ({
@@ -76,6 +78,14 @@ const Search = ({ label, search }) => {
         onChange={handleSearchInputChanges}
         type="search"
       />
+      <Button
+        variant="contained"
+        color="primary"
+        aria-label="Search"
+        type="submit"
+      >
+        Search
+      </Button>
     </form>
   );
 };
