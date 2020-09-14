@@ -5,7 +5,7 @@ import PersonalMenu from '../PersonalMenu';
 import Search from '../Search';
 import Grid from '@material-ui/core/Grid';
 import { ResourceCard } from './ResourceCard';
-import * as helper from '../helper';
+import { buildQueryString } from '../../helpers';
 
 function Resources({ getResourcesUrl }) {
   const [resources, setResources] = useState([]);
@@ -32,7 +32,7 @@ function Resources({ getResourcesUrl }) {
     setLoading(true);
     setErrorMessage(null);
     axios
-      .get(helper.buildQueryString(getResourcesUrl, searchValue))
+      .get(buildQueryString(getResourcesUrl, searchValue))
       .then(function(response) {
         console.log(response.data);
         setResources(response.data);
