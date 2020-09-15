@@ -20,7 +20,7 @@ function Resources({ getResourcesUrl }) {
         // handle error
         console.log(error);
       });
-  }, []);
+  }, [getResourcesUrl]);
 
   return (
     <>
