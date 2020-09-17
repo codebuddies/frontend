@@ -130,7 +130,7 @@ export default function Nav() {
                         onKeyDown={handleListKeyDown}
                       >
                         <MenuItem onClick={handleMenuClose}>
-                          <a onClick={logout}>Logout</a>
+                          <span onClick={logout}>Logout</span>
                         </MenuItem>
                       </MenuList>
                     </ClickAwayListener>
