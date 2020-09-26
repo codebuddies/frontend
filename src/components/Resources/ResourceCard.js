@@ -54,11 +54,6 @@ export const ResourceCard = ({ guid, title, created, description, url }) => {
     <Card className={classes.card}>
       <Link to={`/resources/${guid}`}>
         <CardHeader
-          avatar={
-            <Avatar aria-label="recipe" className={classes.avatar}>
-              R
-            </Avatar>
-          }
           action={
             <IconButton aria-label="settings">
               <MoreVertIcon />
