@@ -1,49 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
+import { useQuery } from 'react-query';
 import PersonalMenu from '../PersonalMenu';
 import Search from '../Search';
 import { Grid, Typography } from '@material-ui/core';
 import { ResourceCard } from './ResourceCard';
-import { buildQueryString } from '../../helpers';
+import { getResources } from '../../utils/queries';
 
-function Resources({ getResourcesUrl }) {
-  const [resources, setResources] = useState([]);
+function Resources() {
   const [searchValue, setSearchValue] = useState('');
-  const [loading, setLoading] = useState(true);
-  const [errorMessage, setErrorMessage] = useState(null);
+  const { isLoading, data, isError, error } = useQuery(
+    ['resource', searchValue],
+    getResources
+  );
 
-  useEffect(() => {
-    axios
-      .get(getResourcesUrl)
-      .then(function(response) {
-        // handle success
-        setResources(response.data);
-        setLoading(false);
-      })
-      .catch(function(error) {
-        // handle error
-        console.log(error);
-      });
-  }, [getResourcesUrl]);
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
-  // TODO: Refactor search function into its own file
   const search = searchValue => {
     setSearchValue(searchValue);
-    setLoading(true);
-    setErrorMessage(null);
-    axios
-      .get(buildQueryString(getResourcesUrl, searchValue))
-      .then(function(response) {
-        setResources(response.data);
-        setLoading(false);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
   };
-
-  const { count = 0, results } = resources;
 
   return (
     <Grid container spacing={1}>
@@ -56,20 +33,20 @@ function Resources({ getResourcesUrl }) {
         {searchValue && (
           <Typography>
             You have searched for "<strong>{searchValue}</strong>" and gotten
-            <strong> {count}</strong> results.
+            <strong> {data.count}</strong> results.
           </Typography>
         )}
         <br />
-        {loading && !errorMessage ? (
+        {isLoading && !isError ? (
           <span>loading...</span>
-        ) : errorMessage ? (
-          <div className="errorMessage">{errorMessage}</div>
+        ) : error ? (
+          <div className="errorMessage">{error}</div>
         ) : (
           <Grid container spacing={1}>
-            {resources.length === 0 ? (
+            {data.results.length === 0 ? (
               <Typography>No resources found</Typography>
             ) : (
-              results.map(resource => (
+              data.results.map(resource => (
                 <Grid item lg={3} key={resource.guid}>
                   <ResourceCard {...resource} />
                 </Grid>
