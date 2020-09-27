@@ -37,9 +37,7 @@ function Resources() {
           </Typography>
         )}
         <br />
-        {isLoading && !isError ? (
-          <span>loading...</span>
-        ) : error ? (
+        {error ? (
           <div className="errorMessage">{error}</div>
         ) : (
           <Grid container spacing={1}>
