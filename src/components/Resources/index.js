@@ -9,10 +9,7 @@ import { getResources } from '../../utils/queries';
 
 function Resources() {
   const [searchValue, setSearchValue] = useState('');
-  const { isLoading, data, isError, error } = useQuery(
-    [searchValue],
-    getResources
-  );
+  const { isLoading, data, error } = useQuery([searchValue], getResources);
 
   if (isLoading) {
     return <p>Loading...</p>;
