@@ -19,6 +19,7 @@ function Resources() {
     setSearchValue(searchValue);
   };
 
+  const { results, count } = data;
   return (
     <Grid container spacing={1}>
       <Grid item lg={3}>
@@ -30,7 +31,7 @@ function Resources() {
         {searchValue && (
           <Typography>
             You have searched for "<strong>{searchValue}</strong>" and gotten
-            <strong> {data.count}</strong> results.
+            <strong> {count}</strong> results.
           </Typography>
         )}
         <br />
@@ -38,10 +39,10 @@ function Resources() {
           <div className="errorMessage">{error}</div>
         ) : (
           <Grid container spacing={1}>
-            {data.results.length === 0 ? (
+            {results.length === 0 ? (
               <Typography>No resources found</Typography>
             ) : (
-              data.results.map(resource => (
+              results.map(resource => (
                 <Grid item lg={3} key={resource.guid}>
                   <ResourceCard {...resource} />
                 </Grid>
