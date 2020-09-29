@@ -14,6 +14,7 @@ import Profile from './components/Profile';
 import SubmitResource from './components/Resources/submitResource';
 import ResourcePage from './components/Resources/ResourcePage.js';
 import PrivateRoute from './PrivateRoute';
+import VerifyEmail from './components/Auth/VerifyEmail';
 
 function App() {
   const [authTokens, setAuthTokens] = useState(
@@ -44,6 +45,10 @@ function App() {
             <Route path="/signup">
               <SignUpForm />
             </Route>
+            <Route
+              path="/verify-email/:key"
+              render={matchProps => <VerifyEmail matchProps={matchProps} />}
+            />
             <Route path="/coworking">
               <Coworking />
             </Route>
