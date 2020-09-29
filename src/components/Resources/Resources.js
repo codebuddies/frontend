@@ -25,7 +25,7 @@ function Resources() {
     if (!results) return null; // to be on safe side in case API breaks
     return (
       <Grid container spacing={1}>
-        {results && results.length === 0 ? (
+        {results.length === 0 ? (
           <Grid item lg={9}>
             <Typography>No resources found</Typography>
           </Grid>
