@@ -26,7 +26,9 @@ function Resources() {
     return (
       <Grid container spacing={1}>
         {results && results.length === 0 ? (
-          <Typography>No resources found</Typography>
+          <Grid item lg={9}>
+            <Typography>No resources found</Typography>
+          </Grid>
         ) : (
           results.map(resource => (
             <Grid item lg={3} key={resource.guid}>
