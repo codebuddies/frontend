@@ -21,6 +21,23 @@ function Resources() {
 
   const { results, count } = data;
 
+  const renderResults = () => {
+    if (!results) return null; // to be on safe side in case API breaks
+    return (
+      <Grid container spacing={1}>
+        {results && results.length === 0 ? (
+          <Typography>No resources found</Typography>
+        ) : (
+          results.map(resource => (
+            <Grid item lg={3} key={resource.guid}>
+              <ResourceCard {...resource} />
+            </Grid>
+          ))
+        )}
+      </Grid>
+    );
+  };
+
   return (
     <Grid container spacing={1}>
       <Grid item lg={3}>
@@ -36,21 +53,7 @@ function Resources() {
           </Typography>
         )}
         <br />
-        {error ? (
-          <div className="errorMessage">{error}</div>
-        ) : (
-          <Grid container spacing={1}>
-            {results.length === 0 ? (
-              <Typography>No resources found</Typography>
-            ) : (
-              results.map(resource => (
-                <Grid item lg={3} key={resource.guid}>
-                  <ResourceCard {...resource} />
-                </Grid>
-              ))
-            )}
-          </Grid>
-        )}
+        {error ? <div className="errorMessage">{error}</div> : renderResults()}
       </Grid>
     </Grid>
   );
