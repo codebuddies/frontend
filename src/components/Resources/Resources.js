@@ -22,7 +22,6 @@ function Resources() {
   const { results, count } = data;
 
   const renderResults = () => {
-    if (!results) return null; // to be on safe side in case API breaks
     return (
       <Grid container spacing={1}>
         {results.length === 0 ? (
@@ -55,8 +54,8 @@ function Resources() {
           </Typography>
         )}
         <br />
-        { error && <div className="errorMessage">{error}</div> }
-        { results && renderResults() }
+        {error && <div className="errorMessage">{error}</div>}
+        {results && renderResults()}
       </Grid>
     </Grid>
   );
