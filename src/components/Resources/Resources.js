@@ -55,7 +55,8 @@ function Resources() {
           </Typography>
         )}
         <br />
-        {error ? <div className="errorMessage">{error}</div> : renderResults()}
+        { error && <div className="errorMessage">{error}</div> }
+        { results && renderResults() }
       </Grid>
     </Grid>
   );
