@@ -4,7 +4,7 @@ import { registerUser } from '../../utils/queries';
 import { Link, Redirect } from 'react-router-dom';
 import { Box, Button, TextField } from '@material-ui/core/';
 import { useAuth } from './AuthContext';
-import { validationResolver, defaultValues } from './SignUpForm.schema';
+import { validationResolver, defaultValues } from './Register.schema';
 import { Form, Field } from '../form';
 
 const Register = ({ toggleActiveForm }) => {
@@ -13,16 +13,14 @@ const Register = ({ toggleActiveForm }) => {
   const referer = '/profile';
   const auth = useAuth();
 
-  const onSubmit = ({ username, email, password1, password2 }) => {
-    const data = {
+  const onSubmit = ({ username, email, password, passwordConfirmation }) => {
+    console.log('#GC SUBMIT', {
       username,
-      password1,
-      password2,
       email,
-    };
-    console.log('ON SUBMIT FIRE');
-    console.log(data);
-    registerUser(data);
+      password,
+      passwordConfirmation,
+    });
+    //registerUser(data);
   };
 
   if (isLoggedIn) {
@@ -71,8 +69,8 @@ const Register = ({ toggleActiveForm }) => {
         fullWidth
         variant="outlined"
         margin="dense"
-        name="password1"
-        label="Password1*"
+        name="password"
+        label="Password*"
         type="text"
         id="password1"
       />
@@ -81,8 +79,8 @@ const Register = ({ toggleActiveForm }) => {
         fullWidth
         variant="outlined"
         margin="dense"
-        name="password2"
-        label="Password2*"
+        name="passwordConfirmation"
+        label="Password Confirmation*"
         type="text"
         id="password2"
       />
