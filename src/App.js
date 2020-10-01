@@ -9,6 +9,7 @@ import Home from './components/Home';
 import Nav from './components/Nav';
 import LoginForm from './components/Auth/LoginForm.js';
 import SignUpForm from './components/Auth/SignUpForm.js';
+import Register from './components/Auth/Register.js';
 import Coworking from './components/Coworking';
 import Profile from './components/Profile';
 import SubmitResource from './components/Resources/submitResource';
@@ -44,6 +45,9 @@ function App() {
             </Route>
             <Route path="/signup">
               <SignUpForm />
+            </Route>
+            <Route path="/register">
+              <Register />
             </Route>
             <Route
               path="/verify-email/:key"

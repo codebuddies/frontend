@@ -12,11 +12,25 @@ const getResources = async searchTerm => {
   return data;
 };
 
-const verifyEmail = async (_key, apiKey) => {
-  const { data } = await axios.post(`${API_URL}/registration/verify-email`, {
-    key: apiKey,
+const registerUser = async (_key, user) => {
+  const { username, password1, email, password2 } = user;
+  const { data } = await axios.post(`${API_URL}/auth/registration`, {
+    username,
+    email,
+    password1,
+    password2,
   });
   return data;
 };
 
-export { getResource, getResources, verifyEmail };
+const verifyEmail = async (_key, apiKey) => {
+  const { data } = await axios.post(
+    `${API_URL}/auth/registration/verify-email`,
+    {
+      key: apiKey,
+    }
+  );
+  return data;
+};
+
+export { getResource, verifyEmail, registerUser };
