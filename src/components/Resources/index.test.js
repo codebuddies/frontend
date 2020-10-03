@@ -11,10 +11,10 @@ window.MutationObserver = MutationObserver;
 jest.mock('axios');
 
 // TODO: move mock data into its own file, test for failures, and test for successful
-// search after clicking on search button
+// search after clicking on search button (https://github.com/codebuddies/frontend/issues/159)
 describe('Resources', () => {
   test('renders correctly with resources', async () => {
-    const url = '/api/v1/resources';
+    const url = '/api/v1/resources/?search=';
 
     axiosMock.get.mockResolvedValueOnce({
       data: {

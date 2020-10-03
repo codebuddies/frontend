@@ -84,6 +84,7 @@ const SubmitResource = () => {
   const classes = useStyles();
   const inputLabel = useRef(null);
   const [labelWidth, setLabelWidth] = useState(0);
+
   useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
