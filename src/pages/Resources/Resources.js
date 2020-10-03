@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from 'react-query';
 import Search from '../../components/Search';
-import PersonalMenu from '../pageSections/Sidebar/PersonalMenu';
+import { Sidebar, Main } from '../pageSections';
 import { Grid, Typography } from '@material-ui/core';
 import { ResourceCard } from './ResourceCard';
 import { getResources } from '../../utils/queries';
@@ -47,10 +47,8 @@ function Resources() {
 
   return (
     <Grid container spacing={1}>
-      <Grid item lg={3}>
-        <PersonalMenu />
-      </Grid>
-      <Grid item lg={9}>
+      <Sidebar />
+      <Main>
         <h2>Resources</h2>
         <Search label="Search resources" search={search} />
         {searchValue && (
@@ -62,7 +60,7 @@ function Resources() {
         <br />
         {error && <div className="errorMessage">{error}</div>}
         {results && renderResults()}
-      </Grid>
+      </Main>
     </Grid>
   );
 }
