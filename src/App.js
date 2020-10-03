@@ -7,6 +7,7 @@ import About from './pages/About';
 import Resources from './pages/Resources';
 import Home from './pages/Home';
 import Nav from './pages/pageSections/Nav';
+import Footer from './pages/pageSections/Footer';
 import LoginForm from './components/Auth/LoginForm.js';
 import SignUpForm from './components/Auth/SignUpForm.js';
 import Connect from './pages/Connect';
@@ -60,6 +61,7 @@ function App() {
               <Home />
             </Route>
           </Switch>
+          <Footer />
         </AuthContext.Provider>
       </Container>
     </Router>
