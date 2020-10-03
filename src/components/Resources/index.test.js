@@ -14,7 +14,7 @@ jest.mock('axios');
 // search after clicking on search button (https://github.com/codebuddies/frontend/issues/159)
 describe('Resources', () => {
   test('renders correctly with resources', async () => {
-    const url = '/api/v1/resources/';
+    const url = '/api/v1/resources/?search=';
 
     axiosMock.get.mockResolvedValueOnce({
       data: {
