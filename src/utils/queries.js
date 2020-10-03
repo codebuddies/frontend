@@ -8,11 +8,7 @@ const getResource = async (_key, id) => {
 };
 
 const getResources = async searchTerm => {
-  const url =
-    searchTerm !== ''
-      ? `${API_URL}/resources/?search=${searchTerm}` // Empty '' search term will return 0 results
-      : `${API_URL}/resources/`;
-  const { data } = await axios.get(url);
+  const { data } = await axios.get(`${API_URL}/resources/${searchTerm}`);
   return data;
 };
 

@@ -16,7 +16,10 @@ function Resources() {
   }
 
   const search = searchValue => {
-    setSearchValue(searchValue);
+    if (searchValue.length === 0) {
+      return;
+    }
+    setSearchValue(`?search=${searchValue}`);
   };
 
   const { results, count } = data;
@@ -49,7 +52,8 @@ function Resources() {
         <Search label="Search resources" search={search} />
         {searchValue && (
           <Typography>
-            You have searched for "<strong>{searchValue}</strong>" and gotten
+            You have searched for "<strong>{searchValue.slice(8)}</strong>" and
+            gotten
             <strong> {count}</strong> results.
           </Typography>
         )}
