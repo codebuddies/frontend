@@ -39,6 +39,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+footer {
+  margin-bottom: 1em;
+  text-align: right;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
