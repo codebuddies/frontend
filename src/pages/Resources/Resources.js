@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from 'react-query';
 import Search from '../../components/Search';
-import { Sidebar, Main } from '../pageSections';
+import { Sidebar, Main } from '../pageSections/index.js';
 import { Grid, Typography } from '@material-ui/core';
 import { ResourceCard } from './ResourceCard';
 import { getResources } from '../../utils/queries';
