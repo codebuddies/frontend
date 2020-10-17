@@ -1,18 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from 'react-query';
 import Search from '../../components/Search';
 import { Sidebar, Main } from '../pageSections';
 import { Grid, Typography } from '@material-ui/core';
+import { Pagination } from '@material-ui/lab';
 import { ResourceCard } from './ResourceCard';
 import { getResources } from '../../utils/queries';
 
 function Resources() {
   const [searchValue, setSearchValue] = useState('');
-  const { isLoading, data, error } = useQuery(
-    [`?search=${searchValue}`],
-    getResources
-  );
+  const [goToPage, setGoToPage] = useState();
+  const [isPagination, triggerPagination] = useState();
+  let params;
+
+  if (isPagination) {
+    params = `?page=${goToPage}`;
+  } else {
+    params = `?search=${searchValue}`;
+  }
+
+  const { isLoading, data, error } = useQuery([params], getResources);
+
+  useEffect(() => {
+    return () => {
+      triggerPagination(false);
+    };
+  });
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -57,6 +71,18 @@ function Resources() {
             <strong> {count}</strong> results.
           </Typography>
         )}
+        <br />
+        <Pagination
+          variant="outlined"
+          shape="rounded"
+          size="large"
+          count={Math.floor(count / 10)}
+          onChange={(_, page) => {
+            console.log(page);
+            setGoToPage(page);
+            triggerPagination(true);
+          }}
+        />
         <br />
         {error && <div className="errorMessage">{error}</div>}
         {results && renderResults()}
