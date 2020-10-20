@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from 'react-query';
-import Search from '../../components/Search';
-import { Sidebar, Main } from '../pageSections';
+import PersonalMenu from '../PersonalMenu';
+import Search from '../Search';
 import { Grid, Typography } from '@material-ui/core';
 import { Pagination } from '@material-ui/lab';
 import { ResourceCard } from './ResourceCard';
@@ -56,8 +56,10 @@ function Resources() {
 
   return (
     <Grid container spacing={1}>
-      <Sidebar />
-      <Main>
+      <Grid item lg={3}>
+        <PersonalMenu />
+      </Grid>
+      <Grid item lg={9}>
         <h2>Resources</h2>
         <Search label="Search resources" search={search} />
         {searchValue && (
@@ -81,7 +83,7 @@ function Resources() {
         <br />
         {error && <div className="errorMessage">{error}</div>}
         {results && renderResults()}
-      </Main>
+      </Grid>
     </Grid>
   );
 }
