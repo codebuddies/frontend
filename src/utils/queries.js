@@ -33,4 +33,4 @@ const verifyEmail = async (_key, apiKey) => {
   return data;
 };
 
-export { getResource, verifyEmail, registerUser };
+export { getResource, getResources, verifyEmail, registerUser };
