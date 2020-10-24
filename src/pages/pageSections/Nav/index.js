@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
-import logo from '../../logo.png';
+import logo from '../../../logo.png';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -10,7 +10,7 @@ import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import { AuthContext } from '../Auth/AuthContext';
+import { AuthContext } from '../../../components/Auth/AuthContext';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -87,13 +87,10 @@ export default function Nav() {
             <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/newsfeed">Newsfeed</Link>
+            <Link to="/connect">Connect</Link>
           </li>
           <li>
             <Link to="/resources">Resources</Link>
-          </li>
-          <li>
-            <Link to="/groups">Groups</Link>
           </li>
           <li>
             <Link to="/projects">Projects</Link>

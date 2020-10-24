@@ -1,5 +1,5 @@
 import React from 'react';
-import PersonalMenu from '../PersonalMenu';
+import PersonalMenu from '../pageSections/Sidebar/PersonalMenu';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -16,7 +16,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Coworking = () => {
+const Connect = () => {
   const classes = useStyles();
 
   return (
@@ -93,4 +93,4 @@ const Coworking = () => {
   );
 };
 
-export default Coworking;
+export default Connect;

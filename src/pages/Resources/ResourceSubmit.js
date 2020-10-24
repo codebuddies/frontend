@@ -18,7 +18,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import PersonalMenu from '../PersonalMenu';
+import PersonalMenu from '../pageSections/Sidebar/PersonalMenu';
 
 const defaultTags = [
   { label: 'design', value: 'design' },

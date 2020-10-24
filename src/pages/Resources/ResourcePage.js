@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import { getResource } from '../../utils/queries';
-import PersonalMenu from '../PersonalMenu';
+import PersonalMenu from '../pageSections/Sidebar/PersonalMenu';
 import { Grid, Breadcrumbs, Typography, Chip, Box } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import { makeStyles } from '@material-ui/core/styles';

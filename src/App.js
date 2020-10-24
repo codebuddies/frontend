@@ -3,15 +3,16 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import './App.css';
 import { AuthContext } from './components/Auth/AuthContext';
-import About from './components/About';
-import Resources from './components/Resources';
-import Home from './components/Home';
-import Nav from './components/Nav';
+import About from './pages/About';
+import Resources from './pages/Resources';
+import Home from './pages/Home';
+import Nav from './pages/pageSections/Nav';
+import Footer from './pages/pageSections/Footer';
 import LoginForm from './components/Auth/LoginForm.js';
 import SignUpForm from './components/Auth/SignUpForm.js';
 import Register from './components/Auth/Register.js';
-import Coworking from './components/Coworking';
-import Profile from './components/Profile';
+import Connect from './pages/Connect';
+import Profile from './pages/Profile';
 import SubmitResource from './components/Resources/submitResource';
 import ResourcePage from './components/Resources/ResourcePage.js';
 import PrivateRoute from './PrivateRoute';
@@ -53,8 +54,8 @@ function App() {
               path="/verify-email/:key"
               render={matchProps => <VerifyEmail matchProps={matchProps} />}
             />
-            <Route path="/coworking">
-              <Coworking />
+            <Route path="/connect">
+              <Connect />
             </Route>
             <PrivateRoute path="/profile" component={Profile} />
             <Route
@@ -64,11 +65,12 @@ function App() {
             <Route path="/resources">
               <Resources getResourcesUrl="/api/v1/resources" />
             </Route>
-            <PrivateRoute path="/resources/submit" component={SubmitResource} />
+            <PrivateRoute path="/resources/submit" component={ResourceSubmit} />
             <Route exact path="/">
               <Home />
             </Route>
           </Switch>
+          <Footer />
         </AuthContext.Provider>
       </Container>
     </Router>
