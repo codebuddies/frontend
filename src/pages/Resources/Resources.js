@@ -10,15 +10,10 @@ import { getResources } from '../../utils/queries';
 
 function Resources() {
   const [searchValue, setSearchValue] = useState('');
-  const [goToPage, setGoToPage] = useState();
-  const [isPagination, triggerPagination] = useState();
-  let params;
+  const [goToPage, setGoToPage] = useState(null);
+  const [isPagination, setIsPagination] = useState(null);
 
-  if (isPagination) {
-    params = `?page=${goToPage}`;
-  } else {
-    params = `?search=${searchValue}`;
-  }
+  const params = isPagination ? `?page=${goToPage}` : `?search=${searchValue}`;
 
   const { isLoading, data, error } = useQuery([params], getResources);
 
@@ -30,7 +25,7 @@ function Resources() {
     if (searchValue.length === 0) {
       setSearchValue();
     }
-    triggerPagination(false);
+    setIsPagination(false);
     setSearchValue(searchValue);
   };
 
@@ -66,21 +61,23 @@ function Resources() {
             <strong> {count}</strong> results.
           </Typography>
         )}
+        {results && renderResults()}
         <br />
-        <Pagination
-          variant="outlined"
-          shape="rounded"
-          size="large"
-          count={Math.floor(count / 10)}
-          page={goToPage || 1}
-          onChange={(_, page) => {
-            setGoToPage(page);
-            triggerPagination(true);
-          }}
-        />
+        {!searchValue && (
+          <Pagination
+            variant="outlined"
+            shape="rounded"
+            size="large"
+            count={Math.floor(count / 10)}
+            page={goToPage || 1}
+            onChange={(_, page) => {
+              setGoToPage(page);
+              setIsPagination(true);
+            }}
+          />
+        )}
         <br />
         {error && <div className="errorMessage">{error}</div>}
-        {results && renderResults()}
       </Main>
     </Grid>
   );
