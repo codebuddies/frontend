@@ -20,7 +20,8 @@ const LoginForm = ({ toggleActiveForm }) => {
       password,
     };
     axios
-      .post('/auth/obtain_token/', data)
+      // .post('/auth/obtain_token/', data)
+      .post('/api/v1/auth/login/', data)
       .then(res => {
         auth.setAuthTokens(res.data);
         setIsLoggedIn(true);
