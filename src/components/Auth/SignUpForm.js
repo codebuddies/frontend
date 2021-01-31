@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useAuth } from './AuthContext';
 import { validationResolver, defaultValues } from './SignUpForm.schema';
 import { Form, Field } from '../form';
+import { config } from '../../helpers/constants';
 
 const SignUpForm = ({ toggleActiveForm }) => {
   const [errorMessage, setErrorMessage] = useState(null);
@@ -21,7 +22,7 @@ const SignUpForm = ({ toggleActiveForm }) => {
       password2,
     };
     axios
-      .post('http://localhost:8000/api/v1/auth/registration/', data)
+      .post(`${config.API_URL}/api/v1/auth/registration/`, data)
       .then(res => {
         auth.setAuthTokens(res.data);
         setIsLoggedIn(true);
