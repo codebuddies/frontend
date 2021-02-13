@@ -55,24 +55,28 @@ describe('Signup', () => {
         username: 'Carolyne.Carter',
         token:
           'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IkNhcm9seW5lLkNhcnRlciIsImlhdCI6MTU4NDMzODQ4NiwiZXhwIjoxNTg0MzQyMDg2LCJ1c2VyX2lkIjo4MCwib3JpZ19pYXQiOjE1ODQzMzg0ODZ9.saO6OCOKV1uwHjTbM-iDGmhbkMNCnzrGFj4TBYnTv2E',
-        first_name: 'Carolyne',
-        last_name: 'Carter',
+        // first_name: 'Carolyne',
+        // last_name: 'Carter',
         email: 'Carolyne.Carter@yahoo.com',
+        password1: 'password',
+        password2: 'password',
       },
     });
 
-    userEvent.type(screen.getByLabelText(/username/i), 'Carolyne.Carter');
+    userEvent.type(screen.getByLabelText('Username*'), 'Carolyne.Carter');
 
-    userEvent.type(screen.getByLabelText(/password/i), 'password');
+    userEvent.type(screen.getByLabelText('Password*'), 'password');
+
+    userEvent.type(screen.getByLabelText('Confirm Password*'), 'password');
 
     userEvent.type(
-      screen.getByLabelText(/email/i),
+      screen.getByLabelText('Email*'),
       'Carolyne.Carter@yahoo.com'
     );
 
-    userEvent.type(screen.getByLabelText(/first name/i), 'Carolyne');
+    // userEvent.type(screen.getByLabelText(/first name/i), 'Carolyne');
 
-    userEvent.type(screen.getByLabelText(/last name/i), 'Carter');
+    // userEvent.type(screen.getByLabelText(/last name/i), 'Carter');
 
     userEvent.click(screen.getByText('Sign Up'));
 
@@ -129,15 +133,15 @@ describe('Login', () => {
       data: {
         token:
           'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IkNhcm9seW5lLkNhcnRlciIsImlhdCI6MTU4NDM0MDAyMiwiZXhwIjoxNTg0MzQzNjIyLCJ1c2VyX2lkIjo4MCwib3JpZ19pYXQiOjE1ODQzNDAwMjJ9.0zNlXPVAjkBjxUQjq4B0HXnvrez93H2pz6n2ROKWzzg',
-        username: 'Carolyne.Carter',
+        email: 'Carolyne.Carter@mail.com',
       },
     });
 
     await act(async () =>
-      userEvent.type(getByLabelText(/username/i), 'Carolyne.Carter')
+      userEvent.type(getByLabelText(/email/i), 'Carolyne.Carter@mail.com')
     );
     await act(async () =>
-      userEvent.type(getByLabelText(/username/i), 'Carolyne.Carter')
+      userEvent.type(getByLabelText(/email/i), 'Carolyne.Carter@mail.com')
     );
 
     await act(async () =>
