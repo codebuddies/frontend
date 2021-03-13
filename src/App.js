@@ -15,6 +15,7 @@ import Profile from './pages/Profile';
 import ResourceSubmit from './pages/Resources/ResourceSubmit';
 import ResourcePage from './pages/Resources/ResourcePage.js';
 import PrivateRoute from './PrivateRoute';
+import VerifyEmail from './components/Auth/VerifyEmail';
 
 function App() {
   const [authTokens, setAuthTokens] = useState(
@@ -47,6 +48,9 @@ function App() {
             </Route>
             <Route path="/connect">
               <Connect />
+            </Route>
+            <Route path="/api/v1/auth/registration/verify-email">
+              <VerifyEmail />
             </Route>
             <PrivateRoute path="/profile" component={Profile} />
             <Route

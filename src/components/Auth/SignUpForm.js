@@ -26,7 +26,6 @@ const SignUpForm = ({ toggleActiveForm }) => {
       .then(res => {
         auth.setAuthTokens(res.data);
         setIsLoggedIn(true);
-        setErrorMessage('');
       })
       .catch(err => {
         console.error(err);
