@@ -11,7 +11,7 @@ import { config } from '../../helpers/constants';
 const SignUpForm = ({ toggleActiveForm }) => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const referer = '/profile';
+  const referer = '/api/v1/auth/registration/verify-email/';
   const auth = useAuth();
 
   const onSubmit = ({ username, password1, password2, email }) => {
