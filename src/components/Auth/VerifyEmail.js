@@ -1,22 +1,41 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { config } from '../../helpers/constants';
 
 const VerifyEmail = () => {
+  const [verifyStatus, setVerifyStatus] = useState('');
+  const [error, setError] = useState('');
   const urlParams = new URLSearchParams(window.location.search);
   const key = urlParams.get('key');
 
   useEffect(() => {
-    axios.post(`${config.API_URL}/api/v1/auth/registration/verify-email/`, {
-      key,
-    });
+    if (key) {
+      axios
+        .post(`${config.API_URL}/api/v1/auth/registration/verify-email/`, {
+          key,
+        })
+        .then(resp => {
+          if (resp.status === 200) {
+            setVerifyStatus('Your email has been verified!');
+          }
+        })
+        .catch(e => {
+          console.error(e);
+          setError(e.message);
+        });
+    } else {
+      setError('There is no key in the URL string.');
+    }
   });
 
   return (
     <div>
       <div>
-        email verified! <Link to="/">go back home</Link>
+        {verifyStatus && <span>{`${verifyStatus}`}</span>}
+        {error && <span style={{ color: 'red' }}>{`${error}`}</span>}
+        <br />
+        <Link to="/">go back home</Link>
       </div>
     </div>
   );
