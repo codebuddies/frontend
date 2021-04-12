@@ -27,7 +27,7 @@ const VerifyEmail = () => {
     } else {
       setError('There is no key in the URL string.');
     }
-  });
+  }, [key]);
 
   return (
     <div>
