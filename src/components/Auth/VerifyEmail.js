@@ -25,17 +25,24 @@ const VerifyEmail = () => {
           setError(e.message);
         });
     } else {
-      setError('There is no key in the URL string.');
+      setError('There is no key in the URL.');
     }
   }, [key]);
 
   return (
     <div>
       <div>
-        {verifyStatus && <span>{`${verifyStatus}`}</span>}
+        {verifyStatus ? (
+          <span>{`${verifyStatus}`}</span>
+        ) : (
+          <p>
+            Thank you for signing up! Please check your email to verify your
+            account.
+          </p>
+        )}
         {error && <span style={{ color: 'red' }}>{`${error}`}</span>}
         <br />
-        <Link to="/">go back home</Link>
+        <Link to="/">Home</Link>
       </div>
     </div>
   );
