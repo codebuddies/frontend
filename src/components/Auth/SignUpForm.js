@@ -6,27 +6,26 @@ import axios from 'axios';
 import { useAuth } from './AuthContext';
 import { validationResolver, defaultValues } from './SignUpForm.schema';
 import { Form, Field } from '../form';
+import { config } from '../../helpers/constants';
 
 const SignUpForm = ({ toggleActiveForm }) => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const referer = '/profile';
+  const referer = '/api/v1/auth/registration/verify-email/';
   const auth = useAuth();
 
-  const onSubmit = ({ username, password, firstName, lastName, email }) => {
+  const onSubmit = ({ username, password1, password2, email }) => {
     const data = {
       username,
-      password,
       email,
-      first_name: firstName,
-      last_name: lastName,
+      password1,
+      password2,
     };
     axios
-      .post('/auth/users/', data)
+      .post(`${config.API_URL}/api/v1/auth/registration/`, data)
       .then(res => {
         auth.setAuthTokens(res.data);
         setIsLoggedIn(true);
-        setErrorMessage('');
       })
       .catch(err => {
         console.error(err);
@@ -63,24 +62,6 @@ const SignUpForm = ({ toggleActiveForm }) => {
         fullWidth
         variant="outlined"
         margin="dense"
-        name="firstName"
-        label="First Name*"
-        id="first-name"
-      />
-      <Field
-        as={TextField}
-        fullWidth
-        variant="outlined"
-        margin="dense"
-        name="lastName"
-        label="Last Name"
-        id="last-name"
-      />
-      <Field
-        as={TextField}
-        fullWidth
-        variant="outlined"
-        margin="dense"
         name="username"
         label="Username*"
         id="username"
@@ -99,10 +80,20 @@ const SignUpForm = ({ toggleActiveForm }) => {
         fullWidth
         variant="outlined"
         margin="dense"
-        name="password"
+        name="password1"
         label="Password*"
         type="password"
-        id="password"
+        id="password1"
+      />
+      <Field
+        as={TextField}
+        fullWidth
+        variant="outlined"
+        margin="dense"
+        name="password2"
+        label="Confirm Password*"
+        type="password"
+        id="password2"
       />
 
       {errorMessage && <Box color="error.main"> {errorMessage}</Box>}

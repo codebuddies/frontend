@@ -2,14 +2,6 @@ import Joi from '@hapi/joi';
 import { createValidationResolver } from '../form';
 
 const schema = Joi.object({
-  firstName: Joi.string()
-    .required()
-    .trim()
-    .label('First Name'),
-  lastName: Joi.string()
-    .allow('')
-    .trim()
-    .label('Last Name'),
   username: Joi.string()
     .alphanum()
     .min(3)
@@ -22,17 +14,23 @@ const schema = Joi.object({
     .required()
     .trim()
     .label('Email'),
-  password: Joi.string()
+  password1: Joi.string()
     .required()
     .label('Password'),
+  password2: Joi.any()
+    .valid(Joi.ref('password1'))
+    .required()
+    .label('Confirm Password')
+    .options({ messages: { 'any.only': 'Passwords do not match' } }),
 });
 
 const defaultValues = {
-  firstName: '',
-  lastName: '',
+  // firstName: '',
+  // lastName: '',
   username: '',
   email: '',
-  password: '',
+  password1: '',
+  password2: '',
 };
 
 const validationResolver = createValidationResolver(schema);

@@ -22,78 +22,6 @@ exports[`AuthForm should render accordingly 1`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined"
           data-shrink="false"
-          for="first-name"
-          id="first-name-label"
-        >
-          First Name*
-        </label>
-        <div
-          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
-        >
-          <input
-            aria-invalid="false"
-            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
-            id="first-name"
-            name="firstName"
-            type="text"
-            value=""
-          />
-          <fieldset
-            aria-hidden="true"
-            class="PrivateNotchedOutline-root-4 MuiOutlinedInput-notchedOutline"
-          >
-            <legend
-              class="PrivateNotchedOutline-legendLabelled-6"
-            >
-              <span>
-                First Name*
-              </span>
-            </legend>
-          </fieldset>
-        </div>
-      </div>
-      <div
-        class="MuiFormControl-root MuiTextField-root MuiFormControl-marginDense MuiFormControl-fullWidth"
-      >
-        <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined"
-          data-shrink="false"
-          for="last-name"
-          id="last-name-label"
-        >
-          Last Name
-        </label>
-        <div
-          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
-        >
-          <input
-            aria-invalid="false"
-            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
-            id="last-name"
-            name="lastName"
-            type="text"
-            value=""
-          />
-          <fieldset
-            aria-hidden="true"
-            class="PrivateNotchedOutline-root-4 MuiOutlinedInput-notchedOutline"
-          >
-            <legend
-              class="PrivateNotchedOutline-legendLabelled-6"
-            >
-              <span>
-                Last Name
-              </span>
-            </legend>
-          </fieldset>
-        </div>
-      </div>
-      <div
-        class="MuiFormControl-root MuiTextField-root MuiFormControl-marginDense MuiFormControl-fullWidth"
-      >
-        <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined"
-          data-shrink="false"
           for="username"
           id="username-label"
         >
@@ -166,8 +94,8 @@ exports[`AuthForm should render accordingly 1`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined"
           data-shrink="false"
-          for="password"
-          id="password-label"
+          for="password1"
+          id="password1-label"
         >
           Password*
         </label>
@@ -177,8 +105,8 @@ exports[`AuthForm should render accordingly 1`] = `
           <input
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
-            id="password"
-            name="password"
+            id="password1"
+            name="password1"
             type="password"
             value=""
           />
@@ -191,6 +119,42 @@ exports[`AuthForm should render accordingly 1`] = `
             >
               <span>
                 Password*
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+      <div
+        class="MuiFormControl-root MuiTextField-root MuiFormControl-marginDense MuiFormControl-fullWidth"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined"
+          data-shrink="false"
+          for="password2"
+          id="password2-label"
+        >
+          Confirm Password*
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
+            id="password2"
+            name="password2"
+            type="password"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-4 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="PrivateNotchedOutline-legendLabelled-6"
+            >
+              <span>
+                Confirm Password*
               </span>
             </legend>
           </fieldset>

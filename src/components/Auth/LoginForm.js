@@ -6,7 +6,7 @@ import { useAuth } from './AuthContext';
 import axios from 'axios';
 
 const LoginForm = ({ toggleActiveForm }) => {
-  const [username, setUsername] = useState(null);
+  const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -16,18 +16,27 @@ const LoginForm = ({ toggleActiveForm }) => {
   const handleLogin = e => {
     e.preventDefault();
     const data = {
-      username,
+      email: email,
       password,
     };
     axios
-      .post('/auth/obtain_token/', data)
+      .post('http://localhost:8000/api/v1/auth/login/', data)
       .then(res => {
         auth.setAuthTokens(res.data);
         setIsLoggedIn(true);
       })
       .catch(error => {
         if (error.response) {
-          setErrorMessage(error.response.data.non_field_errors[0]);
+          // todo: display field error in input field
+          if (error.response.data.email) {
+            setErrorMessage(error.response.data.email[0]);
+          } else if (error.response.data.password) {
+            setErrorMessage(error.response.data.password[0]);
+          } else if (error.response.data.non_field_errors) {
+            setErrorMessage(error.response.data.non_field_errors[0]);
+          } else {
+            setErrorMessage('There was an error!');
+          }
         } else {
           setErrorMessage('There was an error!');
         }
@@ -55,14 +64,14 @@ const LoginForm = ({ toggleActiveForm }) => {
             Log in
           </Box>
           <TextField
-            id="username"
-            label="username"
+            id="email"
+            label="Email"
             fullWidth
             required
             variant="outlined"
             margin="dense"
             type="text"
-            onChange={e => setUsername(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
           />
           <TextField
             id="password"
