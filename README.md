@@ -34,7 +34,7 @@ We are building out a new platform (CBV3) to replace an [older MeteorJS project]
 
 Big thanks to the sponsors of this project!
 
-<a href="https://gitduck.com/codebuddies/join?t=60ktFkh1Rqnd_AS1kR8ZGyH" target="_blank"><img src="https://opencollective-production.s3.us-west-1.amazonaws.com/f6e3fd10-bfd4-11ea-991a-c3d30978b44b.png" width="200" alt="GitDuck"/>
+<a href="https://duckly.com/codebuddies/join?t=60ktFkh1Rqnd_AS1kR8ZGyH" target="_blank"><img src="https://opencollective-production.s3.us-west-1.amazonaws.com/ed4191f0-afde-11eb-9816-11782bb2fe83.png" width="200" alt="Duckly"/>
 
 <a href="https://netlify.com" target="_blank"><img src="https://user-images.githubusercontent.com/4512699/66627175-ba5d6d80-ebaf-11e9-8a78-554e3e8a4987.png" width="200" alt="Netlify"/>
 
